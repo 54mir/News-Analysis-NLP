@@ -1,4 +1,3 @@
-package corenlp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.knowm.xchart.*;
@@ -13,15 +12,15 @@ import org.knowm.xchart.SwingWrapper;
  */
 public class PieChartMaker {
 
-	String filename;
-	FileIO io;
+	
+	ArrayList <String[]> normalizedDTM;
 
 	/*
 	 * Constructs a PieChartMaker object
 	 */
-	public PieChartMaker(String file) {
-		this.filename = file;
-		this.io = new FileIO(filename);
+	public PieChartMaker(ArrayList <String[]> DTM) {
+		
+		this.normalizedDTM = DTM;
 
 	}
 
@@ -29,10 +28,13 @@ public class PieChartMaker {
 	 * Simplifies the large csv file into an array with just the necessary info. 
 	 * This array can be used to investigate sentiment by source. 
 	 */
-	public HashMap<String, Integer[]> makeSentSeriesArray(ArrayList<String[]> lines) {
+	public HashMap<String, Integer[]> makeSentSeriesArray() {
 		HashMap<String, Integer[]> series = new HashMap<>();
-		for (String[] line : lines) {
+		//we don't want to read in the the header to this, so let's remove it  
+		System.out.println(normalizedDTM.get(0));
+		for (String[] line : normalizedDTM) {
 			String source = line[0];
+			System.out.println(source);
 			int neg = Integer.valueOf(line[1].trim());
 			int neut = Integer.valueOf(line[2].trim());
 			int pos = Integer.valueOf(line[3].trim());
@@ -70,11 +72,13 @@ public class PieChartMaker {
 	}
 
 	public static void main(String[] args) {
-		PieChartMaker gm = new PieChartMaker("normalizedDTM.csv");
-		ArrayList<String[]> lines = gm.io.DTMfileReader();
-		HashMap<String, Integer[]> series = gm.makeSentSeriesArray(lines);
+		DTMNormalizer dtm = new DTMNormalizer("newsSourcesOut.csv");
+		ArrayList <String[]> normalizedDTM = dtm.normalizeDTM();
+		PieChartMaker gm = new PieChartMaker(normalizedDTM);
+		HashMap<String, Integer[]> series = gm.makeSentSeriesArray();
 		gm.makeChart(series);
 
 	}
 
 }
+
