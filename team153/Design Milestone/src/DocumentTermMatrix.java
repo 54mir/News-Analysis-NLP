@@ -6,7 +6,7 @@ import java.util.Properties;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
-//test comment
+//Vectorizes article dataset
 public class DocumentTermMatrix {
     File fileToOpen = new File("newsSourcesSAMPLED100.csv");
     File fileToWrite = new File ("newsSourcesOut.csv");
