@@ -52,9 +52,14 @@ public class FileIO {
 		}
 		System.out.println("file opened. ");
 		
+		
+		
+		
 		return lines;
 
 	}
+	
+	
 	
 	
 	

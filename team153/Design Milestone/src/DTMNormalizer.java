@@ -15,6 +15,9 @@ import java.util.Scanner;
 public class DTMNormalizer {
 	FileIO io;
 	ArrayList<String[]> normalizedArticles;
+	int posSent;
+	int negSent;
+	int neutSent;
 	
 	
 	/*
@@ -61,11 +64,33 @@ public class DTMNormalizer {
 	
 	
 	
-	public ArrayList<String[]> normalizeDTM() {
+	public ArrayList<String[]> getNormalizedDTM() {
 		
 		ArrayList <String[]> lines = io.DTMfileReader("newsSourcesOut.csv");
 		ArrayList <String[]> normalizedArticles = normalizeArticles(lines);
 		return normalizedArticles;
+		
+	}
+	
+	
+	
+	public int getPositiveSentiment(int row) {
+		String[] thisRow = normalizedArticles.get(row);
+		posSent = Integer.valueOf(thisRow[3]);
+		return posSent;	
+	}
+	
+	public int getNeutralSentiment(int row) {
+		String[] thisRow = normalizedArticles.get(row);
+		neutSent = Integer.valueOf(thisRow[2]);
+		return neutSent;	
+		
+	}
+	
+	public int getNegativeSentiment(int row) {
+		String[] thisRow = normalizedArticles.get(row);
+		negSent = Integer.valueOf(thisRow[2]);
+		return negSent;	
 		
 	}
 	
@@ -76,7 +101,8 @@ public class DTMNormalizer {
 	
 	public static void main(String[] args) {
 		DTMNormalizer dtm = new DTMNormalizer("newsSourcesOut.csv");
-		ArrayList <String[]> normalizedArticles = dtm.normalizeDTM();
+		ArrayList <String[]> normalizedArticles = dtm.getNormalizedDTM();
+		System.out.println("done!");
 		
 	}
 	
