@@ -8,14 +8,19 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
  * Reads in articles and outputs file with relevant metrics.
  */
 public class RawDocumentReader {
-    File fileToOpen = new File("newsSourcesSAMPLED100.csv");
+    File fileToOpen = new File("newsSourcesSAMPLED5.csv");
     File fileToWrite = new File ("articleMetricsArray.ser");
     ArrayList<String[]> fileArray = new ArrayList<>();
     String stopWordsPath = "stopWords.txt";
-//    PrintWriter pw = new PrintWriter(fileToWrite);
     int idxTitle = 2, idxArticle = 3, idxSource = 0, idxDate = 4, idxAuthor = 1;
     Properties prop = new Properties();
     StanfordCoreNLP pipeline = new StanfordCoreNLP(property());
+
+    public RawDocumentReader() {
+        constructFileArray(fileToOpen);
+        constructMetrics();
+
+    }
 
     /**
      * Set properties for CoreNLP
@@ -36,11 +41,9 @@ public class RawDocumentReader {
             fileInput.useDelimiter("(Z1Q\")|(Z1Q)");
 
             //File to Array
-            int loopCounter = 0;
             while (fileInput.hasNext()) {
                 String[] rawText = fileInput.next().split("(,Q1Z)|(,\"Q1Z)");
                 fileArray.add(rawText);
-
             }
         } catch (FileNotFoundException e) {
             System.out.println("document not found");
@@ -69,9 +72,40 @@ public class RawDocumentReader {
     }
 
     /**
+     * Helper class to clean an article before processing metrics.
+     */
+//    private String cleanArticle(String text){
+//        StringBuilder builder = new StringBuilder(text);
+//        String[] words = text.split("\\s");
+//
+//        return text;
+//    }
+
+    /**
      * Read articles from arraylist and produce metrics.
      */
-    private void constructMetrics(){
+    private void constructMetrics() {
+        ArrayList<Article> arrayOfArticles = new ArrayList<>();
+        int loopCounter = 1;
+        for (String[] row : fileArray) {
+//            row[idxArticle] = cleanArticle(row[idxArticle]);
+            CoreDocument document = null;
+            try {
+                row[idxArticle] = row[idxArticle].toLowerCase();
+                document = new CoreDocument(row[idxArticle]);
+            } catch (Exception e) {
+                System.out.println("error loading article " + loopCounter + " into CoreDocument object.");
+                continue;
+            }
+            pipeline.annotate(document);
+//            if (loopCounter > 5) break;
+            System.out.println("Working on Article: " + loopCounter);
+            loopCounter++;
+
+            Article article = new Article(row[idxSource], row[idxTitle], row[idxAuthor], row[idxDate], document);
+            arrayOfArticles.add(article);
+        }
+        storeArray(arrayOfArticles, fileToWrite);
 
     }
 
@@ -80,12 +114,12 @@ public class RawDocumentReader {
     /**
      * Output Arraylist to file for persistence.
      */
-    private void storeArray(String outputFile){
+    private void storeArray(ArrayList<Article> arrayToWrite, File outputFile){
         try{
             FileOutputStream writeData = new FileOutputStream(outputFile);
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
-            writeStream.writeObject(fileArray);
+            writeStream.writeObject(arrayToWrite);
             writeStream.flush();
             writeStream.close();
 
@@ -95,5 +129,29 @@ public class RawDocumentReader {
         }
     }
 
+    /**
+     * Read stored ArrayList back into memory
+     */
+    public ArrayList<Article> readArray(String arrayFileName){
+        ArrayList<Article> data = new ArrayList<>();
+        try{
+            FileInputStream readData = new FileInputStream(arrayFileName);
+            ObjectInputStream readStream = new ObjectInputStream(readData);
 
+            data = (ArrayList<Article>) readStream.readObject();
+            readStream.close();
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error reading ArrayList into memory");
+        }
+
+        return data;
+
+    }
+
+    public static void main(String[] args) {
+        RawDocumentReader rdr = new RawDocumentReader();
+    }
 }
