@@ -15,9 +15,9 @@ import java.util.Scanner;
 public class DTMNormalizer {
 	FileIO io;
 	ArrayList<String[]> normalizedArticles;
-	int posSent;
-	int negSent;
-	int neutSent;
+	double posSent;
+	double negSent;
+	double neutSent;
 	
 	
 	/*
@@ -37,13 +37,27 @@ public class DTMNormalizer {
 		// and then normalizing each cell based off of that 
 		normalizedArticles = new ArrayList<String[]>();
 		String[] headers = lines.get(0);
-		System.out.println();
-		for (String header: headers) {
-			System.out.println(header);
-		}
+		
 		lines.remove(0);
+		
+		
 		for (String[] line : lines) {
 			int wordCount = 0;
+			int posSentCount = Integer.valueOf(line[3]);
+			int neutSentCount = Integer.valueOf(line[2]);
+			int negSentCount = Integer.valueOf(line[1]);
+			int totalSent = posSentCount + negSentCount + neutSentCount;
+			
+			double normPSC = (double) posSentCount/totalSent;
+			double normNeutSC = (double) neutSentCount/totalSent;
+			double normNegSC = (double) negSentCount/ (double) totalSent;
+			
+			line[3] = String.valueOf(normPSC);
+			line[2] = String.valueOf(normNeutSC);
+			line[1] = String.valueOf(normNegSC);
+			
+			//System.out.println("pos sent count: " + posSentCount + " and after normalization: " + normPSC);
+			
 			for (int i = 4; i < line.length -1; i++) {
 				wordCount += Integer.valueOf(line[i]);
 			}
@@ -51,7 +65,14 @@ public class DTMNormalizer {
 				double newValue = (Double.valueOf(line[i]) / (double) wordCount);
 				line[i] = String.valueOf(newValue);
 				//System.out.println(line[i]);
+		
 			}
+			
+			
+			
+			//normalizing sentiments
+			
+			
 			normalizedArticles.add(line);
 			
 		}
@@ -74,23 +95,24 @@ public class DTMNormalizer {
 	
 	
 	
-	public int getPositiveSentiment(int row) {
+	public double getPositiveSentiment(int row) {
 		String[] thisRow = normalizedArticles.get(row);
-		posSent = Integer.valueOf(thisRow[3]);
-		return posSent;	
+		posSent = Double.valueOf(thisRow[3]);
+		//System.out.println("possent percent: " + posSent);
+		return Math.round(posSent * 100);	
 	}
 	
-	public int getNeutralSentiment(int row) {
+	public double getNeutralSentiment(int row) {
 		String[] thisRow = normalizedArticles.get(row);
-		neutSent = Integer.valueOf(thisRow[2]);
-		return neutSent;	
+		neutSent = Double.valueOf(thisRow[2]);
+		return Math.round(neutSent * 100);	
 		
 	}
 	
-	public int getNegativeSentiment(int row) {
+	public double getNegativeSentiment(int row) {
 		String[] thisRow = normalizedArticles.get(row);
-		negSent = Integer.valueOf(thisRow[2]);
-		return negSent;	
+		negSent = Double.valueOf(thisRow[1]);
+		return Math.round(negSent * 100) ;	
 		
 	}
 	
@@ -102,7 +124,13 @@ public class DTMNormalizer {
 	public static void main(String[] args) {
 		DTMNormalizer dtm = new DTMNormalizer("newsSourcesOut.csv");
 		ArrayList <String[]> normalizedArticles = dtm.getNormalizedDTM();
-		System.out.println("done!");
+		int rownum = 0;
+		for (String[] row: normalizedArticles) {
+			
+			System.out.println(dtm.getPositiveSentiment(rownum));
+			rownum++;
+			
+		}
 		
 	}
 	

@@ -29,7 +29,7 @@ public class FileIO {
 		try {
 			Scanner fileParser = new Scanner(f);
 			String headers = fileParser.nextLine();
-			System.out.println(headers);
+			//System.out.println(headers);
 			String[] headersRow = headers.split(",");
 			lines.add(headersRow);
 			// fileParser.useDelimiter("(Z1Q)");
