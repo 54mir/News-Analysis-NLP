@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+import org.knowm.xchart.*;
+import org.knowm.xchart.internal.chartpart.Chart;
+import org.knowm.xchart.VectorGraphicsEncoder;
+/*
+ * In this class, we will run the project. 
+ */
+public class ProjectRunner {
+	
+	ArrayList<chart[]> chartsArray = new ArrayList<chart[]>();	
+	public static void main(String[] args) {
+		
+	}
+
+}

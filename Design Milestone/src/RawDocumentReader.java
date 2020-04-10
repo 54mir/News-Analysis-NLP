@@ -91,7 +91,7 @@ public class RawDocumentReader {
                 continue;
             }
             pipeline.annotate(document);
-//            if (loopCounter > 5) break;
+            if (loopCounter > 5) break;
             System.out.println("Working on Article: " + loopCounter);
             loopCounter++;
 

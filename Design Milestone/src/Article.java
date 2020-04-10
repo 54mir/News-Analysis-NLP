@@ -26,7 +26,9 @@ public class Article implements Serializable {
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
         characterCount = characterCount(document);
+        readingLevel = computeReadingLevel(document);
         sentimentCount(document);
+        
 
         //Parts of Speech counts
         HashMap<String, Integer> posMap = makePOSMap(document);
@@ -44,6 +46,22 @@ public class Article implements Serializable {
     }
 
 
+    /**
+     * computes reading level based off of the automated readability index algorithm, 
+     * which is given by:
+     * https://en.wikipedia.org/wiki/Automated_readability_index 
+     * 4.71 * (chars/words) + .5 (words/sentences) - 21.43
+     * @param document
+     * @return
+     */
+    private float computeReadingLevel(CoreDocument document) {
+    	double avgWordLength =  (double) characterCount / (double) wordCount;
+    	double avgSentenceLength = (double) wordCount / (double) sentenceCount;
+    	float readingLevel =  ((float) (4.71 * avgWordLength + 0.5 * avgSentenceLength - 21.43));
+    	return readingLevel;
+    }
+    
+    
     /**
      * Goes through each word and catalogs the part of speech of each word
      * @param document annotated document
@@ -178,5 +196,9 @@ public class Article implements Serializable {
 
     public int getInterjectionCount() {
         return interjectionCount;
+    }
+    
+    public float getReadingLevel() {
+    	return readingLevel;
     }
 }
