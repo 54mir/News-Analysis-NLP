@@ -9,3 +9,6 @@ Metric Ideas:
 > Average # of characters per word in article
 > Parts of speech count (prepositions, verbs, nouns, adjective, adverbs)
 > Whether the article is written in first, second, or third person
+
+Graph Ideas:
+> Topics per source across time

@@ -1,6 +1,6 @@
 import edu.stanford.nlp.pipeline.CoreDocument;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -15,10 +15,10 @@ public class Article implements Serializable {
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
             syllableCount;
     private float readingLevel, vocabularyDensity;
-    HashMap<String, Integer> mostWords, mostNames, mostPlaces, mostOrganizations;
-    Date date;
+    private HashMap<String, Integer> mostWords, mostNames, mostPlaces, mostOrganizations;
+    private Date date;
 
-    public Article(String source, String title, String author, String date, CoreDocument document) {
+    public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
         this.source = source;
         this.title = title;
         this.author = author;
@@ -40,8 +40,6 @@ public class Article implements Serializable {
         adverbCount = posCounter(posMap, adverbCodes);
         interjectionCount = posMap.getOrDefault("UH", 0);
         prepositionCount = posMap.getOrDefault("IN", 0);
-
-
 
     }
 
@@ -120,18 +118,12 @@ public class Article implements Serializable {
     }
 
 
-    /**
-     * Getter
-     * @return News Source
-     */
+
+    //Getters for Article Metrics
     public String getSource() {
         return source;
     }
 
-    /**
-     *
-     * @return Title of Article
-     */
     public String getTitle() {
         return title;
     }

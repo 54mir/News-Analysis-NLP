@@ -10,8 +10,8 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 public class RawDocumentReader {
     File fileToOpen = new File("newsSourcesSAMPLED5.csv");
     File fileToWrite = new File ("articleMetricsArray.ser");
-    ArrayList<String[]> fileArray = new ArrayList<>();
     String stopWordsPath = "stopWords.txt";
+    ArrayList<String[]> fileArray = new ArrayList<>();
     int idxTitle = 2, idxArticle = 3, idxSource = 0, idxDate = 4, idxAuthor = 1;
     Properties prop = new Properties();
     StanfordCoreNLP pipeline = new StanfordCoreNLP(property());
@@ -27,7 +27,7 @@ public class RawDocumentReader {
      * @return used to build nlp pipeline
      */
     private Properties property(){
-        prop.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+        prop.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, ner, sentiment");
         return prop;
     }
 
@@ -71,21 +71,14 @@ public class RawDocumentReader {
         return stopWords;
     }
 
-    /**
-     * Helper class to clean an article before processing metrics.
-     */
-//    private String cleanArticle(String text){
-//        StringBuilder builder = new StringBuilder(text);
-//        String[] words = text.split("\\s");
-//
-//        return text;
-//    }
+
 
     /**
      * Read articles from arraylist and produce metrics.
      */
     private void constructMetrics() {
         ArrayList<Article> arrayOfArticles = new ArrayList<>();
+        ArrayList<String> stopWords = constructStopWordsArray(stopWordsPath);
         int loopCounter = 1;
         for (String[] row : fileArray) {
 //            row[idxArticle] = cleanArticle(row[idxArticle]);
@@ -102,7 +95,7 @@ public class RawDocumentReader {
             System.out.println("Working on Article: " + loopCounter);
             loopCounter++;
 
-            Article article = new Article(row[idxSource], row[idxTitle], row[idxAuthor], row[idxDate], document);
+            Article article = new Article(row[idxSource], row[idxTitle], row[idxAuthor], row[idxDate], document, stopWords);
             arrayOfArticles.add(article);
         }
         storeArray(arrayOfArticles, fileToWrite);

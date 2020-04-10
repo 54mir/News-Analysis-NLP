@@ -27,7 +27,7 @@ class scratch {
         scratch reader = new scratch();
 
         ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
-        int idx = 62;
+        int idx = 2;
         System.out.println(articles.get(idx).getWordCount());
         System.out.println(articles.get(idx).getSentenceCount());
         System.out.println(articles.get(idx).getCharacterCount());
@@ -35,6 +35,8 @@ class scratch {
         System.out.println(articles.get(idx).getPositiveCount());
         System.out.println(articles.get(idx).getNeutralCount());
         System.out.println(articles.get(idx).getNegativeCount());
+
+
 
 
     }
