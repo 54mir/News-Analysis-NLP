@@ -19,9 +19,13 @@ public class Article implements Serializable {
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
             syllableCount;
     private float readingLevel, vocabularyDensity;
-    private ArrayList<ArrayList<String>> NERmetrics;
-    private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
+    private HashMap<String, String> NERmetrics = new HashMap<>();
+   // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
+    private String topTitle, topCountry, topLocality;
     private Date date;
+    ArrayList<String> entityTypeList = new ArrayList<>();
+    
+    
 
 
     public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
@@ -48,6 +52,17 @@ public class Article implements Serializable {
         adverbCount = posCounter(posMap, adverbCodes);
         interjectionCount = posMap.getOrDefault("UH", 0);
         prepositionCount = posMap.getOrDefault("IN", 0);
+        
+        //NER Metrics
+        entityTypeList.add("TITLE");
+        entityTypeList.add("COUNTRY");
+        entityTypeList.add("STATE_OR_PROVINCE");
+        HashMap<String, ArrayList<String>> NERMap = makeNERMap(document);
+        NERmetrics = makeNERMetrics(NERMap);
+        topTitle = NERmetrics.get("TITLE");
+        topCountry = NERmetrics.get("COUNTRY");
+        topLocality = NERmetrics.get("STATE_OR_PROVINCE");
+        
 
     }
 
@@ -78,9 +93,11 @@ public class Article implements Serializable {
     	String word;
     	String entityType;
     	for (CoreEntityMention em : document.entityMentions()) {
-    		word = em.entity();
+    		word = em.text();
+    		System.out.println("word is: " + word);
     		entityType = em.entityType();
     		System.out.println(word + "is entity: " + entityType);
+    		if (entityTypeList.contains(entityType)) {
     		//add word to the list of words of that entity type
     		if (NERMap.containsKey(entityType)){
     			 ArrayList<String> thisWordList = NERMap.get(entityType);
@@ -93,8 +110,15 @@ public class Article implements Serializable {
    			 	NERMap.put(entityType, thisWordList);		
     		}
     	}
+    	}
+    	
     	return NERMap;
     }
+    
+
+    
+    
+    
     
     
     /**
@@ -103,13 +127,14 @@ public class Article implements Serializable {
      * @param NERMap
      * @return NERMetrics
      */
-    private ArrayList<ArrayList<String>> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
+    private HashMap<String, String> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
     	for (String entityType: NERMap.keySet()) {
     		System.out.println("this entiy type is: " +  entityType);
     		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
     		int count = 0;
     		HashMap<String, Integer> countsMap = new HashMap<>();
     		for (String word: wordsOfThisType) {
+    			System.out.println(word);
     			if (countsMap.containsKey(word)) {
     				count = countsMap.get(word);
     				count++;
@@ -120,16 +145,9 @@ public class Article implements Serializable {
     			}	
     		}
     		
-    		ArrayList<String> topFiveOfType = new ArrayList<>();
-    	   	 for (int i = 0; i < 5; i++) {
-    	   		String topWord = Collections.max(countsMap.keySet());
-    	   		topFiveOfType.add(topWord);
-    	    	countsMap.remove(topWord);		
-    	    		
-    	   	 }	
     		
-    	
-    	NERmetrics.add(topFiveOfType);
+    	String topWord = Collections.max(countsMap.keySet());  
+    	NERmetrics.put(entityType, topWord);
     	
     		
     	}
@@ -282,6 +300,17 @@ public class Article implements Serializable {
     	return readingLevel;
     }
     
+   public String getTopTitle() {
+	   return topTitle;
+   }
+   
+   public String getTopCountry() {
+	   return topCountry;
+   }
+    
+   public String getTopLocality() {
+	   return topLocality;
+   }
     
     
     
