@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
+import java.util.HashMap;
+
+import org.knowm.xchart.internal.chartpart.Chart;
+
+public interface Charts {
+	  public ArrayList<Article> readArray(String arrayFileName){
+	        ArrayList<Article> data = new ArrayList<>();
+	        try{
+	            FileInputStream readData = new FileInputStream(arrayFileName);
+	            ObjectInputStream readStream = new ObjectInputStream(readData);
+
+	            data = (ArrayList<Article>) readStream.readObject();
+	            readStream.close();
+
+
+	        }catch (Exception e) {
+	            e.printStackTrace();
+	            System.out.println("Error reading ArrayList into memory");
+	        }
+
+	        return data;
+
+	    }
+	
+	DTMNormalizer normalizer = new DTMNormalizer("newsSourcesOut.csv");
+	ArrayList<String[]> dtm = normalizer.getNormalizedDTM();
+	ArrayList<Chart[]> ChartsArray = new ArrayList<Chart[]>();
+	
+	
+	HashMap<String, Double[]> extractChartData();
+	
+	
+	
+}

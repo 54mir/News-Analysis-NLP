@@ -49,7 +49,7 @@ public class PieChartMaker implements Charts {
 			counts[0] += negSent;
 			counts[1] += neutSent;
 			counts[2] += posSent;
-			sentChartData.replace(source, counts);
+			sentChartData.put(source, counts);
 		}
 		
 		else {
@@ -70,9 +70,9 @@ public class PieChartMaker implements Charts {
 	public PieChart makeChart(HashMap<String, Integer[]> series, String sentiment) {
 		PieChart chart = new PieChartBuilder().width(800).height(600).title("Sentiment Chart").build();
 		
-		Integer sentAmount = 0;
+		Double sentAmount = 0.0;
 		for (String source : series.keySet()) {
-			Integer[] sents = series.get(source);
+			Double[] sents = series.get(source);
 			
 			if (sentiment.contains("pos")) {
 				sentAmount= sents[2];	

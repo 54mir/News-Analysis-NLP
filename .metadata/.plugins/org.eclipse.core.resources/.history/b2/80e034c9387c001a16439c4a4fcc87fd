@@ -24,7 +24,7 @@ public class PieChartMaker implements Charts {
 
 	public static void main(String[] args) {
 		PieChartMaker gm = new PieChartMaker();
-		HashMap<String, Integer[]> series = gm.extractChartData();
+		HashMap<String, Double[]> series = gm.extractChartData();
 		gm.makeChart(series, "pos");
 
 	}
@@ -35,27 +35,17 @@ public class PieChartMaker implements Charts {
 	 * Simplifies the ser file into an array with the data needed for just this chart.
 	 * This array can be used to investigate sentiment by source.
 	 */
-	public HashMap<String, Integer[]> extractChartData() {
-		HashMap<String, Integer[]> sentChartData = new HashMap<>();
+	public HashMap<String, Double[]> extractChartData() {
+		HashMap<String, Double[]> sentChartData = new HashMap<>();
 	 for (Article article: Charts.articles) {
-		
+		int[] counts; 
 		String source = article.getSource();
 		int posSent = article.getPositiveCount();
 		int negSent = article.getNegativeCount();
 		int neutSent = article.getNeutralCount();
 		
 		if (sentChartData.containsKey(source)) {
-			Integer[] counts = sentChartData.get(source);
-			counts[0] += negSent;
-			counts[1] += neutSent;
-			counts[2] += posSent;
-			sentChartData.replace(source, counts);
-		}
-		
-		else {
-			Integer[] counts = {negSent, neutSent, posSent};
-			sentChartData.put(source, counts);
-			
+			counts = sentChartData.get(key);
 		}
 		
 
@@ -67,12 +57,12 @@ public class PieChartMaker implements Charts {
 	 * makes a chart showing the percent of positive sentiment that each source
 	 * contributes to the corpus.
 	 */
-	public PieChart makeChart(HashMap<String, Integer[]> series, String sentiment) {
+	public PieChart makeChart(HashMap<String, Double[]> series, String sentiment) {
 		PieChart chart = new PieChartBuilder().width(800).height(600).title("Sentiment Chart").build();
 		
-		Integer sentAmount = 0;
+		Double sentAmount = 0.0;
 		for (String source : series.keySet()) {
-			Integer[] sents = series.get(source);
+			Double[] sents = series.get(source);
 			
 			if (sentiment.contains("pos")) {
 				sentAmount= sents[2];	

@@ -19,12 +19,13 @@ public class PieChartMaker implements Charts {
 	 * Constructs a PieChartMaker object
 	 */
 	public PieChartMaker() {
-		
+		this.DTMdata = Charts.dtm;
+		this.dtm = Charts.normalizer;
 	}
 
 	public static void main(String[] args) {
 		PieChartMaker gm = new PieChartMaker();
-		HashMap<String, Integer[]> series = gm.extractChartData();
+		HashMap<String, Double[]> series = gm.extractChartData();
 		gm.makeChart(series, "pos");
 
 	}
@@ -32,47 +33,43 @@ public class PieChartMaker implements Charts {
 
 
 	/*
-	 * Simplifies the ser file into an array with the data needed for just this chart.
+	 * Simplifies the large csv file into an array with just the necessary info.
 	 * This array can be used to investigate sentiment by source.
 	 */
-	public HashMap<String, Integer[]> extractChartData() {
-		HashMap<String, Integer[]> sentChartData = new HashMap<>();
-	 for (Article article: Charts.articles) {
-		
-		String source = article.getSource();
-		int posSent = article.getPositiveCount();
-		int negSent = article.getNegativeCount();
-		int neutSent = article.getNeutralCount();
-		
-		if (sentChartData.containsKey(source)) {
-			Integer[] counts = sentChartData.get(source);
-			counts[0] += negSent;
-			counts[1] += neutSent;
-			counts[2] += posSent;
-			sentChartData.replace(source, counts);
-		}
-		
-		else {
-			Integer[] counts = {negSent, neutSent, posSent};
-			sentChartData.put(source, counts);
-			
-		}
-		
+	public HashMap<String, Double[]> extractChartData() {
+		HashMap<String, Double[]> series = new HashMap<>();
+		// we don't want to read in the the header to this, so let's remove it
+		int count = 0;
+		for (String[] line : DTMdata) {
+			String source = line[0];
+			System.out.println(source);
+			double neg = dtm.getNegativeSentiment(count);
+			double neut = dtm.getNeutralSentiment(count);
+			double pos = dtm.getPositiveSentiment(count);
+			count++;
+			// add each individual source into the hashmap, storing the pos, neg, and
+			// neutral counts
+			if (!series.containsKey(source)) {
+				Double[] posNegNeut = { neg, neut, pos };
+				series.put(source, posNegNeut);
+				System.out.println("added " + source + " to series hashmap");
+
+			}
 
 		}
-		return sentChartData;
+		return series;
 	}
 
 	/*
 	 * makes a chart showing the percent of positive sentiment that each source
 	 * contributes to the corpus.
 	 */
-	public PieChart makeChart(HashMap<String, Integer[]> series, String sentiment) {
+	public PieChart makeChart(HashMap<String, Double[]> series, String sentiment) {
 		PieChart chart = new PieChartBuilder().width(800).height(600).title("Sentiment Chart").build();
 		
-		Integer sentAmount = 0;
+		Double sentAmount = 0.0;
 		for (String source : series.keySet()) {
-			Integer[] sents = series.get(source);
+			Double[] sents = series.get(source);
 			
 			if (sentiment.contains("pos")) {
 				sentAmount= sents[2];	
