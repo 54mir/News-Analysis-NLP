@@ -1,6 +1,10 @@
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.CoreEntityMention;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -15,8 +19,10 @@ public class Article implements Serializable {
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
             syllableCount;
     private float readingLevel, vocabularyDensity;
-    private HashMap<String, Integer> mostWords, mostNames, mostPlaces, mostOrganizations;
+    private ArrayList<ArrayList<String>> NERmetrics;
+    private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private Date date;
+
 
     public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
         this.source = source;
@@ -60,6 +66,80 @@ public class Article implements Serializable {
     	float readingLevel =  ((float) (4.71 * avgWordLength + 0.5 * avgSentenceLength - 21.43));
     	return readingLevel;
     }
+    
+    
+    /**
+     * 
+     */
+    private HashMap makeNERMap(CoreDocument document) {
+    	HashMap<String, ArrayList<String>> NERMap = new HashMap<>();
+    	
+    	CoreLabel coreLabel;
+    	String word;
+    	String entityType;
+    	for (CoreEntityMention em : document.entityMentions()) {
+    		word = em.entity();
+    		entityType = em.entityType();
+    		System.out.println(word + "is entity: " + entityType);
+    		//add word to the list of words of that entity type
+    		if (NERMap.containsKey(entityType)){
+    			 ArrayList<String> thisWordList = NERMap.get(entityType);
+    			 thisWordList.add(word);
+    			 NERMap.put(entityType, thisWordList);
+    		}
+    		else {	
+    			ArrayList<String> thisWordList = new ArrayList<>();
+    			thisWordList.add(word);
+   			 	NERMap.put(entityType, thisWordList);		
+    		}
+    	}
+    	return NERMap;
+    }
+    
+    
+    /**
+     * uses the NER Map to create a hashmap with the 
+     * mostWords, mostNames, mostPlaces, and mostOrganizations
+     * @param NERMap
+     * @return NERMetrics
+     */
+    private ArrayList<ArrayList<String>> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
+    	for (String entityType: NERMap.keySet()) {
+    		System.out.println("this entiy type is: " +  entityType);
+    		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
+    		int count = 0;
+    		HashMap<String, Integer> countsMap = new HashMap<>();
+    		for (String word: wordsOfThisType) {
+    			if (countsMap.containsKey(word)) {
+    				count = countsMap.get(word);
+    				count++;
+    				countsMap.put(word, count);
+    			}
+    			else {
+    				countsMap.put(word, 1);
+    			}	
+    		}
+    		
+    		ArrayList<String> topFiveOfType = new ArrayList<>();
+    	   	 for (int i = 0; i < 5; i++) {
+    	   		String topWord = Collections.max(countsMap.keySet());
+    	   		topFiveOfType.add(topWord);
+    	    	countsMap.remove(topWord);		
+    	    		
+    	   	 }	
+    		
+    	
+    	NERmetrics.add(topFiveOfType);
+    	
+    		
+    	}
+		return NERmetrics;
+    	
+    }
+    
+    
+    
+    
     
     
     /**
@@ -201,4 +281,9 @@ public class Article implements Serializable {
     public float getReadingLevel() {
     	return readingLevel;
     }
+    
+    
+    
+    
+   
 }

@@ -3,4 +3,6 @@
     <fullyQualifiedTypeName name="org.knowm.xchart.internal.chartpart.Chart"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.CoreEntityMention"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
 </qualifiedTypeNameHistroy>
