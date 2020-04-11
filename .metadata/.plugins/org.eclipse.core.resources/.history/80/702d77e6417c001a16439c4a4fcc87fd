@@ -25,19 +25,17 @@ public class Article implements Serializable {
     private float readingLevel, vocabularyDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
-    private String topPerson, topTitle, topCountry, topLocality;
+    private String topTitle, topCountry, topLocality;
     private Date date;
     ArrayList<String> entityTypeList = new ArrayList<>();
-    
-    ArrayList<String> stopWords = new ArrayList<>();
-  
+    ArrayList<String> stopwords = new ArrayList<>();
+	String stopWordsPath = "stopWords.txt";
 
 
     public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
         this.source = source;
         this.title = title;
         this.author = author;
-        this.stopWords = stopWords;
 //        this.date = date;
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
@@ -60,16 +58,14 @@ public class Article implements Serializable {
         prepositionCount = posMap.getOrDefault("IN", 0);
         
         
-       
+        stopwords = constructStopWordsArray(stopWordsPath);
         
         //NER Metrics
-        entityTypeList.add("PERSON");
         entityTypeList.add("TITLE");
         entityTypeList.add("COUNTRY");
         entityTypeList.add("STATE_OR_PROVINCE");
         HashMap<String, ArrayList<String>> NERMap = makeNERMap(document);
         NERmetrics = makeNERMetrics(NERMap);
-        topPerson = NERmetrics.get("PERSON");
         topTitle = NERmetrics.get("TITLE");
         topCountry = NERmetrics.get("COUNTRY");
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
@@ -77,7 +73,26 @@ public class Article implements Serializable {
 
     }
     
+    
+    /**
+     * Read stop words from file into arraylist.
+     */
+    private ArrayList<String> constructStopWordsArray(String fileName) {
+        ArrayList<String> stopWords = new ArrayList<>();
+        File file = new File(fileName);
 
+        try(Scanner userFile = new Scanner(file)) {
+            userFile.useDelimiter("\\n");
+            while (userFile.hasNext()){
+                stopWords.add(userFile.next().trim());
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not find stop words file.");
+        }
+
+        return stopWords;
+    }
 
 
     /**
@@ -110,8 +125,6 @@ public class Article implements Serializable {
     		System.out.println("word is: " + word);
     		entityType = em.entityType();
     		System.out.println(word + "is entity: " + entityType);
-    		
-    		if (!stopWords.contains(word)) {
     		if (entityTypeList.contains(entityType)) {
     		//add word to the list of words of that entity type
     		if (NERMap.containsKey(entityType)){
@@ -124,7 +137,6 @@ public class Article implements Serializable {
     			thisWordList.add(word);
    			 	NERMap.put(entityType, thisWordList);		
     		}
-    	}
     	}
     	}
     	
@@ -327,11 +339,6 @@ public class Article implements Serializable {
    public String getTopLocality() {
 	   return topLocality;
    }
-   
-   public String getTopPerson() {
-	   return topPerson;
-   }
-   
     
     
     

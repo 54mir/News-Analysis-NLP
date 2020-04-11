@@ -10,7 +10,6 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 public class RawDocumentReader {
     File fileToOpen = new File("newsSourcesSAMPLED5.csv");
     File fileToWrite = new File ("articleMetricsArray.ser");
-  
     String stopWordsPath = "stopWords.txt";
     ArrayList<String[]> fileArray = new ArrayList<>();
     int idxTitle = 2, idxArticle = 3, idxSource = 0, idxDate = 4, idxAuthor = 1;
@@ -100,13 +99,12 @@ public class RawDocumentReader {
             arrayOfArticles.add(article);
         }
         storeArray(arrayOfArticles, fileToWrite);
-       
+
     }
 
 
 
-
-	/**
+    /**
      * Output Arraylist to file for persistence.
      */
     private void storeArray(ArrayList<Article> arrayToWrite, File outputFile){

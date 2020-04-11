@@ -27,7 +27,7 @@ class scratch {
         scratch reader = new scratch();
 
         ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
-        int idx = 4;
+        int idx = 0;
         System.out.println(articles.get(idx).getSource());
         System.out.println(articles.get(idx).getWordCount());
         System.out.println(articles.get(idx).getSentenceCount());
@@ -39,8 +39,6 @@ class scratch {
         System.out.println(articles.get(idx).getReadingLevel());
         System.out.println(articles.get(idx).getTopTitle());
         System.out.println(articles.get(idx).getTopCountry());
-        System.out.println(articles.get(idx).getTopLocality());
-        System.out.println(articles.get(idx).getTopPerson());
        
 
 

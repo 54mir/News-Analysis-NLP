@@ -25,7 +25,7 @@ public class Article implements Serializable {
     private float readingLevel, vocabularyDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
-    private String topPerson, topTitle, topCountry, topLocality;
+    private String topTitle, topCountry, topLocality;
     private Date date;
     ArrayList<String> entityTypeList = new ArrayList<>();
     
@@ -63,13 +63,11 @@ public class Article implements Serializable {
        
         
         //NER Metrics
-        entityTypeList.add("PERSON");
         entityTypeList.add("TITLE");
         entityTypeList.add("COUNTRY");
         entityTypeList.add("STATE_OR_PROVINCE");
         HashMap<String, ArrayList<String>> NERMap = makeNERMap(document);
         NERmetrics = makeNERMetrics(NERMap);
-        topPerson = NERmetrics.get("PERSON");
         topTitle = NERmetrics.get("TITLE");
         topCountry = NERmetrics.get("COUNTRY");
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
@@ -327,11 +325,6 @@ public class Article implements Serializable {
    public String getTopLocality() {
 	   return topLocality;
    }
-   
-   public String getTopPerson() {
-	   return topPerson;
-   }
-   
     
     
     

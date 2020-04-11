@@ -2,14 +2,11 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +14,6 @@ import java.util.regex.Pattern;
  * An article with its metrics. Can compute its own metrics based on the document passed in.
  */
 public class Article implements Serializable {
-
     private String source, title, author, pov;
     private int sentenceCount, positiveCount, neutralCount, negativeCount, wordCount, characterCount,
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
@@ -25,19 +21,17 @@ public class Article implements Serializable {
     private float readingLevel, vocabularyDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
-    private String topPerson, topTitle, topCountry, topLocality;
+    private String topTitle, topCountry, topLocality;
     private Date date;
     ArrayList<String> entityTypeList = new ArrayList<>();
     
-    ArrayList<String> stopWords = new ArrayList<>();
-  
+    
 
 
     public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
         this.source = source;
         this.title = title;
         this.author = author;
-        this.stopWords = stopWords;
 //        this.date = date;
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
@@ -59,25 +53,18 @@ public class Article implements Serializable {
         interjectionCount = posMap.getOrDefault("UH", 0);
         prepositionCount = posMap.getOrDefault("IN", 0);
         
-        
-       
-        
         //NER Metrics
-        entityTypeList.add("PERSON");
         entityTypeList.add("TITLE");
         entityTypeList.add("COUNTRY");
         entityTypeList.add("STATE_OR_PROVINCE");
         HashMap<String, ArrayList<String>> NERMap = makeNERMap(document);
         NERmetrics = makeNERMetrics(NERMap);
-        topPerson = NERmetrics.get("PERSON");
         topTitle = NERmetrics.get("TITLE");
         topCountry = NERmetrics.get("COUNTRY");
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
         
 
     }
-    
-
 
 
     /**
@@ -110,8 +97,6 @@ public class Article implements Serializable {
     		System.out.println("word is: " + word);
     		entityType = em.entityType();
     		System.out.println(word + "is entity: " + entityType);
-    		
-    		if (!stopWords.contains(word)) {
     		if (entityTypeList.contains(entityType)) {
     		//add word to the list of words of that entity type
     		if (NERMap.containsKey(entityType)){
@@ -126,7 +111,6 @@ public class Article implements Serializable {
     		}
     	}
     	}
-    	}
     	
     	return NERMap;
     }
@@ -139,7 +123,7 @@ public class Article implements Serializable {
     
     /**
      * uses the NER Map to create a hashmap with the 
-     * NERmetricsq`	1
+     * mostWords, mostNames, mostPlaces, and mostOrganizations
      * @param NERMap
      * @return NERMetrics
      */
@@ -327,11 +311,6 @@ public class Article implements Serializable {
    public String getTopLocality() {
 	   return topLocality;
    }
-   
-   public String getTopPerson() {
-	   return topPerson;
-   }
-   
     
     
     

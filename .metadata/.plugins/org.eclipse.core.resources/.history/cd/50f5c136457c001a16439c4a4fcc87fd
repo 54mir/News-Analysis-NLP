@@ -327,11 +327,6 @@ public class Article implements Serializable {
    public String getTopLocality() {
 	   return topLocality;
    }
-   
-   public String getTopPerson() {
-	   return topPerson;
-   }
-   
     
     
     
