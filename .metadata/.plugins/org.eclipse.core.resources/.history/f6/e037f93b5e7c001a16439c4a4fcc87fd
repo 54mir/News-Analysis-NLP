@@ -42,10 +42,7 @@ class scratch {
         System.out.println(articles.get(idx).getTopLocality());
         System.out.println(articles.get(idx).getTopPerson());
         ArrayList<String> topWords = new ArrayList<>();
-        topWords = articles.get(idx).getMostWords();
-        for (String word : topWords) {
-        	System.out.println(word);
-        }
+        topWords = articles.get(idx).getTopWords();
        
 
 
