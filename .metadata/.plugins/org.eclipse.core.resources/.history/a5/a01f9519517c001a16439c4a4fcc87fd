@@ -29,7 +29,6 @@ public class Article implements Serializable {
     private Date date;
     ArrayList<String> entityTypeList = new ArrayList<>();
     ArrayList<String> stopWords = new ArrayList<>();
-    ArrayList<String> mostWords = new ArrayList<>();
   
 
 
@@ -59,6 +58,9 @@ public class Article implements Serializable {
         interjectionCount = posMap.getOrDefault("UH", 0);
         prepositionCount = posMap.getOrDefault("IN", 0);
         
+        
+       
+        
         //NER Metrics
         entityTypeList.add("PERSON");
         entityTypeList.add("TITLE");
@@ -71,42 +73,16 @@ public class Article implements Serializable {
         topCountry = NERmetrics.get("COUNTRY");
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
         
-        //wordcounts
-        mostWords = computeMostWords(document);
-        
 
     }
     
-    /**
-     * returns an array of the artcle's top 5 words
-     * @param document
-     * @return mostWords
-     */
+    
     private ArrayList<String> computeMostWords(CoreDocument document){
     	ArrayList<String> mostWords = new ArrayList<>();
-    	HashMap<String, Integer> wordCounts = new HashMap<>();
     	 for (int i = 0; i < document.tokens().size(); i++) {
     		 String mostWord;
-    		 String word = document.tokens().get(i).toString().replaceAll("[^a-zA-Z]", "");
-    		 //System.out.println("word is " + word);
-    		 if (!stopWords.contains(word)) {
-    			if (wordCounts.containsKey(word)) {
-    				int count = wordCounts.get(word);
-    				count++;
-    				wordCounts.replace(word, count);
-    			}
-    			else {
-    				wordCounts.put(word, 1);
-    				
-    			}	 
-    		 }
-	 
-    	 }
-    	 
-    	 while(mostWords.size() < 5) {
-    		 String maxWord = Collections.max(wordCounts.keySet());
-    		 mostWords.add(maxWord);
-    		 wordCounts.remove(maxWord);
+    		 String word = document.tokens().get(i);
+    		 
     		 
     	 }
     	
@@ -134,7 +110,7 @@ public class Article implements Serializable {
     
     
     /**
-     * makes a MAP containing all NER types and their entities 
+     * 
      */
     private HashMap makeNERMap(CoreDocument document) {
     	HashMap<String, ArrayList<String>> NERMap = new HashMap<>();
@@ -144,9 +120,9 @@ public class Article implements Serializable {
     	String entityType;
     	for (CoreEntityMention em : document.entityMentions()) {
     		word = em.text();
-    		//System.out.println("word is: " + word);
+    		System.out.println("word is: " + word);
     		entityType = em.entityType();
-    		//System.out.println(word + "is entity: " + entityType);
+    		System.out.println(word + "is entity: " + entityType);
     		
     		if (!stopWords.contains(word)) {
     		if (entityTypeList.contains(entityType)) {
@@ -182,12 +158,12 @@ public class Article implements Serializable {
      */
     private HashMap<String, String> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
     	for (String entityType: NERMap.keySet()) {
-    		//System.out.println("this entiy type is: " +  entityType);
+    		System.out.println("this entiy type is: " +  entityType);
     		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
     		int count = 0;
     		HashMap<String, Integer> countsMap = new HashMap<>();
     		for (String word: wordsOfThisType) {
-    			//System.out.println(word);
+    			System.out.println(word);
     			if (countsMap.containsKey(word)) {
     				count = countsMap.get(word);
     				count++;
@@ -369,10 +345,6 @@ public class Article implements Serializable {
 	   return topPerson;
    }
    
-   
-   public  ArrayList<String> getMostWords(){
-	   return mostWords;
-   }
     
     
     

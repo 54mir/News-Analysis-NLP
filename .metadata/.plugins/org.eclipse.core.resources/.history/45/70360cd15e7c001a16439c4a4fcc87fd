@@ -77,18 +77,14 @@ public class Article implements Serializable {
 
     }
     
-    /**
-     * returns an array of the artcle's top 5 words
-     * @param document
-     * @return mostWords
-     */
+    
     private ArrayList<String> computeMostWords(CoreDocument document){
     	ArrayList<String> mostWords = new ArrayList<>();
     	HashMap<String, Integer> wordCounts = new HashMap<>();
     	 for (int i = 0; i < document.tokens().size(); i++) {
     		 String mostWord;
-    		 String word = document.tokens().get(i).toString().replaceAll("[^a-zA-Z]", "");
-    		 //System.out.println("word is " + word);
+    		 String word = document.tokens().get(i).toString().replace("\W", "");
+    		 System.out.println("word is " + word);
     		 if (!stopWords.contains(word)) {
     			if (wordCounts.containsKey(word)) {
     				int count = wordCounts.get(word);
@@ -134,7 +130,7 @@ public class Article implements Serializable {
     
     
     /**
-     * makes a MAP containing all NER types and their entities 
+     * 
      */
     private HashMap makeNERMap(CoreDocument document) {
     	HashMap<String, ArrayList<String>> NERMap = new HashMap<>();
@@ -144,9 +140,9 @@ public class Article implements Serializable {
     	String entityType;
     	for (CoreEntityMention em : document.entityMentions()) {
     		word = em.text();
-    		//System.out.println("word is: " + word);
+    		System.out.println("word is: " + word);
     		entityType = em.entityType();
-    		//System.out.println(word + "is entity: " + entityType);
+    		System.out.println(word + "is entity: " + entityType);
     		
     		if (!stopWords.contains(word)) {
     		if (entityTypeList.contains(entityType)) {
@@ -182,12 +178,12 @@ public class Article implements Serializable {
      */
     private HashMap<String, String> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
     	for (String entityType: NERMap.keySet()) {
-    		//System.out.println("this entiy type is: " +  entityType);
+    		System.out.println("this entiy type is: " +  entityType);
     		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
     		int count = 0;
     		HashMap<String, Integer> countsMap = new HashMap<>();
     		for (String word: wordsOfThisType) {
-    			//System.out.println(word);
+    			System.out.println(word);
     			if (countsMap.containsKey(word)) {
     				count = countsMap.get(word);
     				count++;

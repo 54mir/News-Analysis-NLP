@@ -144,9 +144,9 @@ public class Article implements Serializable {
     	String entityType;
     	for (CoreEntityMention em : document.entityMentions()) {
     		word = em.text();
-    		//System.out.println("word is: " + word);
+    		System.out.println("word is: " + word);
     		entityType = em.entityType();
-    		//System.out.println(word + "is entity: " + entityType);
+    		System.out.println(word + "is entity: " + entityType);
     		
     		if (!stopWords.contains(word)) {
     		if (entityTypeList.contains(entityType)) {
@@ -182,12 +182,12 @@ public class Article implements Serializable {
      */
     private HashMap<String, String> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
     	for (String entityType: NERMap.keySet()) {
-    		//System.out.println("this entiy type is: " +  entityType);
+    		System.out.println("this entiy type is: " +  entityType);
     		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
     		int count = 0;
     		HashMap<String, Integer> countsMap = new HashMap<>();
     		for (String word: wordsOfThisType) {
-    			//System.out.println(word);
+    			System.out.println(word);
     			if (countsMap.containsKey(word)) {
     				count = countsMap.get(word);
     				count++;
