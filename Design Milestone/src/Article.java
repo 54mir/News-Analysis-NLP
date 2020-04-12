@@ -5,6 +5,7 @@ import edu.stanford.nlp.pipeline.CoreEntityMention;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class Article implements Serializable {
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private String topPerson, topTitle, topCountry, topLocality;
-    private Date date;
+    private LocalDate date;
     ArrayList<String> entityTypeList = new ArrayList<>();
     
     ArrayList<String> stopWords = new ArrayList<>();
@@ -38,7 +39,7 @@ public class Article implements Serializable {
         this.title = title;
         this.author = author;
         this.stopWords = stopWords;
-//        this.date = date;
+        this.date = makeDate(date);
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
         characterCount = characterCount(document);
@@ -76,8 +77,20 @@ public class Article implements Serializable {
         
 
     }
-    
 
+    /**
+     * Parses publication date from a string into a LocalDate object
+     * @param date "yyyy-MM-dd"
+     * @return date of publication as LocalDate
+     */
+    private LocalDate makeDate(String date) {
+        String[] parseDate = date.split("-");
+        int year = Integer.parseInt(parseDate[0].trim());
+        int month = Integer.parseInt(parseDate[1].trim());
+        int dom = Integer.parseInt(parseDate[2].trim());
+        LocalDate ld = LocalDate.of(year,month,dom);
+        return ld;
+    }
 
 
     /**
@@ -331,9 +344,8 @@ public class Article implements Serializable {
    public String getTopPerson() {
 	   return topPerson;
    }
-   
-    
-    
-    
-   
+
+    public LocalDate getDate() {
+        return date;
+    }
 }
