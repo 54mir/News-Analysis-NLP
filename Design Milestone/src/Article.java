@@ -23,7 +23,7 @@ public class Article implements Serializable {
     private int sentenceCount, positiveCount, neutralCount, negativeCount, wordCount, characterCount,
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
             syllableCount;
-    private float readingLevel, vocabularyDensity;
+    private float readingLevel, lexicalDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private String topPerson, topTitle, topCountry, topLocality;
@@ -59,6 +59,7 @@ public class Article implements Serializable {
         adverbCount = posCounter(posMap, adverbCodes);
         interjectionCount = posMap.getOrDefault("UH", 0);
         prepositionCount = posMap.getOrDefault("IN", 0);
+        lexicalDensity = computeLexicalDensity(verbCount, nounCount, adjectiveCount, adverbCount, wordCount);
         
         //NER Metrics
         entityTypeList.add("PERSON");
@@ -76,6 +77,22 @@ public class Article implements Serializable {
         mostWords = computeMostWords(document);
         
 
+    }
+
+    /**
+     * Lexical Density is a measure of how much information a text tries to convey.
+     * http://www.analyzemywriting.com/lexical_density.html
+     * @param verbCount # of verbs in article
+     * @param nounCount # of nouns in article
+     * @param adjectiveCount # of adjs in article
+     * @param adverbCount # of advs in article
+     * @param wordCount # of words in article
+     * @return Sum of meaning carrying words divided by total words.
+     */
+    private float computeLexicalDensity(int verbCount, int nounCount, int adjectiveCount, int adverbCount, int wordCount) {
+        float x = verbCount + nounCount + adjectiveCount + adverbCount;
+        x = (wordCount != 0) ? (x / wordCount) : 0;
+        return x;
     }
 
     /**
