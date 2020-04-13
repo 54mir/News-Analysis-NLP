@@ -21,16 +21,15 @@ public class Article implements Serializable {
 
     private String source, title, author, pov;
     private int sentenceCount, positiveCount, neutralCount, negativeCount, wordCount, characterCount,
-            verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount,
-            syllableCount;
+            verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount;
     private float readingLevel, lexicalDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
    // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private String topPerson, topTitle, topCountry, topLocality;
     private LocalDate date;
-    ArrayList<String> entityTypeList = new ArrayList<>();
-    ArrayList<String> stopWords = new ArrayList<>();
-    ArrayList<String> mostWords = new ArrayList<>();
+    private ArrayList<String> entityTypeList = new ArrayList<>();
+    private ArrayList<String> stopWords = new ArrayList<>();
+    private ArrayList<String> mostWords = new ArrayList<>();
   
 
 
@@ -119,7 +118,7 @@ public class Article implements Serializable {
     	HashMap<String, Integer> wordCounts = new HashMap<>();
     	 for (int i = 0; i < document.tokens().size(); i++) {
     		 String mostWord;
-    		 String word = document.tokens().get(i).toString().replaceAll("[^a-zA-Z]", "");
+    		 String word = document.tokens().get(i).toString().replaceAll("[^a-zA-Z]", "");  //We could just use the lemmatized word since we already have it available to us.
     		 //System.out.println("word is " + word);
     		 if (!stopWords.contains(word)) {
     			if (wordCounts.containsKey(word)) {
@@ -408,5 +407,9 @@ public class Article implements Serializable {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public float getLexicalDensity() {
+        return lexicalDensity;
     }
 }
