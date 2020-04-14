@@ -24,9 +24,11 @@ public class Article implements Serializable {
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount;
     private float readingLevel, lexicalDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
+   // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private String topPerson, topTitle, topCountry, topLocality;
     private LocalDate date;
     private ArrayList<String> entityTypeList = new ArrayList<>();
+    private ArrayList<String> stopWords = new ArrayList<>();
     private ArrayList<String> mostWords = new ArrayList<>();
   
 
@@ -35,7 +37,7 @@ public class Article implements Serializable {
         this.source = source;
         this.title = title;
         this.author = author;
-        //this.stopWords = stopWords;
+        this.stopWords = stopWords;
         this.date = makeDate(date);
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
@@ -63,7 +65,7 @@ public class Article implements Serializable {
         entityTypeList.add("TITLE");
         entityTypeList.add("COUNTRY");
         entityTypeList.add("STATE_OR_PROVINCE");
-        HashMap<String, ArrayList<String>> NERMap = makeNERMap(document, stopWords);
+        HashMap<String, ArrayList<String>> NERMap = makeNERMap(document);
         NERmetrics = makeNERMetrics(NERMap);
         topPerson = NERmetrics.get("PERSON");
         topTitle = NERmetrics.get("TITLE");
@@ -71,7 +73,7 @@ public class Article implements Serializable {
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
         
         //wordcounts
-        mostWords = computeMostWords(document, stopWords);
+        mostWords = computeMostWords(document);
         
 
     }
@@ -111,7 +113,7 @@ public class Article implements Serializable {
      * @param document
      * @return mostWords
      */
-    private ArrayList<String> computeMostWords(CoreDocument document, ArrayList stopWords){
+    private ArrayList<String> computeMostWords(CoreDocument document){
     	ArrayList<String> mostWords = new ArrayList<>();
     	HashMap<String, Integer> wordCounts = new HashMap<>();
     	 for (int i = 0; i < document.tokens().size(); i++) {
@@ -165,7 +167,7 @@ public class Article implements Serializable {
     /**
      * makes a MAP containing all NER types and their entities 
      */
-    private HashMap makeNERMap(CoreDocument document, ArrayList stopWords) {
+    private HashMap makeNERMap(CoreDocument document) {
     	HashMap<String, ArrayList<String>> NERMap = new HashMap<>();
     	
     	CoreLabel coreLabel;

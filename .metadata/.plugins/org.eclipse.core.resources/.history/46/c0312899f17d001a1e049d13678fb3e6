@@ -24,9 +24,11 @@ public class Article implements Serializable {
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount;
     private float readingLevel, lexicalDensity;
     private HashMap<String, String> NERmetrics = new HashMap<>();
+   // private ArrayList<String> mostWords, mostNames, mostPlaces, mostOrganizations;
     private String topPerson, topTitle, topCountry, topLocality;
     private LocalDate date;
     private ArrayList<String> entityTypeList = new ArrayList<>();
+    //private ArrayList<String> stopWords = new ArrayList<>();
     private ArrayList<String> mostWords = new ArrayList<>();
   
 
