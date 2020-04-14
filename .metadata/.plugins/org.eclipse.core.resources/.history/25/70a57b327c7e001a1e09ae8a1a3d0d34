@@ -130,16 +130,13 @@ public class Article implements Serializable {
     			}	 
     		 }
     	 }
-    	 
-    	 if (wordCounts.size() > 5) {
     	 while(mostWords.size() < 5) {
     		 String maxWord = Collections.max(wordCounts.keySet());
     		 mostWords.add(maxWord);
     		 wordCounts.remove(maxWord);
-    	 }}
+    	 }
     	return mostWords;
     }
-    
 
 
     /**
