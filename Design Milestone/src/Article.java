@@ -90,13 +90,20 @@ public class Article implements Serializable {
      * @param date "yyyy-MM-dd"
      * @return date of publication as LocalDate
      */
-    private LocalDate makeDate(String date) {
-        String[] parseDate = date.split("-");
-        int year = Integer.parseInt(parseDate[0].trim());
-        int month = Integer.parseInt(parseDate[1].trim());
-        int dom = Integer.parseInt(parseDate[2].trim());
-        LocalDate ld = LocalDate.of(year,month,dom);
-        return ld;
+    public LocalDate makeDate(String date) {
+        try {
+            String[] parseDate = date.split("-");
+            int year = Integer.parseInt(parseDate[0].trim());
+            int month = Integer.parseInt(parseDate[1].trim());
+            int dom = Integer.parseInt(parseDate[2].trim());
+            LocalDate ld = LocalDate.of(year,month,dom);
+            return ld;
+        } catch (NumberFormatException e){
+            System.out.println("Date not in correct format: " + date);
+        }
+
+        return (LocalDate.of(1900,1,1));
+
     }
 
 
