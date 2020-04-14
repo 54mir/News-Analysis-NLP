@@ -1,16 +1,11 @@
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +14,7 @@ import java.util.regex.Pattern;
  */
 public class Article implements Serializable {
 
-    private String source, title, author, pov;
+    private String source, title, author;
     private int sentenceCount, positiveCount, neutralCount, negativeCount, wordCount, characterCount,
             verbCount, nounCount, adjectiveCount, adverbCount, prepositionCount, interjectionCount;
     private float readingLevel, lexicalDensity;
@@ -42,7 +37,6 @@ public class Article implements Serializable {
         characterCount = characterCount(document);
         readingLevel = computeReadingLevel(document);
         sentimentCount(document);
-        
 
         //Parts of Speech counts
         HashMap<String, Integer> posMap = makePOSMap(document);
@@ -70,9 +64,8 @@ public class Article implements Serializable {
         topCountry = NERmetrics.get("COUNTRY");
         topLocality = NERmetrics.get("STATE_OR_PROVINCE");
         
-        //wordcounts
+        //Word Counts
         mostWords = computeMostWords(document, stopWords);
-        
 
     }
 
@@ -106,6 +99,7 @@ public class Article implements Serializable {
         return ld;
     }
 
+
     /**
      * returns an array of the artcle's top 5 words
      * @param document
@@ -126,24 +120,16 @@ public class Article implements Serializable {
     			}
     			else {
     				wordCounts.put(word, 1);
-    				
     			}	 
     		 }
-	 
     	 }
-    	 
     	 while(mostWords.size() < 5) {
     		 String maxWord = Collections.max(wordCounts.keySet());
     		 mostWords.add(maxWord);
     		 wordCounts.remove(maxWord);
-    		 
     	 }
-    	
-    	
     	return mostWords;
     }
-    
-
 
 
     /**
@@ -193,16 +179,10 @@ public class Article implements Serializable {
     	}
     	}
     	}
-    	
     	return NERMap;
     }
-    
 
-    
-    
-    
-    
-    
+
     /**
      * uses the NER Map to create a hashmap with the 
      * NERmetricsq`	1
@@ -226,22 +206,13 @@ public class Article implements Serializable {
     				countsMap.put(word, 1);
     			}	
     		}
-    		
-    		
     	String topWord = Collections.max(countsMap.keySet());  
     	NERmetrics.put(entityType, topWord);
-    	
-    		
     	}
 		return NERmetrics;
-    	
     }
-    
-    
-    
-    
-    
-    
+
+
     /**
      * Goes through each word and catalogs the part of speech of each word
      * @param document annotated document
@@ -260,10 +231,10 @@ public class Article implements Serializable {
             else {
                 posMap.put(document.tokens().get(i).tag(), 0);
             }
-
         }
         return posMap;
     }
+
 
     /**
      * Sums the counts of a collection of part of speech codes.
@@ -278,6 +249,8 @@ public class Article implements Serializable {
         }
         return count;
     }
+
+
     /**
      * Counts the number of [a-zA-Z] characters in article
      * @param document annotated article
@@ -314,7 +287,6 @@ public class Article implements Serializable {
             }
         }
     }
-
 
 
     //Getters for Article Metrics
@@ -377,37 +349,34 @@ public class Article implements Serializable {
     public int getInterjectionCount() {
         return interjectionCount;
     }
-    
+
     public float getReadingLevel() {
-    	return readingLevel;
+        return readingLevel;
     }
-    
-   public String getTopTitle() {
-	   return topTitle;
-   }
-   
-   public String getTopCountry() {
-	   return topCountry;
-   }
-    
-   public String getTopLocality() {
-	   return topLocality;
-   }
-   
-   public String getTopPerson() {
-	   return topPerson;
-   }
-   
-   
-   public  ArrayList<String> getMostWords(){
-	   return mostWords;
-   }
+
+    public String getTopTitle() {
+        return topTitle;
+    }
+
+    public String getTopCountry() {
+        return topCountry;
+    }
+
+    public String getTopLocality() {
+        return topLocality;
+    }
+
+    public String getTopPerson() {
+        return topPerson;
+    }
+
+    public  ArrayList<String> getMostWords(){
+        return mostWords;
+    }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public float getLexicalDensity() {
-        return lexicalDensity;
-    }
+    public float getLexicalDensity() { return lexicalDensity; }
 }
