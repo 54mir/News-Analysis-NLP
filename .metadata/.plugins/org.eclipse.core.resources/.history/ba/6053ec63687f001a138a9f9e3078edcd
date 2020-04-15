@@ -124,7 +124,7 @@ public class SimpleBarChart implements Charts{
     public CategoryChart makeChart() {
     	 
     	 // Create Chart
-        CategoryChart chart = new CategoryChartBuilder().width(2000).height(600).title("Reading Level and Lexical Density Z-Scores by Source").xAxisTitle("Source").yAxisTitle("Z-Score").theme(ChartTheme.GGPlot2).build();
+        CategoryChart chart = new CategoryChartBuilder().width(2000).height(600).title("Reading Level and Lexical Density Z-Scores by Source").xAxisTitle("Source").yAxisTitle("ReadingLevel").theme(ChartTheme.GGPlot2).build();
      
      
         // Series
