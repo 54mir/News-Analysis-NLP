@@ -11,4 +11,17 @@ Metric Ideas:
 > Whether the article is written in first, second, or third person
 
 Graph Ideas:
-> Topics per source across time
+> Topics most mentioned by source over time
+> Authors contribution to sources...do authors contribute to multiple sources?
+> People most mentioned by source
+> People most mentioned over time
+> Comparison of lexical density across sources
+> Lexical density and Variance of Lexical Density by author.
+> Reading level by source
+> Article length and Sentence Length by source
+> Article length and Sentence Length over time
+> Average word length by source
+> Which day of the week do articles get published
+> Has news sources output varied over time?
+> Sentiment percentages per source
+> Sentiment over time per source
