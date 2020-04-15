@@ -8,6 +8,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
 import org.knowm.xchart.CategoryChart;
 import org.knowm.xchart.CategoryChartBuilder;
 import org.knowm.xchart.PieChart;
@@ -19,15 +20,14 @@ public class ReadingLevelAndDensityChart implements Charts {
 
 	// Instance Variables
 	HashMap<String, Double[]> LevelsBySource;
-	HashMap<String, Double[]> LevelsBySourceCOPY;
 	HashMap<String, Double[]> Zdata;
 	
 
 	// Constructor
 	public ReadingLevelAndDensityChart() {
-		LevelsBySource = extractSourceReadingLevelData(); 
-		LevelsBySourceCOPY = extractSourceReadingLevelData(); 
-		Zdata = makeZs(LevelsBySourceCOPY);
+		LevelsBySource = extractSourceReadingLevelData();
+		
+		Zdata = makeZs(LevelsBySource);
 
 	}
 
@@ -136,7 +136,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 	}
 
 	/**
-	 * creates the Z-scores graph
+	 * creates the graph
 	 * 
 	 * @return
 	 */
@@ -202,11 +202,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 		
 		
 		
-	/**
-	 * creates the averages graph
-	 * 
-	 * @return
-	 */
+		
 	new SwingWrapper<CategoryChart>(chart).displayChart();	
 	return chart;
 		
