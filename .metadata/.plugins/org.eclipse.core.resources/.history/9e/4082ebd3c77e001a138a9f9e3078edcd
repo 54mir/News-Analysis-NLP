@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class SimpleBarChart implements Charts{
+	
+	
+	double[] xData;
+    double[] yData;
+    
+    public SimpleBarChart() {
+    	
+    }
+    
+    
+    public HashMap<String, Double> extractSourceReadingLevelData(){
+    	
+    	HashMap<String, Double> readingLevelBySource = new HashMap<>();
+    	
+    	 for (Article article: Charts.articles) {
+    		 	String source = article.getSource();
+    			double readingLevel = article.getReadingLevel();
+    			
+
+    			if (readingLevelBySource.containsKey(source)) {
+    				double level = readingLevelBySource.get(source);
+    				level += readingLevel;
+    				readingLevelBySource.replace(source, level);
+    				
+    				
+    				
+    			}
+    			
+    			else {
+    				readingLevelBySource.put(source, readingLevel);
+    				
+    			}		 
+    		 
+    	 }
+    	 
+    	 for (String source : readingLevelBySource.keySet()) {
+    		double level =  readingLevelBySource.get(source) / 100;
+    		readingLevelBySource.replace(source, level);
+    		 
+    	 }
+    	
+    	
+    	return readingLevelBySource;
+    }
+    
+}

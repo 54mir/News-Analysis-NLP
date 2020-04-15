@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class SimpleXYMaker implements Charts{
+	
+	
+	double[] xData;
+    double[] yData;
+    
+    public SimpleXYMaker() {
+    	
+    }
+    
+    
+    public ArrayList<double[]> extractChartData(String xparam, String yparam){
+    	ArrayList <double[]> chartData = new ArrayList<>();
+    	
+    	 for (Article article: Charts.articles) {
+    		 
+    		 
+    	 }
+    	
+    	
+    	return chartData;
+    }
+    
+}

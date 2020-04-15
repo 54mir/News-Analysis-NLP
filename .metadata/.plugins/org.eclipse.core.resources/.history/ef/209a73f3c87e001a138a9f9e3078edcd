@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.CategoryChart;
+import org.knowm.xchart.CategoryChartBuilder;
+
+public class SimpleBarChart implements Charts{
+	
+	
+	double[] xData;
+    double[] yData;
+    
+    public SimpleBarChart() {
+    	
+    }
+    
+    
+    public HashMap<String, Double> extractSourceReadingLevelData(){
+    	
+    	HashMap<String, Double> readingLevelBySource = new HashMap<>();
+    	
+    	 for (Article article: Charts.articles) {
+    		 	String source = article.getSource();
+    			double readingLevel = article.getReadingLevel();
+    			
+
+    			if (readingLevelBySource.containsKey(source)) {
+    				double level = readingLevelBySource.get(source);
+    				level += readingLevel;
+    				readingLevelBySource.replace(source, level);
+    				
+    				
+    				
+    			}
+    			
+    			else {
+    				readingLevelBySource.put(source, readingLevel);
+    				
+    			}		 
+    		 
+    	 }
+    	 
+    	 for (String source : readingLevelBySource.keySet()) {
+    		double level =  readingLevelBySource.get(source) / 100;
+    		readingLevelBySource.replace(source, level);
+    		 
+    	 }
+    	
+    	
+    	return readingLevelBySource;
+    }
+    
+    
+    public CategoryChart makeChart() {
+    	 
+        // Create Chart
+        CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Average Reading Level by Source").xAxisTitle("Source").yAxisTitle("ReadingLevel").build();
+     
+        // Customize Chart
+        chart.getStyler().setLegendPosition(LegendPosition.InsideNW);
+        chart.getStyler().setHasAnnotations(true);
+     
+        // Series
+        chart.addSeries("test 1", Arrays.asList(new Integer[] { 0, 1, 2, 3, 4 }), Arrays.asList(new Integer[] { 4, 5, 9, 6, 5 }));
+     
+        return chart;
+      }
+    
+    
+}

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.knowm.xchart.*;
 import org.knowm.xchart.internal.chartpart.Chart;
+import org.knowm.xchart.style.Styler;
+import org.knowm.xchart.style.Theme;
+import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.VectorGraphicsEncoder;
 /*
  * This is a class that creates a pie chart. 
@@ -12,34 +15,30 @@ import org.knowm.xchart.VectorGraphicsEncoder;
  */
 public class PieChartMaker implements Charts {
 
-	DTMNormalizer dtm;
-	ArrayList<String[]> DTMdata;
+	//DTMNormalizer dtm;
+	//ArrayList<String[]> DTMdata;
+	
 
 	/*
 	 * Constructs a PieChartMaker object
 	 */
 	public PieChartMaker() {
 		
+		
 	}
 
-	public static void main(String[] args) {
-		PieChartMaker gm = new PieChartMaker();
-		HashMap<String, Integer[]> series = gm.extractChartData();
-		gm.makeChart(series, "pos");
-
-	}
-
+	
 
 
 	/*
 	 * Simplifies the ser file into an array with the data needed for just this chart.
 	 * This array can be used to investigate sentiment by source.
 	 */
-	public HashMap<String, Integer[]> extractChartData() {
+	public HashMap<String, Integer[]> extractSentSourceData() {
 		HashMap<String, Integer[]> sentChartData = new HashMap<>();
 	 for (Article article: Charts.articles) {
 		
-		String source = article.getSource();
+		String source = article.getSource().trim();
 		int posSent = article.getPositiveCount();
 		int negSent = article.getNegativeCount();
 		int neutSent = article.getNeutralCount();
@@ -68,7 +67,9 @@ public class PieChartMaker implements Charts {
 	 * contributes to the corpus.
 	 */
 	public PieChart makeChart(HashMap<String, Integer[]> series, String sentiment) {
-		PieChart chart = new PieChartBuilder().width(800).height(600).title("Sentiment Chart").build();
+		PieChart chart = new PieChartBuilder().width(800).height(600).title("Sentiment Chart").theme(ChartTheme.GGPlot2).build();
+	
+		
 		
 		Integer sentAmount = 0;
 		for (String source : series.keySet()) {
@@ -101,7 +102,13 @@ public class PieChartMaker implements Charts {
 	}
 
 	
-	
+	public static void main(String[] args) {
+		PieChartMaker gm = new PieChartMaker();
+		HashMap<String, Integer[]> series = gm.extractSentSourceData();
+		gm.makeChart(series, "pos");
+
+	}
+
 	
 		
 		

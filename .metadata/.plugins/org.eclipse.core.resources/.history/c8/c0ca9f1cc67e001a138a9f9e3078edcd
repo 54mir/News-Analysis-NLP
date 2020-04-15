@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class SimpleBarChart implements Charts{
+	
+	
+	double[] xData;
+    double[] yData;
+    
+    public SimpleBarChart() {
+    	
+    }
+    
+    
+    public HashMap<Double, Double> extractSentYearData(){
+    	
+    	HashMap<Double, Double> sentByYear = new HashMap<>();
+    	
+    	 for (Article article: Charts.articles) {
+    			int posSent = article.getPositiveCount();
+    			int negSent = article.getNegativeCount();
+    			int neutSent = article.getNeutralCount();
+    			
+    			
+    			
+    			
+    		 
+    		 
+    		 
+    	 }
+    	
+    	
+    	return sentByYear;
+    }
+    
+}

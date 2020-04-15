@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class SimpleBarChart implements Charts{
+	
+	
+	double[] xData;
+    double[] yData;
+    
+    public SimpleBarChart() {
+    	
+    }
+    
+    
+    public HashMap<Double, Double> extractSourceReadingLevelData(){
+    	
+    	HashMap<Double, Double> sentByYear = new HashMap<>();
+    	
+    	 for (Article article: Charts.articles) {
+    		 	String source = article.getSource();
+    			double readingLevel = article.getReadingLevel();
+    			
+    			
+    			
+    			
+    		 
+    		 
+    		 
+    	 }
+    	
+    	
+    	return sentByYear;
+    }
+    
+}
