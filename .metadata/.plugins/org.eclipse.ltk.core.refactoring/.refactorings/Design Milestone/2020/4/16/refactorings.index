@@ -1,3 +1,6 @@
 1586919797313	Rename type 'SimpleXYMaker'
 1586990314325	Rename type 'SimpleBarChart'
 1586991655579	Rename field 'readingLevelBySource'
+1587000342461	Rename type 'scratch'
+1587000707683	Infer generic type arguments
+1587007253667	Delete element

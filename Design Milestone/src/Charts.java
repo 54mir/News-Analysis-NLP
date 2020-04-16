@@ -10,9 +10,7 @@ import org.knowm.xchart.style.Styler;
 import org.knowm.xchart.style.Theme;
 
 public interface Charts {
-	scratch reader = new scratch();
-	
-
+	DataReader reader = new DataReader();
     ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
 	  
 	  

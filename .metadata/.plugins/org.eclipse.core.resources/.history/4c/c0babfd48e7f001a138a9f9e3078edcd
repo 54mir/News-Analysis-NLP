@@ -1,0 +1,13 @@
+import javax.Swing.*;
+
+public class SwingImageMaker {
+	
+	public SwingImageMaker(String filepath) {
+		SwingUtlities.invokeLater(new Runnable() {
+			
+			
+		})
+		
+	}
+
+}

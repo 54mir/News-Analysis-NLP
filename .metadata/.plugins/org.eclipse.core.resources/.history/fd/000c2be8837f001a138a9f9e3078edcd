@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.*;
+import org.knowm.xchart.internal.chartpart.Chart;
+import org.knowm.xchart.VectorGraphicsEncoder;
+/*
+ * In this class, we will run the project. 
+ */
+public class ProjectRunner {
+	
+	//Instance Variables
+	ArrayList<Chart> charts = new ArrayList<>();
+	
+	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
+	CategoryChart zChart = bm.makeZChart();
+	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level ");
+	CategoryChart densityChart = bm.makeAvgsChart("Density ");
+	
+	
+	public ProjectRunner() {
+		
+	}
+	
+	
+	public void makeChartMatrix() {
+		charts.add(zChart);
+		charts.add(readingLevel);
+		charts.add(densityChart);
+		charts.add(zChart);
+		charts.add(readingLevel);
+		charts.add(densityChart);
+		
+		new SwingWrapper<Chart>(charts).displayChartMatrix();
+		
+		
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+	
+		ProjectRunner pr = new ProjectRunner();
+		pr.makeChartMatrix();
+		
+	}
+
+}

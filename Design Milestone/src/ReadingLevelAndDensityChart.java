@@ -5,13 +5,19 @@
  * - creates a chart displaying reading levels by source
  * - creates a chart displaying lexical density by source
  */
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import org.knowm.xchart.BitmapEncoder;
+import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.CategoryChart;
 import org.knowm.xchart.CategoryChartBuilder;
 import org.knowm.xchart.PieChart;
 import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.VectorGraphicsEncoder;
+import org.knowm.xchart.VectorGraphicsEncoder.VectorGraphicsFormat;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
@@ -21,12 +27,11 @@ public class ReadingLevelAndDensityChart implements Charts {
 	HashMap<String, Double[]> LevelsBySource;
 	HashMap<String, Double[]> LevelsBySourceCOPY;
 	HashMap<String, Double[]> Zdata;
-	
 
 	// Constructor
 	public ReadingLevelAndDensityChart() {
-		LevelsBySource = extractSourceReadingLevelData(); 
-		LevelsBySourceCOPY = extractSourceReadingLevelData(); 
+		LevelsBySource = extractSourceReadingLevelData();
+		LevelsBySourceCOPY = extractSourceReadingLevelData();
 		Zdata = makeZs(LevelsBySourceCOPY);
 
 	}
@@ -136,7 +141,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 	}
 
 	/**
-	 * creates the Z-scores graph
+	 * creates the Z-scores graphxz
 	 * 
 	 * @return
 	 */
@@ -165,22 +170,19 @@ public class ReadingLevelAndDensityChart implements Charts {
 		chart.addSeries("reading level", new ArrayList<String>(Arrays.asList(xseries)), y1);
 		chart.addSeries("lexical density", new ArrayList<String>(Arrays.asList(xseries)), y2);
 
-		new SwingWrapper<CategoryChart>(chart).displayChart();
 		return chart;
 	}
-	
-	
+
 	public CategoryChart makeAvgsChart(String avgType) {
 		// Create Chart
-				CategoryChart chart = new CategoryChartBuilder().width(2000).height(600)
-						.title( avgType + "by Source").xAxisTitle("Source")
-						.yAxisTitle("Level").theme(ChartTheme.GGPlot2).build();
-				
+		CategoryChart chart = new CategoryChartBuilder().width(2000).height(600).title(avgType + "by Source")
+				.xAxisTitle("Source").yAxisTitle("Level").theme(ChartTheme.GGPlot2).build();
+
 		// Series
 		String[] xseries = LevelsBySource.keySet().toArray(new String[0]);
 		ArrayList<Double> y1 = new ArrayList<>();
 		ArrayList<Double> y2 = new ArrayList<>();
-		
+
 		for (String source : LevelsBySource.keySet()) {
 			Double[] levels = LevelsBySource.get(source);
 			Double readingLevel = levels[0];
@@ -189,32 +191,19 @@ public class ReadingLevelAndDensityChart implements Charts {
 			y2.add(density);
 
 		}
-		
-		
+
 		if (avgType.contains("Density")) {
-			chart.addSeries("lexical density", new ArrayList<String>(Arrays.asList(xseries)), y2);	
+			chart.addSeries("lexical density", new ArrayList<String>(Arrays.asList(xseries)), y2);
 		}
-		
+
 		else {
 			chart.addSeries("reading level", new ArrayList<String>(Arrays.asList(xseries)), y1);
-				
+
 		}
-		
-		
-		
-	/**
-	 * creates the averages graph
-	 * 
-	 * @return
-	 */
-	new SwingWrapper<CategoryChart>(chart).displayChart();	
-	return chart;
-		
+
+		return chart;
+
 	}
-	
-	
-	
-	
 
 	public static void main(String[] args) {
 		ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
