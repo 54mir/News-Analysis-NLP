@@ -8,8 +8,6 @@ import java.util.Date;
  */
 public class SentimentByTimeChart {
 
-
-
         public static void main(String[] args) throws Exception {
             DataReader datareader = new DataReader();
             ArrayList<Article> data = datareader.readArray("articleMetricsArray.ser");
