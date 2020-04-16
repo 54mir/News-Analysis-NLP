@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.knowm.xchart.internal.chartpart.Chart"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.CoreEntityMention"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="Charts"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.style.Theme"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.CategoryChart"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.CategoryChartBuilder"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler.LegendPosition"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler.ChartTheme"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.VectorGraphicsEncoder"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.VectorGraphicsEncoder.VectorGraphicsFormat"/>
+    <fullyQualifiedTypeName name="java.awt.Dimension"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+    <fullyQualifiedTypeName name="com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.BitmapEncoder"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="org.knowm.xchart.BitmapEncoder.BitmapFormat"/>
 </qualifiedTypeNameHistroy>

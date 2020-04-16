@@ -30,8 +30,8 @@ public class ReadingLevelAndDensityChart implements Charts {
 
 	// Constructor
 	public ReadingLevelAndDensityChart() {
-		LevelsBySource = extractSourceLevelData();
-		LevelsBySourceCOPY = extractSourceLevelData();
+		LevelsBySource = extractSourceReadingLevelData();
+		LevelsBySourceCOPY = extractSourceReadingLevelData();
 		Zdata = makeZs(LevelsBySourceCOPY);
 
 	}
@@ -42,9 +42,9 @@ public class ReadingLevelAndDensityChart implements Charts {
 	 * 
 	 * @return readingLevelBySource
 	 */
-	public HashMap<String, Double[]> extractSourceLevelData() {
+	public HashMap<String, Double[]> extractSourceReadingLevelData() {
 
-		HashMap<String, Double[]> readingAndZBySource = new HashMap<>();
+		HashMap<String, Double[]> readingLevelBySource = new HashMap<>();
 
 		// populating the hashmap
 		for (Article article : Charts.articles) {
@@ -52,32 +52,32 @@ public class ReadingLevelAndDensityChart implements Charts {
 			double readingLevel = article.getReadingLevel();
 			double density = article.getLexicalDensity();
 
-			if (readingAndZBySource.containsKey(source)) {
-				Double[] levels = readingAndZBySource.get(source);
+			if (readingLevelBySource.containsKey(source)) {
+				Double[] levels = readingLevelBySource.get(source);
 				levels[0] += readingLevel;
 				levels[1] += density;
-				readingAndZBySource.replace(source, levels);
+				readingLevelBySource.replace(source, levels);
 
 			}
 
 			else {
 				Double[] levels = { readingLevel, density };
-				readingAndZBySource.put(source, levels);
+				readingLevelBySource.put(source, levels);
 
 			}
 
 		}
 
 		// converting sums to averages
-		for (String source : readingAndZBySource.keySet()) {
-			Double[] levels = readingAndZBySource.get(source);
+		for (String source : readingLevelBySource.keySet()) {
+			Double[] levels = readingLevelBySource.get(source);
 			levels[0] = levels[0] / 100;
 			levels[1] = levels[1] / 100;
-			readingAndZBySource.replace(source, levels);
+			readingLevelBySource.replace(source, levels);
 
 		}
 
-		return readingAndZBySource;
+		return readingLevelBySource;
 	}
 
 	/**

@@ -24,10 +24,9 @@ public class ProjectRunner extends JFrame {
 
 	//Instance Variables
 	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
-	CategoryChart zChartReading = bm.makeZChart("Reading Level");
-	CategoryChart zChartDensity = bm.makeZChart("Density");
-	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
-	CategoryChart densityChart = bm.makeAvgsChart("Density");
+	CategoryChart zChart = bm.makeZChart();
+	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level ");
+	CategoryChart densityChart = bm.makeAvgsChart("Density ");
 
 	ArrayList<Chart> charts = new ArrayList<>();
 
@@ -39,18 +38,19 @@ public class ProjectRunner extends JFrame {
 	}
 
 	/**
-	 * saves a matrix of the charts to a jpeg
+	 * saves a matric of the charts to a jpeg
 	 */
 	public void makeChartsMatrix() {
 
-		charts.add(zChartReading);
+		charts.add(zChart);
 		charts.add(readingLevel);
-		charts.add(zChartDensity);
 		charts.add(densityChart);
-		
+		charts.add(zChart);
+		charts.add(readingLevel);
+		charts.add(densityChart);
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 4,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 6,1, "chartsMatrix", BitmapFormat.JPG);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();

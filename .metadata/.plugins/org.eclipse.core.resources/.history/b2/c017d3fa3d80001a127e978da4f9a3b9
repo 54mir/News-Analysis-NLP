@@ -30,8 +30,8 @@ public class ReadingLevelAndDensityChart implements Charts {
 
 	// Constructor
 	public ReadingLevelAndDensityChart() {
-		LevelsBySource = extractSourceLevelData();
-		LevelsBySourceCOPY = extractSourceLevelData();
+		LevelsBySource = extractSourceReadingLevelData();
+		LevelsBySourceCOPY = extractSourceReadingLevelData();
 		Zdata = makeZs(LevelsBySourceCOPY);
 
 	}
@@ -42,7 +42,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 	 * 
 	 * @return readingLevelBySource
 	 */
-	public HashMap<String, Double[]> extractSourceLevelData() {
+	public HashMap<String, Double[]> extractSourceReadingLevelData() {
 
 		HashMap<String, Double[]> readingAndZBySource = new HashMap<>();
 

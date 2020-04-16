@@ -25,7 +25,7 @@ public class ProjectRunner extends JFrame {
 	//Instance Variables
 	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
 	CategoryChart zChartReading = bm.makeZChart("Reading Level");
-	CategoryChart zChartDensity = bm.makeZChart("Density");
+	CategoryChart zChartDensity = bm.makeZChart("Reading Level");
 	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
 	CategoryChart densityChart = bm.makeAvgsChart("Density");
 
