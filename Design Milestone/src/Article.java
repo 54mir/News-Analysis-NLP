@@ -27,9 +27,9 @@ public class Article implements Serializable {
 
 
     public Article(String source, String title, String author, String date, CoreDocument document, ArrayList stopWords) {
-        this.source = source;
-        this.title = title;
-        this.author = author;
+        this.source = source.trim();
+        this.title = title.trim();
+        this.author = author.trim();
         //this.stopWords = stopWords;
         this.date = makeDate(date);
         sentenceCount = document.sentences().size();
@@ -297,6 +297,8 @@ public class Article implements Serializable {
             }
         }
     }
+
+
 
 
     //Getters for Article Metrics
