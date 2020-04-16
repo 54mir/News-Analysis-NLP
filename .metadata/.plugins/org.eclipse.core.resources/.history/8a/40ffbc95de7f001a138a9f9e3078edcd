@@ -71,8 +71,8 @@ public class ReadingLevelAndDensityChart implements Charts {
 		// converting sums to averages
 		for (String source : readingLevelBySource.keySet()) {
 			Double[] levels = readingLevelBySource.get(source);
-			levels[0] = levels[0] / 100;
-			levels[1] = levels[1] / 100;
+			levels[0] = levels[0] / 14;
+			levels[1] = levels[1] / 14;
 			readingLevelBySource.replace(source, levels);
 
 		}
