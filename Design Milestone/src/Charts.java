@@ -13,20 +13,14 @@ import org.knowm.xchart.style.Theme;
 public interface Charts {
 	DataReader reader = new DataReader();
     ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
-<<<<<<< HEAD
-=======
-//    String[] sources = {"Washington Post", "Guardian", "Buzzfeed", "Business Insider", "NPR", "Reuters",
-//            "New York Post", "New York Times", "Atlantic", "CNN", "Fox News", "National Review", "Breitbart", "Vox"};
+    ArrayList<String> sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
+            "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
+            "National Review", "Breitbart", "Vox"));
 
-    ArrayList<String> sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed", "Business Insider", "NPR", "Reuters",
-            "New York Post", "New York Times", "Atlantic", "CNN", "Fox News", "National Review", "Breitbart", "Vox"));
 
-	  
-	  
-	
-	
-	
->>>>>>> c75acf937c8ee3dc07b3991e4f0e83843102abe6
-	
-    
+
+
+
+
+
 }

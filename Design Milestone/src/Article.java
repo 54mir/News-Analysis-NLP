@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * An article with its metrics. Can compute its own metrics based on the document passed in.
  */
-public class Article implements Serializable {
+public class Article implements Serializable, Comparable {
 
     private String source, title, author;
     private int sentenceCount, positiveCount, neutralCount, negativeCount, wordCount, characterCount,
@@ -117,7 +117,8 @@ public class Article implements Serializable {
     	HashMap<String, Integer> wordCounts = new HashMap<>();
     	 for (int i = 0; i < document.tokens().size(); i++) {
     		 String mostWord;
-    		 String word = document.tokens().get(i).toString().replaceAll("[^a-zA-Z]", "");  //We could just use the lemmatized word since we already have it available to us.
+    		 String word = document.tokens().get(i).lemma().toLowerCase().trim();
+    		 word = word.replaceAll("[^a-zA-Z]", "");
     		 //System.out.println("word is " + word);
     		 if (!stopWords.contains(word)) {
     			if (wordCounts.containsKey(word)) {
@@ -391,4 +392,12 @@ public class Article implements Serializable {
     }
 
     public float getLexicalDensity() { return lexicalDensity; }
+
+    @Override
+    public int compareTo(Object o) {
+        Article other = (Article) o;
+        if (date.equals(other.getDate())) return 0;
+        if (date.isAfter(getDate())) return -1;
+        return 1;
+    }
 }
