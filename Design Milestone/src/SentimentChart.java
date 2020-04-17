@@ -1,19 +1,52 @@
 import org.knowm.xchart.*;
+
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
-public class SentimentBySourceChart {
+public class SentimentChart implements Charts{
+
+    public XYChart makeSentimentByTimeChart(){
+        ArrayList<Date> dateSeries = new ArrayList<>();
+        ArrayList<Float> positiveSeries = new ArrayList<>();
+        ArrayList<Float> neutralSeries = new ArrayList<>();
+        ArrayList<Float> negativeSeries = new ArrayList<>();
+        Date date = null;
+        Float positiveValue, neutralValue, negativeValue;
+
+        for (Article article: Charts.articles) {
+            if (article.getSource().trim().equals("New York Times")){
+                date = Date.from(article.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                dateSeries.add(date);
+                positiveValue = ((float) article.getPositiveCount() / article.getSentenceCount());
+                neutralValue = ((float) article.getNeutralCount() / article.getSentenceCount());
+                negativeValue = ((float) article.getNegativeCount() / article.getSentenceCount());
+                positiveSeries.add(positiveValue);
+                neutralSeries.add(neutralValue);
+                negativeSeries.add(negativeValue);
+            }
+        }
+
+        // Create Chart
+        XYChart chart = new XYChartBuilder().width(800).height(600).title("New York Times Sentiment over Time").xAxisTitle("X").yAxisTitle("Y").build();
+        chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+
+        XYSeries series = chart.addSeries("Positive Sentiment Ratio", dateSeries, positiveSeries);
+        chart.addSeries("Neutral", dateSeries, neutralSeries);
+        chart.addSeries("Negative", dateSeries, negativeSeries);
+
+        return chart;
+    }
 
     public CategoryChart makeSentimentBySourceChart(){
-        DataReader datareader = new DataReader();
-        ArrayList<Article> data = datareader.readArray("articleMetricsArray.ser");
         ArrayList<String> sourcesSeries = new ArrayList<>();
         ArrayList<Double> positiveSeries = new ArrayList<>();
         ArrayList<Double> neutralSeries = new ArrayList<>();
         ArrayList<Double> negativeSeries = new ArrayList<>();
         HashMap<String, double[]>  allData = new HashMap<>();
 
-        for (Article article: data) {
+        for (Article article: Charts.articles) {
             if (allData.containsKey(article.getSource())){
                 double[] articleVals = getSentValues(article);
                 allData.get(article.getSource())[0] += articleVals[0];  //positive
@@ -30,20 +63,18 @@ public class SentimentBySourceChart {
             if (allData.get(str)[3] > 0) {
                 sourcesSeries.add(str);
                 positiveSeries.add(allData.get(str)[0] /= allData.get(str)[3]);  //positive
-                neutralSeries.add(allData.get(str)[1] /= allData.get(str)[3]);  //positive
-                negativeSeries.add(allData.get(str)[2] /= allData.get(str)[3]);  //positive
+                neutralSeries.add(allData.get(str)[1] /= allData.get(str)[3]);  //neutral
+                negativeSeries.add(allData.get(str)[2] /= allData.get(str)[3]);  //negative
             }
         }
 
         // Create Chart
         CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Sentiment by Source").xAxisTitle("Sources").yAxisTitle("Y").build();
+        chart.getStyler().setXAxisLabelRotation(45);
 
         chart.addSeries("Positive Sentiment Ratio", sourcesSeries, positiveSeries);
         chart.addSeries("Neutral", sourcesSeries, neutralSeries);
         chart.addSeries("Negative", sourcesSeries, negativeSeries);
-
-        // Show it
-//        new SwingWrapper(chart).displayChart();
 
         return chart;
 
@@ -55,15 +86,16 @@ public class SentimentBySourceChart {
         sentVals[0] = (double) article.getPositiveCount() / article.getSentenceCount();
         sentVals[1] = (double) article.getNeutralCount() / article.getSentenceCount();
         sentVals[2] = (double) article.getNegativeCount() / article.getSentenceCount();
-        sentVals[3] = 0;
+        sentVals[3] = 1;
 
         return sentVals;
 
     }
 
     public static void main(String[] args) {
-        SentimentBySourceChart sbsChart = new SentimentBySourceChart();
+        SentimentChart sbsChart = new SentimentChart();
         new SwingWrapper(sbsChart.makeSentimentBySourceChart()).displayChart();
+        new SwingWrapper(sbsChart.makeSentimentByTimeChart()).displayChart();
 
     }
 
