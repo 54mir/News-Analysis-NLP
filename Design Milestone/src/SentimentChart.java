@@ -7,7 +7,12 @@ import java.util.HashMap;
 
 public class SentimentChart implements Charts{
 
-    public XYChart makeSentimentByTimeChart(){
+    /**
+     * Creates a Scanner Plot of Sentiment over Time of a given news sources
+     * @param source name of news source
+     * @return chart object
+     */
+    public XYChart makeSentimentByTimeChart(String source){
         ArrayList<Date> dateSeries = new ArrayList<>();
         ArrayList<Float> positiveSeries = new ArrayList<>();
         ArrayList<Float> neutralSeries = new ArrayList<>();
@@ -15,8 +20,14 @@ public class SentimentChart implements Charts{
         Date date = null;
         Float positiveValue, neutralValue, negativeValue;
 
+        if (!Charts.sources.contains(source)) {
+            System.out.println("Source does not exist in dataset");
+            XYChart chart = new XYChartBuilder().width(500).height(200).title("Source does not exist in dataset").xAxisTitle("X").yAxisTitle("Y").build();
+            return chart;
+        }
+
         for (Article article: Charts.articles) {
-            if (article.getSource().trim().equals("New York Times")){
+            if (article.getSource().trim().equals(source)){
                 date = Date.from(article.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 dateSeries.add(date);
                 positiveValue = ((float) article.getPositiveCount() / article.getSentenceCount());
@@ -29,7 +40,7 @@ public class SentimentChart implements Charts{
         }
 
         // Create Chart
-        XYChart chart = new XYChartBuilder().width(800).height(600).title("New York Times Sentiment over Time").xAxisTitle("X").yAxisTitle("Y").build();
+        XYChart chart = new XYChartBuilder().width(800).height(600).title(source + " Sentiment over Time").xAxisTitle("X").yAxisTitle("Y").build();
         chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
 
         XYSeries series = chart.addSeries("Positive Sentiment Ratio", dateSeries, positiveSeries);
@@ -39,6 +50,10 @@ public class SentimentChart implements Charts{
         return chart;
     }
 
+    /**
+     * Creates bar chart of sentiment by sources.
+     * @return chart object
+     */
     public CategoryChart makeSentimentBySourceChart(){
         ArrayList<String> sourcesSeries = new ArrayList<>();
         ArrayList<Double> positiveSeries = new ArrayList<>();
@@ -59,8 +74,7 @@ public class SentimentChart implements Charts{
         }
 
         for (String str: allData.keySet()) {
-            System.out.println(str + " count: " + allData.get(str)[3]);
-            if (allData.get(str)[3] > 0) {
+            if (allData.get(str)[3] > 1) {
                 sourcesSeries.add(str);
                 positiveSeries.add(allData.get(str)[0] /= allData.get(str)[3]);  //positive
                 neutralSeries.add(allData.get(str)[1] /= allData.get(str)[3]);  //neutral
@@ -95,7 +109,7 @@ public class SentimentChart implements Charts{
     public static void main(String[] args) {
         SentimentChart sbsChart = new SentimentChart();
         new SwingWrapper(sbsChart.makeSentimentBySourceChart()).displayChart();
-        new SwingWrapper(sbsChart.makeSentimentByTimeChart()).displayChart();
+        new SwingWrapper(sbsChart.makeSentimentByTimeChart("Business Insider")).displayChart();
 
     }
 
