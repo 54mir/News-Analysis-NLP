@@ -1,13 +1,10 @@
 import org.knowm.xchart.*;
-
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class SentimentBySourceChart {
 
-    public static void main(String[] args) throws Exception {
+    public CategoryChart makeSentimentBySourceChart(){
         DataReader datareader = new DataReader();
         ArrayList<Article> data = datareader.readArray("articleMetricsArray.ser");
         ArrayList<String> sourcesSeries = new ArrayList<>();
@@ -15,8 +12,6 @@ public class SentimentBySourceChart {
         ArrayList<Double> neutralSeries = new ArrayList<>();
         ArrayList<Double> negativeSeries = new ArrayList<>();
         HashMap<String, double[]>  allData = new HashMap<>();
-        double positiveValue, neutralValue, negativeValue;
-        int i = 1;
 
         for (Article article: data) {
             if (allData.containsKey(article.getSource())){
@@ -25,11 +20,9 @@ public class SentimentBySourceChart {
                 allData.get(article.getSource())[1] += articleVals[1];  //neutral
                 allData.get(article.getSource())[2] += articleVals[2];  //negative
                 allData.get(article.getSource())[3] += 1;  //count
-
             } else {
                 allData.put(article.getSource(), getSentValues(article));
             }
-
         }
 
         for (String str: allData.keySet()) {
@@ -42,20 +35,17 @@ public class SentimentBySourceChart {
             }
         }
 
-
-
-
-
         // Create Chart
         CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Sentiment by Source").xAxisTitle("Sources").yAxisTitle("Y").build();
-//        chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.);
 
         chart.addSeries("Positive Sentiment Ratio", sourcesSeries, positiveSeries);
         chart.addSeries("Neutral", sourcesSeries, neutralSeries);
         chart.addSeries("Negative", sourcesSeries, negativeSeries);
 
         // Show it
-        new SwingWrapper(chart).displayChart();
+//        new SwingWrapper(chart).displayChart();
+
+        return chart;
 
     }
 
@@ -70,4 +60,13 @@ public class SentimentBySourceChart {
         return sentVals;
 
     }
+
+    public static void main(String[] args) {
+        SentimentBySourceChart sbsChart = new SentimentBySourceChart();
+        new SwingWrapper(sbsChart.makeSentimentBySourceChart()).displayChart();
+
+    }
+
+
+
 }
