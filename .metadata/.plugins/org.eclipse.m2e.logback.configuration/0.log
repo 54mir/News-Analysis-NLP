@@ -2459,3 +2459,63 @@
 2020-04-16 22:32:31,105 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
 2020-04-16 22:32:31,105 [Worker-57: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-04-16 22:32:31,106 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:35:37,691 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:35:37,692 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:35:37,692 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:35:37,692 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:35:51,134 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:35:51,134 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:35:51,135 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:35:51,135 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:36:42,286 [Worker-65: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:36:42,287 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:36:42,287 [Worker-65: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:36:42,288 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:37:01,500 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:37:01,501 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:37:01,501 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:37:01,502 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:37:46,401 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:37:46,401 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:37:46,402 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:37:46,402 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:38:38,261 [Worker-63: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:38:38,262 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:38:38,263 [Worker-63: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:38:38,263 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:39:34,713 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:39:34,714 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:39:34,714 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:39:34,715 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:39:39,260 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:39:39,260 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:39:39,261 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:39:39,261 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:40:49,158 [Worker-63: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:40:49,159 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:40:49,160 [Worker-63: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:40:49,160 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:41:40,299 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:41:40,300 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:41:40,300 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:41:40,301 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:42:48,791 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:42:48,792 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:42:48,792 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:42:48,793 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:43:39,211 [Worker-66: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:43:39,212 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:43:39,213 [Worker-66: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:43:39,213 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:43:48,965 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:43:48,966 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:43:48,967 [Worker-62: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:43:48,967 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:44:02,047 [Worker-66: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:44:02,048 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:44:02,048 [Worker-66: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:44:02,048 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources
+2020-04-16 22:44:25,145 [Worker-67: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:44:25,146 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/main/resources
+2020-04-16 22:44:25,146 [Worker-67: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-04-16 22:44:25,147 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/abigailjohnson/Desktop/team153/Design Milestone/src/test/resources

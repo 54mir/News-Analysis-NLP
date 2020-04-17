@@ -95,7 +95,7 @@ public XYChart makeReadingandLengthChart( int x, int y, String xaxis, String yax
     XYSeries series = chart.addSeries( source, xSeries, ySeries);
     }
     
-    //new SwingWrapper(chart).displayChart();
+    new SwingWrapper(chart).displayChart();
     return chart;
 	
 }
@@ -103,7 +103,10 @@ public XYChart makeReadingandLengthChart( int x, int y, String xaxis, String yax
 
 
 public static void main(String args[]) {
-	
+	LengthDensityAndLevelCharts test = new LengthDensityAndLevelCharts();
+	test.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
+	test.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
+	test.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
 }
 	
 }
