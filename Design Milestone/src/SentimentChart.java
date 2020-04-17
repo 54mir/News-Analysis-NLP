@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Makes charts that based on sentiment data
  */
-public class SentimentChart implements Charts{
+public class SentimentChart extends CommonMethods{
 
     /**
      * Creates a Scanner Plot of Sentiment over Time of a given news sources
@@ -22,7 +22,7 @@ public class SentimentChart implements Charts{
         Date date = null;
         Float positiveValue, neutralValue, negativeValue;
 
-        if (!Charts.sources.contains(source)) {
+        if (!super.sources.contains(source)) {
             System.out.println("Source does not exist in dataset");
             XYChart chart = new XYChartBuilder().width(500).height(200).title("Source does not exist in dataset").xAxisTitle("X").yAxisTitle("Y").build();
             return chart;

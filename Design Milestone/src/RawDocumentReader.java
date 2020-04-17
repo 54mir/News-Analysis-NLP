@@ -8,7 +8,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
  * Reads in articles and outputs file with relevant metrics.
  */
 public class RawDocumentReader {
-    File fileToOpen = new File("newsSourcesSAMPLED5.csv");
+    File fileToOpen = new File("newsSourcesSAMPLED100.csv");
     File fileToWrite = new File ("articleMetricsArray.ser");
   
     String stopWordsPath = "stopWords.txt";
