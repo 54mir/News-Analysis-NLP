@@ -12,10 +12,6 @@ import org.knowm.xchart.style.Theme;
 public interface Charts {
 	DataReader reader = new DataReader();
     ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
-	  
-	  
 	
-	
-	
-	
+    
 }

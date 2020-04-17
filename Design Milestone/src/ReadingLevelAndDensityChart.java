@@ -39,7 +39,6 @@ public class ReadingLevelAndDensityChart implements Charts {
 	/**
 	 * Creates a HashMap with - the average reading level for each source - the
 	 * average lexical densities for each source
-	 * 
 	 * @return readingLevelBySource
 	 */
 	public HashMap<String, Double[]> extractSourceLevelData() {
@@ -213,11 +212,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 	}
 
 	public static void main(String[] args) {
-//		ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
-//		bm.makeZChart("Density");
-//		bm.makeZChart("Reading Level =");
-//		bm.makeAvgsChart("Reading Level ");
-//		bm.makeAvgsChart("Density ");
+
 
 	}
 

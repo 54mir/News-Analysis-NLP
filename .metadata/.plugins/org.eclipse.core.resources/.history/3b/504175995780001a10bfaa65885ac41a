@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.XYSeries;
+
+public class LengthDensityAndLevelCharts implements Charts{
+	
+ArrayList<Double> readingLevels = new ArrayList<>();
+ArrayList<Double> lengths = new ArrayList<>();
+ArrayList<Double> densities = new ArrayList<>();
+ArrayList<String> sources = new ArrayList<>();
+
+HashMap<String, Double[]> data = new HashMap<>();
+
+
+public LengthDensityAndLevelCharts() {
+	for (Article article : Charts.articles) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		Double density = (double) article.getLexicalDensity();
+		lengths.add(length);
+		readingLevels.add(readingLevel);
+		densities.add(density);
+		
+		if (!sources.contains(article.getSource())) {
+			sources.add(article.getSource());
+		}
+		
+		
+		
+	}
+	
+}
+
+
+public HashMap<String, ArrayList<Double[]>> populateData(){
+	
+	for (Article article : Charts.articles) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		Double density = (double) article.getLexicalDensity();
+		String source = article.getSource();
+		
+		if (data.containsKey(source)) {
+			Double[] levels = data.get(source);
+			levels[0] += length;
+			levels[1] += readingLevel;
+			levels[2] += density;
+			data.put(source, levels);
+			
+		}
+		
+		else {
+			Double levels[] = {length, readingLevel, density};
+			data.put(source, levels);
+			
+		}
+	}
+	
+	return data;
+}
+
+
+
+
+public XYChart makeReadingandLengthChart(ArrayList<Double> x, ArrayList<Double> y, String xaxis, String yaxis) { 
+	
+	XYChart chart = new XYChartBuilder().width(800).height(600).title( xaxis + "by" + yaxis ).xAxisTitle(xaxis).yAxisTitle(yaxis).build();
+    chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+    
+    //it doesn't make sense to plot reading levels on a logarithmic scale, so we wont
+    if(x != readingLevels) {
+    chart.getStyler().setXAxisLogarithmic(true);
+    }
+    
+    for (String source : sources) {
+    XYSeries series = chart.addSeries( source, x, y);
+    }
+    
+    new SwingWrapper(chart).displayChart();
+    return chart;
+	
+}
+
+
+
+public static void main(String args[]) {
+	LengthDensityAndLevelCharts test = new LengthDensityAndLevelCharts();
+	test.makeReadingandLengthChart(test.lengths, test.densities, "Article Length", "Density of Article");
+	test.makeReadingandLengthChart(test.lengths, test.readingLevels, "Article Length", "Reading Level of Article");
+	test.makeReadingandLengthChart(test.readingLevels, test.densities, "Reading Level of Article", "Density of Article");
+}
+	
+}

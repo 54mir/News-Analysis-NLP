@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.XYSeries;
+
+public class ReadingLevelByLengthChart implements Charts{
+	
+ArrayList<Double> readingLevels = new ArrayList<>();
+ArrayList<Double> lengths = new ArrayList<>();
+
+public ReadingLevelByLengthChart() {
+populateSeries();
+	
+}
+
+
+
+public void populateSeries(){
+	
+	
+	for (Article article : Charts.articles) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		lengths.add(length);
+		readingLevels.add(readingLevel);	
+	}
+	
+	
+
+}
+
+public XYChart makeReadingandLengthChart() {
+	
+	XYChart chart = new XYChartBuilder().width(800).height(600).title("Reading level by Article Length").xAxisTitle("Article Length").yAxisTitle("Reading Level").build();
+    chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+	
+  
+    
+    
+    
+    return chart;
+	
+}
+
+
+	
+	
+}

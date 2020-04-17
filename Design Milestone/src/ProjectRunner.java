@@ -33,9 +33,10 @@ public class ProjectRunner extends JFrame {
 	PieChart pos = pcm.makeChart("pos");
 	PieChart neg = pcm.makeChart("neg");
 	PieChart neut = pcm.makeChart("neut");
+	
+
 
 	ArrayList<Chart> charts = new ArrayList<>();
-
 
 
 

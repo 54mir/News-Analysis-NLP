@@ -1,0 +1,21 @@
+import java.util.HashMap;
+
+public class ReadingLevelByLengthChart implements Charts{
+	
+HashMap<Integer, Double> dataPairs = new HashMap<>();
+
+public ReadingLevelByLengthChart() {
+	
+}
+
+
+
+public HashMap<Integer, Double> extractDataPairs(HashMap<Integer, Double> dataPairs){
+	
+	
+	
+	return dataPairs;
+}
+	
+	
+}

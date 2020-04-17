@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.XYSeries;
+
+public class LengthDensityAndLevelCharts implements Charts{
+	
+ArrayList<Double> readingLevels = new ArrayList<>();
+ArrayList<Double> lengths = new ArrayList<>();
+ArrayList<Double> densities = new ArrayList<>();
+
+
+public LengthDensityAndLevelCharts() {
+	for (Article article : Charts.articles) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		lengths.add(length);
+		readingLevels.add(readingLevel);
+		System.out.println("populated article");
+		System.out.println(lengths.size());
+		System.out.println(densities.size());
+	}
+	
+}
+
+
+
+
+
+public XYChart makeReadingandLengthChart(ArrayList<Double> x, ArrayList<Double> y, String xaxis, String yaxis) { 
+	
+	XYChart chart = new XYChartBuilder().width(800).height(600).title( xaxis + "by" + yaxis ).xAxisTitle(xaxis).yAxisTitle(yaxis).build();
+    chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+	
+    XYSeries series = chart.addSeries("article", x, y);
+    
+    
+    new SwingWrapper(chart).displayChart();
+    return chart;
+	
+}
+
+
+
+public static void main(String args[]) {
+	LengthDensityAndLevelCharts test = new LengthDensityAndLevelCharts();
+	test.makeReadingandLengthChart(test.lengths, test.densities, "Article Length", "Density of Article");
+	//test.makeReadingandLengthChart(test.lengths, test.readingLevels, "Article Length", "Reading Level of Article");
+	//test.makeReadingandLengthChart(test.readingLevels, test.densities, "Reading Level of Article", "Density of Article");
+}
+	
+}
