@@ -397,7 +397,7 @@ public class Article implements Serializable, Comparable {
     public int compareTo(Object o) {
         Article other = (Article) o;
         if (date.equals(other.getDate())) return 0;
-        if (date.isAfter(getDate())) return -1;
-        return 1;
+        if (date.isAfter(other.getDate())) return 1;
+        return -1;
     }
 }

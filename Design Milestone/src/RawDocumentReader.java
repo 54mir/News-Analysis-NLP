@@ -94,11 +94,14 @@ public class RawDocumentReader {
             pipeline.annotate(document);
             
             System.out.println("Working on Article: " + loopCounter);
+//            if (loopCounter > 5) break;
             loopCounter++;
 
             Article article = new Article(row[idxSource], row[idxTitle], row[idxAuthor], row[idxDate], document, stopWords);
             arrayOfArticles.add(article);
         }
+
+        arrayOfArticles.sort(null);
         storeArray(arrayOfArticles, fileToWrite);
        
     }
