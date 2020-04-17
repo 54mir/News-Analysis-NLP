@@ -52,13 +52,10 @@ public class ProjectRunner extends JFrame {
 		charts.add(readingLevel);
 		charts.add(zChartDensity);
 		charts.add(densityChart);
-		charts.add(pos);
-		charts.add(neg);
-		charts.add(neut);
 		
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 7,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 4,1, "chartsMatrix", BitmapFormat.JPG);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();

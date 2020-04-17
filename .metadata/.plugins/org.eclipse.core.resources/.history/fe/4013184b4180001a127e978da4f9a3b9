@@ -58,7 +58,7 @@ public class ProjectRunner extends JFrame {
 		
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 7,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 4,1, "chartsMatrix", BitmapFormat.JPG);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();

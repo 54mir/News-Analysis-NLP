@@ -28,11 +28,6 @@ public class ProjectRunner extends JFrame {
 	CategoryChart zChartDensity = bm.makeZChart("Density");
 	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
 	CategoryChart densityChart = bm.makeAvgsChart("Density");
-	
-	SentimentPieCharts pcm = new SentimentPieCharts();
-	PieChart pos = pcm.makeChart("pos");
-	PieChart neg = pcm.makeChart("neg");
-	PieChart neut = pcm.makeChart("neut");
 
 	ArrayList<Chart> charts = new ArrayList<>();
 
@@ -52,13 +47,10 @@ public class ProjectRunner extends JFrame {
 		charts.add(readingLevel);
 		charts.add(zChartDensity);
 		charts.add(densityChart);
-		charts.add(pos);
-		charts.add(neg);
-		charts.add(neut);
 		
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 7,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 4,1, "chartsMatrix", BitmapFormat.JPG);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();
