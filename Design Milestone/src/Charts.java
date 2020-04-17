@@ -12,7 +12,7 @@ import org.knowm.xchart.style.Theme;
 
 public interface Charts {
 	DataReader reader = new DataReader();
-    ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
+    ArrayList<Article> articles = reader.readArray("articleMetricsArray_hold.ser");
     ArrayList<String> sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
             "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
             "National Review", "Breitbart", "Vox"));
