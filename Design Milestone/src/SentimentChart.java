@@ -1,10 +1,12 @@
 import org.knowm.xchart.*;
-
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Makes charts that based on sentiment data
+ */
 public class SentimentChart implements Charts{
 
     /**
@@ -94,6 +96,11 @@ public class SentimentChart implements Charts{
 
     }
 
+    /**
+     * Helper method to normalize sentiment
+     * @param article Single article object
+     * @return array of values ordered [positive, neutral, negative]
+     */
     private static double[] getSentValues(Article article) {
         double[] sentVals = new double[4];
 
