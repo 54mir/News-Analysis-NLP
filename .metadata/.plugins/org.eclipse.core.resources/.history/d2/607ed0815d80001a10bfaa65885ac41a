@@ -37,8 +37,7 @@ public class ProjectRunner extends JFrame {
 	LengthDensityAndLevelCharts ldl = new LengthDensityAndLevelCharts();
 	
 	XYChart lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
-	XYChart lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
-	XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
+	
 	
 	
 	
@@ -65,13 +64,10 @@ public class ProjectRunner extends JFrame {
 		charts.add(pos);
 		charts.add(neg);
 		charts.add(neut);
-		charts.add(lengthDensity);
-		charts.add(lengthReadingLevel);
-		charts.add(readingLevelDensity);
 		
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 10,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 7,1, "chartsMatrix", BitmapFormat.JPG);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();
