@@ -103,10 +103,12 @@ public class ProjectRunner extends JFrame {
 	}
 	
 	
+
 	
 	
 
 	
+
 
 
 
@@ -115,7 +117,6 @@ public class ProjectRunner extends JFrame {
 		System.out.println("Running the Data Analysis... this make take a minute...");
 		ProjectRunner pr = new ProjectRunner();
 		System.out.println("Making a matrix of all of the charts to display..." );
-		System.out.println("Please wait one moment - the charts will pop up in a JSwing wndow shortly.");
 		pr.makeChartsMatrix();
 		pr.displayCharts();
 		

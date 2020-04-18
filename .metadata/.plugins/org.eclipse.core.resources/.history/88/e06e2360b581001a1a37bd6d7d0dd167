@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public abstract class CommonMethods implements Charts{
+public abstract class CommonMethods extends Charts{
     LocalDate firstDate, lastDate;
     ArrayList<String> sources;
     ArrayList<Article> articles;
 
-    
-
     public CommonMethods() {
-        articles = Charts.articles; 
-        firstDate = Charts.firstDate;                         // First date in sorted array
-        lastDate = Charts.lastDate;       // Last date in sorted array
-        sources = Charts.sources;
+        articles = readArray("articleMetricsArray_hold.ser");
+        firstDate = articles.get(0).getDate();                         // First date in sorted array
+        lastDate = articles.get(articles.size() - 1).getDate();        // Last date in sorted array
+        sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
+                "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
+                "National Review", "Breitbart", "Vox"));
     }
 
 

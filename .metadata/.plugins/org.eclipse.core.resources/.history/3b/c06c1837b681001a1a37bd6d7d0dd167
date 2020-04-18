@@ -14,10 +14,12 @@ public abstract class CommonMethods implements Charts{
     
 
     public CommonMethods() {
-        articles = Charts.articles; 
-        firstDate = Charts.firstDate;                         // First date in sorted array
-        lastDate = Charts.lastDate;       // Last date in sorted array
-        sources = Charts.sources;
+        articles = Charts.articles;
+        firstDate = articles.get(0).getDate();                         // First date in sorted array
+        lastDate = articles.get(articles.size() - 1).getDate();        // Last date in sorted array
+        sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
+                "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
+                "National Review", "Breitbart", "Vox"));
     }
 
 
