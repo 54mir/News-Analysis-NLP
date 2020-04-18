@@ -1,0 +1,18 @@
+Our project is a data analysis on 1400 news articles, which are sourced and evenly distributed across 14 news outlets. We use a combination of the StanforeCoreNLP package and our own homegrown code to get certain metrics for each article, store those metrics in an Article object, and create an ArrayList of those article objects – this list is our “corpus.” From our corpus, we create several charts exploring interesting relationships between the various metrics that we have. These charts are created and displayed in a simple JSwing window. Note that not all metrics are used in the charts – we’ve still included these for use in further development! 
+
+
+
+Abigail’s code: 
+
+-	the following article metrics in the Article Class
+o	lexical density 
+o	reading level 
+o	most words
+o	all of the NER-related metrics 
+
+-	The following Charts classes 
+o	Sentiment Pie Charts class
+o	Reading Level and Density Charts class
+o	Length/Density/Level Charts class
+
+-	The Project Runner Class 
