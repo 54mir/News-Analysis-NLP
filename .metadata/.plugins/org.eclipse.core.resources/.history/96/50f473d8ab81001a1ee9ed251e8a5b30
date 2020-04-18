@@ -1,0 +1,29 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class ArticleTest {
+	
+	DataReader reader = new DataReader();
+	ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
+	Article testArticle = articles.get(0);
+	
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@Test
+	void testDensityMethod() {
+		System.out.println(testArticle.getLexicalDensity());
+		//fail("Not yet implemented");
+	}
+
+}

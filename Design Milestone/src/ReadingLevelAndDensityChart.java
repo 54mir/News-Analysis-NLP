@@ -80,63 +80,69 @@ public class ReadingLevelAndDensityChart implements Charts {
 	}
 
 	/**
+	 * takes in a hashmap containing {average reading level, average density} by source
 	 * converts averages (on a source level) into z-scores (on a corpus level) for
 	 * reading level and lexical density for each source.
 	 * 
 	 * @param Zdata
 	 * @return Zdata
 	 */
-	public HashMap<String, Double[]> makeZs(HashMap<String, Double[]> Zdata) {
+	public HashMap<String, Double[]> makeZs(HashMap<String, Double[]> averagesMap) {
 
-		double readingAvg = 0;
-		double readingStDev = 0;
-		double densityAvg = 0;
-		double densityStDev = 0;
-		ArrayList<Double> reading = new ArrayList<>();
-		ArrayList<Double> density = new ArrayList<>();
+		double corpusReadingAvg = 0;
+		double corpusReadingStDev = 0;
+		double corpusDensityAvg = 0;
+		double corpusDensityStDev = 0;
+		//ArrayList<Double> reading = new ArrayList<>();
+		//ArrayList<Double> density = new ArrayList<>();
 
-		// populating
-		for (String source : Zdata.keySet()) {
-			Double[] levels = Zdata.get(source);
-			readingAvg += levels[0];
-			densityAvg += levels[1];
-			reading.add(levels[0]);
-			density.add(levels[1]);
+		//  sum the reading levels and densities for each source
+		for (String source : averagesMap.keySet()) {
+			Double[] levels = averagesMap.get(source);
+			corpusReadingAvg += levels[0];
+			corpusDensityAvg += levels[1];
+			
 		}
 
-		// compute the average for reading Level and density
-		readingAvg = readingAvg / 14;
-		densityAvg = densityAvg / 14;
+		// compute the average for reading Level and density by dividing by the total number of sources
+		corpusReadingAvg = corpusReadingAvg / 14;
+		corpusDensityAvg = corpusDensityAvg / 14;
 
-		// compute the standard deviation for reading Level and density
-		for (String source : Zdata.keySet()) {
-			Double[] levels = Zdata.get(source);
+		// compute the standard deviation for reading Level and density, for the corpus 
+		for (String source : averagesMap.keySet()) {
+			Double[] levels = averagesMap.get(source);
+			
+			//get the source average - overall average squared, and sum it up 
 			Double readingN = levels[0];
 			Double densityN = levels[1];
-			readingN = Math.pow((double) readingN - readingAvg, 2);
-			readingStDev += readingN;
-
-			densityN = Math.pow((double) densityN - densityAvg, 2);
-			densityStDev += densityN;
+			readingN = Math.pow((double) readingN - corpusReadingAvg, 2);
+			corpusReadingStDev += readingN;
+			densityN = Math.pow((double) densityN - corpusDensityAvg, 2);
+			corpusDensityStDev += densityN;
 
 		}
-
+		
+		//compute standard deviation by dividing by the number of sources and taking the square root
+		corpusReadingStDev = Math.sqrt(corpusReadingStDev /14);
+		corpusDensityStDev = Math.sqrt(corpusDensityStDev /14);
+		
+		
 		// compute the z-score for each source
-		for (String source : Zdata.keySet()) {
-			Double[] levels = Zdata.get(source);
+		for (String source : averagesMap.keySet()) {
+			Double[] levels = averagesMap.get(source);
 			Double readingN = levels[0];
 			Double densityN = levels[1];
-			Double readingZ = (double) ((readingN - readingAvg) / readingStDev);
-			Double densityZ = (double) ((densityN - densityAvg) / densityStDev);
+			Double readingZ = (double) ((readingN - corpusReadingAvg) / corpusReadingStDev);
+			Double densityZ = (double) ((densityN - corpusDensityAvg) / corpusDensityStDev);
 
 			levels[0] = readingZ;
 			levels[1] = densityZ;
 
-			Zdata.replace(source, levels);
+			averagesMap.replace(source, levels);
 
 		}
 
-		return Zdata;
+		return averagesMap;
 	}
 
 	/**
@@ -207,8 +213,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 
 		}
 		
-		chart.addInfoContent("Let's try adding content here");
-		chart.getInfoContent();
+		
 		
 		chart.getStyler().setXAxisLabelRotation(45);
 		return chart;
