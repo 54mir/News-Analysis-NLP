@@ -117,24 +117,23 @@ public class ProjectRunner extends JFrame {
 		
 		Scanner myScanner = new Scanner(System.in);
 		System.out.println("Hello! Before running the full data analysis, "
-				+ "would you like to try \ncreating a corpus based on a small sample "
-				+ "of the full dataset?");
-		System.out.println("If so, type Y. (This is NOT necessary - "
-				+ "we have already \ncreated and provided an ser on the full dataset. ");
+				+ "\nwould you like to try creating a corpus based on a small sample "
+				+ "\nof the full dataset?");
+		System.out.println("If so, type Y. This is NOT necessary - "
+				+ "\nwe have already created and provided an ser on the full dataset. ");
 		
 		String input = myScanner.nextLine().toString();
 		
 		if (input.contains("Y") || input.contains("y")) {
-			System.out.println("Okay! Creating an .ser with 70 fully annotated article objects using the default NOP logger.");
-			System.out.println("This will just take a few minutes.");
+			System.out.println("Okay! Creating an .ser with 5 articles from each source.");
+			System.out.println("THis will just take a few minutes.");
 			RawDocumentReader rdr = new RawDocumentReader("newsSourcesSAMPLED5.csv");
-			System.out.println("a test .ser has been created!");
 		}
 		
 		
 		
 		
-		System.out.println("Now running the full Data Analysis...");
+		System.out.println("Running the Data Analysis...");
 		ProjectRunner pr = new ProjectRunner();
 		System.out.println("Making a matrix of all of the charts to display..." );
 		System.out.println("Please wait one moment - the charts will pop up in a JSwing wndow shortly.");

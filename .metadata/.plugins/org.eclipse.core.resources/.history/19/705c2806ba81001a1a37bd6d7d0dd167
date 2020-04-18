@@ -8,7 +8,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
  * Reads in articles and outputs file with relevant metrics.
  */
 public class RawDocumentReader {
-    File fileToOpen;
+    File fileToOpen = new File("newsSourcesSAMPLED100.csv");
     File fileToWrite = new File ("articleMetricsArray.ser");
   
     String stopWordsPath = "stopWords.txt";
@@ -17,17 +17,13 @@ public class RawDocumentReader {
     Properties prop = new Properties();
     StanfordCoreNLP pipeline = new StanfordCoreNLP(property());
 
-    public RawDocumentReader(String FileName) {
-    	File rawFile = new File(FileName);
-    	this.fileToOpen = rawFile;
+    public RawDocumentReader() {
         constructFileArray(fileToOpen);
         constructMetrics();
 
     }
 
-  
-
-	/**
+    /**
      * Set properties for CoreNLP
      * @return used to build nlp pipeline
      */
@@ -154,7 +150,7 @@ public class RawDocumentReader {
     }
 
     public static void main(String[] args) {
-        RawDocumentReader rdr = new RawDocumentReader("newsSourcesSAMPLED100.csv");
+        RawDocumentReader rdr = new RawDocumentReader();
         
     }
 }
