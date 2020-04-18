@@ -45,7 +45,7 @@ public class ProjectRunner extends JFrame {
 		XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
 		
 		FrequencyCharts fc = new FrequencyCharts();
-		XYChart personfreq = fc.makeFrequencyChart();
+		XYChart frequency = fc.makeFrequencyChart();
 	
 	
 	ArrayList<Chart> charts = new ArrayList<>();
@@ -71,7 +71,7 @@ public class ProjectRunner extends JFrame {
 		charts.add(lengthDensity);
 		charts.add(lengthReadingLevel);
 		charts.add(readingLevelDensity);
-		charts.add(personfreq);
+		charts.add(frequency);
 		
 
 		try {
