@@ -1,16 +1,21 @@
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
@@ -24,27 +29,22 @@ public class ProjectRunner extends JFrame {
 
 	//Instance Variables
 	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
-	CategoryChart zChartReading = bm.makeZChart("Reading Level");
-	CategoryChart zChartDensity = bm.makeZChart("Density");
-	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
-	CategoryChart densityChart = bm.makeAvgsChart("Density");
+		CategoryChart zChartReading = bm.makeZChart("Reading Level");
+		CategoryChart zChartDensity = bm.makeZChart("Density");
+		CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
+		CategoryChart densityChart = bm.makeAvgsChart("Density");
 	
 	SentimentPieCharts pcm = new SentimentPieCharts();
-	PieChart pos = pcm.makeChart("pos");
-	PieChart neg = pcm.makeChart("neg");
-	PieChart neut = pcm.makeChart("neut");
+		PieChart pos = pcm.makeChart("pos");
+		PieChart neg = pcm.makeChart("neg");
+		PieChart neut = pcm.makeChart("neut");
 	
 	LengthDensityAndLevelCharts ldl = new LengthDensityAndLevelCharts();
-	
-	XYChart lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
-	XYChart lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
-	XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
-	
+		XYChart lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
+		XYChart lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
+		XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
 	
 	
-	
-
-
 	ArrayList<Chart> charts = new ArrayList<>();
 
 
@@ -86,10 +86,20 @@ public class ProjectRunner extends JFrame {
 	public void displayCharts() {
 		ImageIcon ii = new ImageIcon("chartsMatrix.jpg");
 		JScrollPane jsp = new JScrollPane(new JLabel(ii));
+		
+		
 		getContentPane().add(jsp);
-		setSize(300, 250);
+		
+		setSize(1300, 1000);
 		setVisible(true);
 	}
+	
+	
+
+	
+	
+
+	
 
 
 
@@ -99,6 +109,7 @@ public class ProjectRunner extends JFrame {
 		ProjectRunner pr = new ProjectRunner();
 		pr.makeChartsMatrix();
 		pr.displayCharts();
+		
 
 
 

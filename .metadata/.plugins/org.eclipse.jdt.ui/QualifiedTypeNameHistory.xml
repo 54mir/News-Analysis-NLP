@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="Charts"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.style.Theme"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.CategoryChart"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.CategoryChartBuilder"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler.LegendPosition"/>
@@ -26,4 +25,7 @@
     <fullyQualifiedTypeName name="org.knowm.xchart.BitmapEncoder"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.BitmapEncoder.BitmapFormat"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
 </qualifiedTypeNameHistroy>

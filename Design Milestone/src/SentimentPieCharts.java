@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.knowm.xchart.*;
@@ -49,7 +50,8 @@ public class SentimentPieCharts implements Charts {
 			Integer[] counts = sentChartData.get(source);
 			counts[0] += negSent;
 			counts[1] += neutSent;
-			counts[2] += posSent;
+			counts[2] += posSent ;
+			
 			sentChartData.replace(source, counts);
 		}
 		
@@ -71,7 +73,9 @@ public class SentimentPieCharts implements Charts {
 	public PieChart makeChart( String sentiment) {
 		PieChart chart = new PieChartBuilder().width(1000).height(600).title("Sentiment Chart").theme(ChartTheme.GGPlot2).build();
 	
-		
+		Color[] sliceColors = new Color[] { new Color(139,0,0), new Color(255,99,71), new Color(255,165,0), new Color(255,215,0), new Color(154,205,50), new Color(34,139,34), new Color(0,255,127)
+				,new Color(32,178,170), new Color	(47,79,79), new Color(100,149,237), new Color(25,25,112), new Color(138,43,226), new Color(221,160,221), new Color(255,192,203)};
+	    chart.getStyler().setSeriesColors(sliceColors);
 		
 		Integer sentAmount = 0;
 		for (String source : sentChartData.keySet()) {
@@ -79,24 +83,27 @@ public class SentimentPieCharts implements Charts {
 			
 			if (sentiment.contains("pos")) {
 				sentAmount= sents[2];	
-				chart.setTitle("Percent of Positive Sentiment that each Source Contributes to the Corpus");
+				chart.setTitle("Percent of Positive Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neut")){
 				sentAmount= sents[1];
-				chart.setTitle("Percent of Neutral Sentiment that each Source Contributes to the Corpus");
+				chart.setTitle("Percent of Neutral Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neg")){
 				
 				sentAmount= sents[0];
-				chart.setTitle("Percent of Negative Sentiment that each Source Contributes to the Corpus");
+				chart.setTitle("Percent of Negative Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			chart.addSeries(source, sentAmount);
 
 		}
-
+		
+		
+		
+		
 		//new SwingWrapper<PieChart>(chart).displayChart();
 		return chart;
 		

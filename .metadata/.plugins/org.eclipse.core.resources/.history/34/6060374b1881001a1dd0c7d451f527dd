@@ -1,0 +1,115 @@
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
+
+import org.knowm.xchart.*;
+import org.knowm.xchart.BitmapEncoder.BitmapFormat;
+import org.knowm.xchart.internal.chartpart.Chart;
+
+
+/*
+ * In this class, we will run the project. 
+ */
+public class ProjectRunner extends JFrame {
+
+	//Instance Variables
+	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
+	CategoryChart zChartReading = bm.makeZChart("Reading Level");
+	CategoryChart zChartDensity = bm.makeZChart("Density");
+	CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
+	CategoryChart densityChart = bm.makeAvgsChart("Density");
+	
+	SentimentPieCharts pcm = new SentimentPieCharts();
+	PieChart pos = pcm.makeChart("pos");
+	PieChart neg = pcm.makeChart("neg");
+	PieChart neut = pcm.makeChart("neut");
+	
+	LengthDensityAndLevelCharts ldl = new LengthDensityAndLevelCharts();
+	
+	XYChart lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
+	XYChart lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
+	XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
+	
+	
+	
+	
+
+
+	ArrayList<Chart> charts = new ArrayList<>();
+
+
+
+	public ProjectRunner() {
+
+	}
+
+	/**
+	 * saves a matrix of the charts to a jpeg
+	 */
+	public void makeChartsMatrix() {
+
+		charts.add(zChartReading);
+		charts.add(readingLevel);
+		charts.add(zChartDensity);
+		charts.add(densityChart);
+		charts.add(pos);
+		charts.add(neg);
+		charts.add(neut);
+		charts.add(lengthDensity);
+		charts.add(lengthReadingLevel);
+		charts.add(readingLevelDensity);
+		
+
+		try {
+			BitmapEncoder.saveBitmap(charts, 10,1, "chartsMatrix", BitmapFormat.JPG);
+		} catch (IOException e) {
+			System.out.println("Error message here");
+			e.printStackTrace();
+		}
+
+	}
+
+
+	/**
+	 * displays that jpeg to a scrollable swing panel
+	 */
+	public void displayCharts() {
+		ImageIcon ii = new ImageIcon("chartsMatrix.jpg");
+		JScrollPane jsp = new JScrollPane(new JLabel(ii));ii
+		getContentPane().add(jsp);
+		setSize(1200, 1000);
+		setVisible(true);
+	}
+	
+	
+
+	
+
+
+
+
+
+	public static void main(String[] args) {
+		ProjectRunner pr = new ProjectRunner();
+		pr.makeChartsMatrix();
+		pr.displayCharts();
+		
+
+
+
+
+	}
+
+}

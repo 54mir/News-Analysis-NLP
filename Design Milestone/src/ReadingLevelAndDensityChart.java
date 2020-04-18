@@ -147,7 +147,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 	public CategoryChart makeZChart(String zType) {
 
 		// Create Chart
-		CategoryChart chart = new CategoryChartBuilder().width(2000).height(600)
+		CategoryChart chart = new CategoryChartBuilder().width(1000).height(600)
 				.title( zType + " Z-Scores by Source").xAxisTitle("Source")
 				.yAxisTitle("Z-Score").theme(ChartTheme.GGPlot2).build();
 
@@ -175,15 +175,15 @@ public class ReadingLevelAndDensityChart implements Charts {
 		}
 		
 		
-
+		chart.getStyler().setXAxisLabelRotation(45);
 		return chart;
 	}
 
 	public CategoryChart makeAvgsChart(String avgType) {
 		// Create Chart
-		CategoryChart chart = new CategoryChartBuilder().width(2000).height(600).title(avgType + " by Source")
+		CategoryChart chart = new CategoryChartBuilder().width(1000).height(600).title(avgType + " by Source")
 				.xAxisTitle("Source").yAxisTitle("Level").theme(ChartTheme.GGPlot2).build();
-
+		
 		// Series
 		String[] xseries = LevelsBySource.keySet().toArray(new String[0]);
 		ArrayList<Double> y1 = new ArrayList<>();
@@ -206,7 +206,11 @@ public class ReadingLevelAndDensityChart implements Charts {
 			chart.addSeries("reading level", new ArrayList<String>(Arrays.asList(xseries)), y1);
 
 		}
-
+		
+		chart.addInfoContent("Let's try adding content here");
+		chart.getInfoContent();
+		
+		chart.getStyler().setXAxisLabelRotation(45);
 		return chart;
 
 	}

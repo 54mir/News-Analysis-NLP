@@ -71,10 +71,10 @@ public HashMap<String, ArrayList<Double[]>> populateData(){
 
 public XYChart makeReadingandLengthChart( int x, int y, String xaxis, String yaxis) { 
 	
-	XYChart chart = new XYChartBuilder().width(800).height(600).title( xaxis + "by" + yaxis ).xAxisTitle(xaxis).yAxisTitle(yaxis).build();
+	XYChart chart = new XYChartBuilder().width(800).height(600).title( xaxis + " by " + yaxis ).xAxisTitle(xaxis).yAxisTitle(yaxis).build();
     chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
     
-    //it doesn't make sense to plot reading levels on a logarithmic scale, so we wont
+    //it doesn't make sense to plot reading levels on a logarithmic scale, because they fall into a pretty small range, so we wont
     if(!xaxis.contains("Reading Level")) {
     chart.getStyler().setXAxisLogarithmic(true);
     }

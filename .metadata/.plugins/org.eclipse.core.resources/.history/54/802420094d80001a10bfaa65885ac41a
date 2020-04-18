@@ -1,7 +1,0 @@
-
-public class ReadingLevelByLengthChart implements Charts{
-	
-HashMap<Integer, Double> dataPairs = new HashMap<I>();
-	
-	
-}

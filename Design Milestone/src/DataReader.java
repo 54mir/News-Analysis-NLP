@@ -1,9 +1,13 @@
+/**
+ * This class creates an arrayList of article objects for all articles in the dataset
+ */
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 class DataReader {
-    //Abigail, this is the method you'll want to copy.
+    
     public ArrayList<Article> readArray(String arrayFileName){
         ArrayList<Article> data = new ArrayList<>();
         try{
@@ -23,34 +27,34 @@ class DataReader {
 
     }
 
-    public static void main(String[] args) {
-        DataReader reader = new DataReader();
-
-        ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
-        int idx = 200;
-        System.out.println(articles.get(idx).getSource());
-        System.out.println(articles.get(idx).getWordCount());
-        System.out.println(articles.get(idx).getSentenceCount());
-        System.out.println(articles.get(idx).getCharacterCount());
-        System.out.println(articles.get(idx).getVerbCount());
-        System.out.println(articles.get(idx).getPositiveCount());
-        System.out.println(articles.get(idx).getNeutralCount());
-        System.out.println(articles.get(idx).getNegativeCount());
-        System.out.println(articles.get(idx).getReadingLevel());
-        System.out.println(articles.get(idx).getTopTitle());
-        System.out.println(articles.get(idx).getTopCountry());
-        System.out.println(articles.get(idx).getTopLocality());
-        System.out.println(articles.get(idx).getTopPerson());
-        ArrayList<String> topWords = new ArrayList<>();
-        topWords = articles.get(idx).getMostWords();
-        for (String word : topWords) {
-        	System.out.println(word);
-        }
-       
-
-
-
-    }
+//    public static void main(String[] args) {
+//        DataReader reader = new DataReader();
+//
+//        ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
+//        int idx = 200;
+//        System.out.println(articles.get(idx).getSource());
+//        System.out.println(articles.get(idx).getWordCount());
+//        System.out.println(articles.get(idx).getSentenceCount());
+//        System.out.println(articles.get(idx).getCharacterCount());
+//        System.out.println(articles.get(idx).getVerbCount());
+//        System.out.println(articles.get(idx).getPositiveCount());
+//        System.out.println(articles.get(idx).getNeutralCount());
+//        System.out.println(articles.get(idx).getNegativeCount());
+//        System.out.println(articles.get(idx).getReadingLevel());
+//        System.out.println(articles.get(idx).getTopTitle());
+//        System.out.println(articles.get(idx).getTopCountry());
+//        System.out.println(articles.get(idx).getTopLocality());
+//        System.out.println(articles.get(idx).getTopPerson());
+//        ArrayList<String> topWords = new ArrayList<>();
+//        topWords = articles.get(idx).getMostWords();
+//        for (String word : topWords) {
+//        	System.out.println(word);
+//        }
+//       
+//
+//
+//
+//    }
 
 
 
