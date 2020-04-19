@@ -64,20 +64,18 @@ public class ProjectRunner extends JFrame {
 	 * saves a matrix of the charts to a jpeg
 	 */
 	public void makeChartsMatrix() {
-		charts.add(readingLevel);
+
 		charts.add(zChartReading);
-		charts.add(densityChart);
+		charts.add(readingLevel);
 		charts.add(zChartDensity);
-		
+		charts.add(densityChart);
 		charts.add(sentsource);
 		charts.add(pos);
 		charts.add(neg);
 		charts.add(neut);
-		
 		charts.add(lengthDensity);
 		charts.add(lengthReadingLevel);
 		charts.add(readingLevelDensity);
-		
 		charts.add(personfreq);
 		
 
@@ -136,10 +134,10 @@ public class ProjectRunner extends JFrame {
 		
 		
 		
-		System.out.println("Running the full data analysis... ");
+		System.out.println("Now running the full Data Analysis...");
 		ProjectRunner pr = new ProjectRunner();
 		System.out.println("Making a matrix of all of the charts to display..." );
-		System.out.println("Please wait one moment - the charts will pop up in a JSwing window shortly.");
+		System.out.println("Please wait one moment - the charts will pop up in a JSwing wndow shortly.");
 		pr.makeChartsMatrix();
 		pr.displayCharts();
 		

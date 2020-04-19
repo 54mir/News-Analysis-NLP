@@ -64,20 +64,18 @@ public class ProjectRunner extends JFrame {
 	 * saves a matrix of the charts to a jpeg
 	 */
 	public void makeChartsMatrix() {
-		charts.add(readingLevel);
+
 		charts.add(zChartReading);
-		charts.add(densityChart);
+		charts.add(readingLevel);
 		charts.add(zChartDensity);
-		
+		charts.add(densityChart);
 		charts.add(sentsource);
 		charts.add(pos);
 		charts.add(neg);
 		charts.add(neut);
-		
 		charts.add(lengthDensity);
 		charts.add(lengthReadingLevel);
 		charts.add(readingLevelDensity);
-		
 		charts.add(personfreq);
 		
 
