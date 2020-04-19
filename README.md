@@ -14,6 +14,8 @@
 <ul>
 <li><em>Charts 1-4:</em>&nbsp;These charts display the average reading level and average lexical density for each news source in the corpus, as well as the z-scores for these averages. The goal of these charts was to give the user a sense of which sources might be written at a higher level, and which sources migth contain more information (ie: have a higher "lexical density" score.) We also chose to plot the z-scores of each of these etrics to give the user a sense of how much variance there was in these two metrics, across the different sources in the corpus. Ie - which sources really stand out in terms of being extra-dense or extra-hard, or alternatively,&nbsp; extra-fluffy or extra-easy.&nbsp;</li>
 <li><em>Chart 5:</em> This chart displays, for each news source, what percent of the sentiment n articles from that source is negative, positive, or neutral. This graph, perhaps unsuprisingly, shows us that across the board for all sources, reporting tends to err on the side of negative sentiment.</li>
-<li>Charts 6, 7, and 8: In creating these charts, we took the sums for each type of sentiment for every article in the corpus, and looked at what percent each source contributed to the total sum. These charts show us that...</li>
+<li><em>Charts 6, 7, and 8:</em> In creating these charts, we took the normalized sums for each type of sentiment for every article in the corpus, and looked at what percent each source contributed to the total amont of each sentiment type. These charts show us that, for example, the Ney York Post contributes much more positive sentiment to our corpus that does, say, Reuters. Overall, however, it does seem that no sources really stick out as contributing an incredibly disproportionate amount of positive, negative, or neutral sentiment.</li>
+<li><em>Charts 9, 10, and 11:</em></li>
+<li><em>Chart 12:</em></li>
 </ul>
 <p>&nbsp;</p>
