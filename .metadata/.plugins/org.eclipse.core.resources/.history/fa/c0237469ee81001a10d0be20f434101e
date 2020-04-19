@@ -87,27 +87,27 @@ public class SentimentPieCharts implements Charts {
 		for (String source : sentChartData.keySet()) {
 			Integer[] sents = sentChartData.get(source);
 			double totalSents = sents[3];
-			double pos = (double) sents[2];
-			double neut = (double) sents[1];
-			double neg = (double) sents[0];
+			double posNormalized = (double) sents[2] / sents[3];
+			double neutNormalized = (double) sents[1] / sents[3];
+			double negNormalized = (double) sents[0]/ sents[3];
 			
 			
-			double sentTotal = pos + neut + neg;
-		
+			double sentTotal = posNormalized + neutNormalized + negNormalized;
+			System.out.println(sentTotal + " is the same as " + totalSents);
 			
 			if (sentiment.contains("pos")) {
-				sentAmount=  (double) pos / sentTotal;	
+				sentAmount=  (double) sents[2] / sents[3];	
 				chart.setTitle("Percent of Positive Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neut")){
-				sentAmount= (double) neut / sentTotal;
+				sentAmount= (double) sents[1] / sents[3];
 				chart.setTitle("Percent of Neutral Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neg")){
 				
-				sentAmount= (double) neg / sentTotal;
+				sentAmount= (double) sents[0]/ sents[3];
 				chart.setTitle("Percent of Negative Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
@@ -117,11 +117,7 @@ public class SentimentPieCharts implements Charts {
 		
 		
 		
-		
-		chart.getStyler().setChartPadding(3);
-		chart.getStyler().setHasAnnotations(true);
-		chart.getStyler().setAnnotationDistance(1.08);
-		chart.getStyler().setAnnotationsRotation(45);
+		chart.getStyler().setHasAnnotations(false);
 		//new SwingWrapper<PieChart>(chart).displayChart();
 		return chart;
 		

@@ -4,7 +4,6 @@
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="edu.stanford.nlp.pipeline.CoreEntityMention"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
-    <fullyQualifiedTypeName name="Charts"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.style.Theme"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler"/>
     <fullyQualifiedTypeName name="org.knowm.xchart.CategoryChart"/>
@@ -29,4 +28,6 @@
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="Charts"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

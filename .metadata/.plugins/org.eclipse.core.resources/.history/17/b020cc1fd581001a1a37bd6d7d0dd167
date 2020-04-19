@@ -120,7 +120,7 @@ public class ProjectRunner extends JFrame {
 				+ "would you like to try \ncreating a corpus based on a small sample "
 				+ "of the full dataset?");
 		System.out.println("If so, type Y. (This is NOT necessary - "
-				+ "we have already \ncreated and provided an ser for the full dataset.) ");
+				+ "we have already \ncreated and provided an ser on the full dataset. ");
 		
 		String input = myScanner.nextLine().toString();
 		

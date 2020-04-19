@@ -118,10 +118,9 @@ public class SentimentPieCharts implements Charts {
 		
 		
 		
-		chart.getStyler().setChartPadding(3);
+		chart.getStyler().setChartPadding(2);
 		chart.getStyler().setHasAnnotations(true);
 		chart.getStyler().setAnnotationDistance(1.08);
-		chart.getStyler().setAnnotationsRotation(45);
 		//new SwingWrapper<PieChart>(chart).displayChart();
 		return chart;
 		

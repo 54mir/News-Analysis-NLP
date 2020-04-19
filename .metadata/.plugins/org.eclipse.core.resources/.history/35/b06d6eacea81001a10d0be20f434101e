@@ -16,11 +16,8 @@ import org.knowm.xchart.VectorGraphicsEncoder;
  */
 public class SentimentPieCharts implements Charts {
 
-	/**
-	 * hashmap where each source is mapps to an array with counts
-	 *  for the negative, neutral, and positive sentiment counts, 
-	 *  as well as the total sum of sentiment count 
-	 */
+	//DTMNormalizer dtm;
+	//ArrayList<String[]> DTMdata;
 	HashMap<String, Integer[]> sentChartData = new HashMap<>();
 	
 
@@ -37,7 +34,8 @@ public class SentimentPieCharts implements Charts {
 
 
 	/*
-	 * populates sentchartdata
+	 * Simplifies the ser file into an array with the data needed for just this chart.
+	 * This array can be used to investigate sentiment by source.
 	 */
 	public HashMap<String, Integer[]> extractSentSourceData() {
 		
@@ -47,28 +45,24 @@ public class SentimentPieCharts implements Charts {
 		int posSent = article.getPositiveCount();
 		int negSent = article.getNegativeCount();
 		int neutSent = article.getNeutralCount();
-		int totalSent = posSent + negSent + neutSent;
 		
 		if (sentChartData.containsKey(source)) {
 			Integer[] counts = sentChartData.get(source);
 			counts[0] += negSent;
 			counts[1] += neutSent;
 			counts[2] += posSent ;
-			totalSent += totalSent;
 			
 			sentChartData.replace(source, counts);
 		}
 		
 		else {
-			Integer[] counts = {negSent, neutSent, posSent, totalSent};
+			Integer[] counts = {negSent, neutSent, posSent};
 			sentChartData.put(source, counts);
 			
 		}
 		
 
 		}
-	 
-	 
 		return sentChartData;
 	}
 
@@ -76,38 +70,30 @@ public class SentimentPieCharts implements Charts {
 	 * makes a chart showing the percent of positive sentiment that each source
 	 * contributes to the corpus.
 	 */
-	public PieChart makeChart(String sentiment) {
+	public PieChart makeChart( String sentiment) {
 		PieChart chart = new PieChartBuilder().width(1000).height(600).title("Sentiment Chart").theme(ChartTheme.GGPlot2).build();
 	
 		Color[] sliceColors = new Color[] { new Color(139,0,0), new Color(255,99,71), new Color(255,165,0), new Color(255,215,0), new Color(154,205,50), new Color(34,139,34), new Color(0,255,127)
 				,new Color(32,178,170), new Color	(47,79,79), new Color(100,149,237), new Color(25,25,112), new Color(138,43,226), new Color(221,160,221), new Color(255,192,203)};
 	    chart.getStyler().setSeriesColors(sliceColors);
 		
-		Double sentAmount = 0.0;
+		Integer sentAmount = 0;
 		for (String source : sentChartData.keySet()) {
 			Integer[] sents = sentChartData.get(source);
-			double totalSents = sents[3];
-			double pos = (double) sents[2];
-			double neut = (double) sents[1];
-			double neg = (double) sents[0];
-			
-			
-			double sentTotal = pos + neut + neg;
-		
 			
 			if (sentiment.contains("pos")) {
-				sentAmount=  (double) pos / sentTotal;	
+				sentAmount= sents[2];	
 				chart.setTitle("Percent of Positive Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neut")){
-				sentAmount= (double) neut / sentTotal;
+				sentAmount= sents[1];
 				chart.setTitle("Percent of Neutral Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
 			if(sentiment.contains("neg")){
 				
-				sentAmount= (double) neg / sentTotal;
+				sentAmount= sents[0];
 				chart.setTitle("Percent of Negative Sentiment that each Source Contributes to the Corpus as a Whole");
 			}
 			
@@ -118,10 +104,6 @@ public class SentimentPieCharts implements Charts {
 		
 		
 		
-		chart.getStyler().setChartPadding(3);
-		chart.getStyler().setHasAnnotations(true);
-		chart.getStyler().setAnnotationDistance(1.08);
-		chart.getStyler().setAnnotationsRotation(45);
 		//new SwingWrapper<PieChart>(chart).displayChart();
 		return chart;
 		
@@ -130,9 +112,9 @@ public class SentimentPieCharts implements Charts {
 
 	
 	public static void main(String[] args) {
-		SentimentPieCharts gm = new SentimentPieCharts();
-		HashMap<String, Integer[]> series = gm.extractSentSourceData();
-		gm.makeChart("pos");
+		//PieChartMaker gm = new PieChartMaker();
+		//HashMap<String, Integer[]> series = gm.extractSentSourceData();
+		//gm.makeChart("pos");
 
 	}
 
