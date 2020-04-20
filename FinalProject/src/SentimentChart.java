@@ -22,7 +22,7 @@ public class SentimentChart extends CommonMethods{
         Date date = null;
         Float positiveValue, neutralValue, negativeValue;
 
-        if (!super.sources.contains(source)) {
+        if (!super.getSources().contains(source)) {
             System.out.println("Source does not exist in dataset");
             XYChart chart = new XYChartBuilder().width(500).height(200).title("Source does not exist in dataset").xAxisTitle("X").yAxisTitle("Y").build();
             return chart;

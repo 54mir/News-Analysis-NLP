@@ -6,18 +6,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public abstract class CommonMethods implements Charts{
-    LocalDate firstDate, lastDate;
-    ArrayList<String> sources;
-    ArrayList<Article> articles;
+/**
+ * Provides common fields and functionality to classes that create charts.
+ */
+public abstract class CommonMethods {
+    private LocalDate firstDate;
+    private LocalDate lastDate;
+    private ArrayList<String> sources;
+    private ArrayList<Article> articles;
 
-    
 
+    /**
+     * Constructor: Initializes common fields
+     */
     public CommonMethods() {
-        articles = Charts.articles; 
-        firstDate = Charts.firstDate;                         // First date in sorted array
-        lastDate = Charts.lastDate;       // Last date in sorted array
-        sources = Charts.sources;
+        articles = readArray("articleMetricsArray_hold.ser");
+        firstDate = articles.get(0).getDate();                        // First date in sorted array
+        lastDate = articles.get(articles.size() - 1).getDate();       // Last date in sorted array
+        sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
+                "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
+                "National Review", "Breitbart", "Vox"));
     }
 
 
@@ -31,7 +39,12 @@ public abstract class CommonMethods implements Charts{
         return date;
     }
 
-    public ArrayList<Article> readArray(String arrayFileName){
+    /**
+     * Reads in ArrayList from disk into memory
+     * @param arrayFileName path of SER file
+     * @return ArrayList
+     */
+    private ArrayList<Article> readArray(String arrayFileName){
         ArrayList<Article> data = new ArrayList<>();
         try{
             FileInputStream readData = new FileInputStream(arrayFileName);
@@ -51,5 +64,20 @@ public abstract class CommonMethods implements Charts{
     }
 
 
+    //Getters
+    public LocalDate getFirstDate() {
+        return firstDate;
+    }
 
+    public LocalDate getLastDate() {
+        return lastDate;
+    }
+
+    public ArrayList<String> getSources() {
+        return sources;
+    }
+
+    public ArrayList<Article> getArticles() {
+        return articles;
+    }
 }

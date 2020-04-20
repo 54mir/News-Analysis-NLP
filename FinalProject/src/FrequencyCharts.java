@@ -4,7 +4,6 @@ import org.knowm.xchart.XYChartBuilder;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class FrequencyCharts extends CommonMethods{
@@ -12,8 +11,8 @@ public class FrequencyCharts extends CommonMethods{
     public XYChart makeFrequencyChart(){
         ArrayList<Date> dateSeries = new ArrayList<Date>();
         ArrayList<Integer> personSeries = new ArrayList<>();
-        int years = Period.between(super.firstDate, super.lastDate).getYears();
-        int months = Period.between(super.firstDate, super.lastDate).getMonths();
+        int years = Period.between(super.getFirstDate(), super.getLastDate()).getYears();
+        int months = Period.between(super.getFirstDate(), super.getLastDate()).getMonths();
         int span = years * 12 + months + 1;
         HashMap<String, int[]> personMentions = new HashMap<>();
 
@@ -21,7 +20,7 @@ public class FrequencyCharts extends CommonMethods{
         int atLeastXTimes = 5;
         HashMap<String, Integer> mostMentioned = new HashMap<>();
         HashMap<String, Integer> shortList = new HashMap<>();
-        for (Article article : super.articles) {
+        for (Article article : super.getArticles()) {
 //        Consumer<String> = article.getTopPerson();
             if (article.getTopPerson() != null && mostMentioned.containsKey(article.getTopPerson())){
                 Integer x = mostMentioned.get(article.getTopPerson()) + 1;
@@ -37,9 +36,9 @@ public class FrequencyCharts extends CommonMethods{
         }
 
         int counter = 0;
-        for (LocalDate date = super.firstDate; date.isBefore(super.lastDate); date = date.plusMonths(1)) {
+        for (LocalDate date = super.getFirstDate(); date.isBefore(super.getLastDate()); date = date.plusMonths(1)) {
             dateSeries.add(super.convertDate(date));
-            for (Article article : super.articles) {
+            for (Article article : super.getArticles()) {
                 if (article.getDate().equals(date) || (article.getDate().isAfter(date) && article.getDate().isBefore(date.plusMonths(1)))){
 
                     if (article.getTopPerson() != null  && shortList.containsKey(article.getTopPerson())) {
