@@ -10,7 +10,10 @@ class ArticleTest extends Chart {
 
 	ArrayList<Article> articles = super.getArticles();
 	Article testArticle = articles.get(0);
-	
+	Article testArticle2 = articles.get(1);
+	Article testArticle3 = articles.get(500);
+	Article testArticle4 = articles.get(5);
+
 	@BeforeEach
 	void setUp() throws Exception {
 	}
@@ -71,9 +74,42 @@ class ArticleTest extends Chart {
 		System.out.println(topWord);
 		assertEquals("yet", topWord);
 	}
-	
-	
-	
+
+
+	@Test
+	void testSentenceCountMethod() {
+		int sentenceCount = testArticle.getSentenceCount();
+		System.out.println(testArticle3.getTopPerson());
+		assertEquals(32, sentenceCount, 5);
+	}
+
+	@Test
+	void testTopPersonMethod() {
+		String topPerson = testArticle3.getTopPerson();
+		assertEquals("ben wallace", topPerson);
+	}
+
+	@Test
+	void testCompareToMethod() {
+		assertEquals(-1, testArticle.compareTo(testArticle2));
+	}
+
+	//Top Country tests CoreNLP's ability to detect the country most mentioned in an article. It does not
+	//do a great job. We did not use it in any of our charts.
+	@Test
+	void testTopCountry() {
+		assertEquals("france", testArticle2.getTopCountry());
+	}
+
+	@Test
+	void testTopCountry2() {
+		assertEquals("britain", testArticle3.getTopCountry());
+	}
+
+	@Test
+	void testTopCountry3() {
+		assertEquals("brazil", testArticle4.getTopCountry());
+	}
 	
 	
 	
