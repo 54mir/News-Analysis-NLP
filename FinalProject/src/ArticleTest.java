@@ -6,10 +6,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ArticleTest {
-	
-	DataReader reader = new DataReader();
-	ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
+class ArticleTest extends Chart {
+
+	ArrayList<Article> articles = super.getArticles();
 	Article testArticle = articles.get(0);
 	
 	@BeforeEach
@@ -22,8 +21,8 @@ class ArticleTest {
 
 	
 	/**
-	 * these methods are a bit hard to test. It might appear that we are testing the getter,
-	 * but the variables that these getters get are created by other methods within the article class. 
+	 * these methods are a bit hard to test. It might appear that we are testing the getter (which are public), but the
+	 * variables that these getters get are created by other private methods within the article class.
 	 * Really, we are testing these methods, not the getters. Calling the getters in this way is 
 	 * just the easiest way to extract the variable as our methods create it, which we can then cross-check 
 	 * by looking at the actual article.
