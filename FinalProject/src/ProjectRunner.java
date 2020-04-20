@@ -82,7 +82,7 @@ public class ProjectRunner extends JFrame {
 		
 
 		try {
-			BitmapEncoder.saveBitmap(charts, 12,1, "chartsMatrix", BitmapFormat.JPG);
+			BitmapEncoder.saveBitmap(charts, 12,1, "chartsMatrix", BitmapFormat.GIF);
 		} catch (IOException e) {
 			System.out.println("Error message here");
 			e.printStackTrace();
@@ -95,13 +95,14 @@ public class ProjectRunner extends JFrame {
 	 * displays that jpeg to a scrollable swing panel
 	 */
 	public void displayCharts() {
-		ImageIcon ii = new ImageIcon("chartsMatrix.jpg");
+		ImageIcon ii = new ImageIcon("chartsMatrix.gif");
 		JScrollPane jsp = new JScrollPane(new JLabel(ii));
 		
 		
 		getContentPane().add(jsp);
 		
 		setSize(1300, 1000);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
