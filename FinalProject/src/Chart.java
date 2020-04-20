@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Provides common fields and functionality to classes that create charts.
  */
-public abstract class CommonMethods {
+public abstract class Chart {
     private LocalDate firstDate;
     private LocalDate lastDate;
     private ArrayList<String> sources;
@@ -19,13 +19,30 @@ public abstract class CommonMethods {
     /**
      * Constructor: Initializes common fields
      */
-    public CommonMethods() {
+    public Chart() {
         articles = readArray("articleMetricsArray_hold.ser");
         firstDate = articles.get(0).getDate();                        // First date in sorted array
         lastDate = articles.get(articles.size() - 1).getDate();       // Last date in sorted array
         sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
                 "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
                 "National Review", "Breitbart", "Vox"));
+    }
+
+    /**
+     * Helper method to normalize sentiment
+     * @param article Single article object
+     * @return array of values ordered [positive, neutral, negative]
+     */
+    public double[] getSentValues(Article article) {
+        double[] sentVals = new double[4];
+
+        sentVals[0] = (double) article.getPositiveCount() / article.getSentenceCount();
+        sentVals[1] = (double) article.getNeutralCount() / article.getSentenceCount();
+        sentVals[2] = (double) article.getNegativeCount() / article.getSentenceCount();
+        sentVals[3] = 1;
+
+        return sentVals;
+
     }
 
 

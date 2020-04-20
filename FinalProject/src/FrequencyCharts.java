@@ -6,7 +6,7 @@ import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FrequencyCharts extends CommonMethods{
+public class FrequencyCharts extends Chart {
 
     public XYChart makeFrequencyChart(){
         ArrayList<Date> dateSeries = new ArrayList<Date>();

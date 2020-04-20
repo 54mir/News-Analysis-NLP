@@ -57,6 +57,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           <version>4.12</version>
           <scope>compile</scope>
       </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+          <version>5.4.2</version>
+          <scope>compile</scope>
+      </dependency>
 
   </dependencies>
         

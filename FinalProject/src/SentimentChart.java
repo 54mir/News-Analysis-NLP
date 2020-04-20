@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Makes charts that based on sentiment data
  */
-public class SentimentChart extends CommonMethods{
+public class SentimentChart extends Chart {
 
     /**
      * Creates a Scanner Plot of Sentiment over Time of a given news sources
@@ -93,23 +93,6 @@ public class SentimentChart extends CommonMethods{
         chart.addSeries("Negative", sourcesSeries, negativeSeries);
 
         return chart;
-
-    }
-
-    /**
-     * Helper method to normalize sentiment
-     * @param article Single article object
-     * @return array of values ordered [positive, neutral, negative]
-     */
-    private static double[] getSentValues(Article article) {
-        double[] sentVals = new double[4];
-
-        sentVals[0] = (double) article.getPositiveCount() / article.getSentenceCount();
-        sentVals[1] = (double) article.getNeutralCount() / article.getSentenceCount();
-        sentVals[2] = (double) article.getNegativeCount() / article.getSentenceCount();
-        sentVals[3] = 1;
-
-        return sentVals;
 
     }
 
