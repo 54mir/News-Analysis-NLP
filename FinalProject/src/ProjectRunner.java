@@ -103,6 +103,7 @@ public class ProjectRunner extends JFrame {
 		
 		setSize(1300, 1000);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 	
