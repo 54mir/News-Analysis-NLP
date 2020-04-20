@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Provides common fields and functionality to classes that create charts.
@@ -26,6 +27,16 @@ public abstract class Chart {
         sources = new ArrayList<String>(Arrays.asList("Washington Post", "Guardian", "Buzzfeed",
                 "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
                 "National Review", "Breitbart", "Vox"));
+    }
+
+    public HashMap createShortList(int atLeastXTimes, HashMap<String, Integer> mostMentioned) {
+        HashMap<String, Integer> shortList = new HashMap<>();
+        for (String key : mostMentioned.keySet()) {
+            if (mostMentioned.get(key) >= atLeastXTimes){
+                shortList.put(key, mostMentioned.get(key));
+            }
+        }
+        return shortList;
     }
 
     /**

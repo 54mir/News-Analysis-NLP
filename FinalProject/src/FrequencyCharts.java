@@ -16,24 +16,21 @@ public class FrequencyCharts extends Chart {
         int span = years * 12 + months + 1;
         HashMap<String, int[]> personMentions = new HashMap<>();
 
-        //List of only people mentioned at least X number of times in data set
-        int atLeastXTimes = 5;
-        HashMap<String, Integer> mostMentioned = new HashMap<>();
-        HashMap<String, Integer> shortList = new HashMap<>();
+        //List of people and the number of times they were the main topic of an article in data set.
+        HashMap<String, Integer> mentions = new HashMap<>();
         for (Article article : super.getArticles()) {
-//        Consumer<String> = article.getTopPerson();
-            if (article.getTopPerson() != null && mostMentioned.containsKey(article.getTopPerson())){
-                Integer x = mostMentioned.get(article.getTopPerson()) + 1;
-                mostMentioned.put(article.getTopPerson(), x);
+            if (article.getTopPerson() != null && mentions.containsKey(article.getTopPerson())){
+                Integer x = mentions.get(article.getTopPerson()) + 1;
+                mentions.put(article.getTopPerson(), x);
             } else {
-                mostMentioned.put(article.getTopPerson(), 1);
+                mentions.put(article.getTopPerson(), 1);
             }
         }
-        for (String key : mostMentioned.keySet()) {
-            if (mostMentioned.get(key) >= atLeastXTimes){
-                shortList.put(key, mostMentioned.get(key));
-            }
-        }
+
+        //Only keep those mentioned more than x times
+        int atLeastXTimes = 5;
+        HashMap<String, Integer> shortList;
+        shortList = createShortList(atLeastXTimes, mentions);
 
         int counter = 0;
         for (LocalDate date = super.getFirstDate(); date.isBefore(super.getLastDate()); date = date.plusMonths(1)) {
@@ -68,7 +65,6 @@ public class FrequencyCharts extends Chart {
         return chart;
 
     }
-
 
 
     public static void main(String[] args){

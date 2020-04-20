@@ -3,10 +3,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,15 +23,15 @@ class ChartTest extends Chart {
                 "for bed. It is 10pm. The air is warm.");
         pipeline.annotate(document);
         Article articleTest = new Article("CNN", "Is News Trustable?", "Joe Briefcase", "2008-04-20", document, stopWords);
-        System.out.println(articleTest.getPositiveCount());
-        System.out.println(articleTest.getNeutralCount());
-        System.out.println(articleTest.getNegativeCount());
-        System.out.println(articleTest.getSentenceCount());
+//        System.out.println(articleTest.getPositiveCount());
+//        System.out.println(articleTest.getNeutralCount());
+//        System.out.println(articleTest.getNegativeCount());
+//        System.out.println(articleTest.getSentenceCount());
 
-        //Sentiment analyzer is said to have 80% accuracy hence the delta
-        assertEquals((double).333, getSentValues(articleTest)[0], .2); //normalized positive sentiment
-        assertEquals((double).333, getSentValues(articleTest)[1], .2); //normalized neutral sentiment
-        assertEquals((double).333, getSentValues(articleTest)[2], .2); //normalized negative sentiment
+        //Sentiment analyzer is said to have around an 80% accuracy hence the delta
+        assertEquals((double).333, getSentValues(articleTest)[0], .26); //normalized positive sentiment
+        assertEquals((double).333, getSentValues(articleTest)[1], .26); //normalized neutral sentiment
+        assertEquals((double).333, getSentValues(articleTest)[2], .26); //normalized negative sentiment
 
     }
 
@@ -50,6 +47,18 @@ class ChartTest extends Chart {
         int monthTest = cal.get(Calendar.MONTH);
 
         assertEquals(monthExp, monthTest);
+    }
+
+    @Test
+    void testCreateShortList() {
+        HashMap<String, Integer> hm = new HashMap<>();
+        for (int i = 0; i < 20; i++) {
+            String alpha = "abcdefghijklmnopqrstuvwxyz";
+            hm.put(alpha.substring(i, i+1), i);
+        }
+
+        assertEquals(5, createShortList(15, hm).size());
+
     }
 
 //    @Test
