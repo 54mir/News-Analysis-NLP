@@ -1,0 +1,130 @@
+/**
+ * this Class that the ability to create charts that show the 
+ * relationship between length, reading level, and lexical density
+ * by source. 
+ */
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.XYSeries;
+
+public class LengthDensityAndLevelCharts extends Chart{
+	
+ArrayList<Double> readingLevels = new ArrayList<>();
+ArrayList<Double> lengths = new ArrayList<>();
+ArrayList<Double> densities = new ArrayList<>();
+ArrayList<String> sources = new ArrayList<>();
+
+HashMap<String, ArrayList<Double[]>> chartData = new HashMap<>();
+
+
+/**
+ * constructs a LengthDensityAndLevelCharts object 
+ */
+public LengthDensityAndLevelCharts() {
+	for (Article article : super.getArticles()) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		Double density = (double) article.getLexicalDensity();
+		lengths.add(length);
+		readingLevels.add(readingLevel);
+		densities.add(density);
+		
+		String source = article.getSource().trim();
+		if (!sources.contains(source)) {
+			sources.add(source);
+			
+		}
+		
+		this.chartData = populateChartData();
+		
+	}
+	
+}
+
+
+/**
+ * This method loops through the data set and creates a HashMap
+ * that maps each source to an ArrayList of double arrays that contain 
+ * {length, readingLevel, density} for each article of that source.
+ * @return
+ */
+public HashMap<String, ArrayList<Double[]>> populateChartData(){
+	
+	for (Article article : super.getArticles()) {
+		Double length = (double) article.getCharacterCount();
+		Double readingLevel = (double) article.getReadingLevel();
+		Double density = (double) article.getLexicalDensity();
+		String source = article.getSource().trim();
+		
+		if (chartData.containsKey(source)) {
+			
+			ArrayList<Double[]> levelsList = chartData.get(source);
+			Double[] levels = {length, readingLevel, density};
+			levelsList.add(levels);
+			chartData.put(source, levelsList);
+			
+		}
+		
+		else {
+			ArrayList<Double[]> levelsList = new ArrayList<>();
+			Double levels[] = {length, readingLevel, density};
+			chartData.put(source, levelsList);
+			
+		}
+	}
+	
+	return chartData;
+}
+
+
+
+/**
+ * this method makes the chart objects
+ * @param x - the x-series for the graph. 0 for length, 1 for reading level, 2 for density
+ * @param y - the y-series for the graph. 0 for length, 1 for reading level, 2 for density
+ * @param xaxis the name of the x-axis 
+ * @param yaxis the name of the y-axis
+ * @return
+ */
+public XYChart makeReadingandLengthChart( int x, int y, String xaxis, String yaxis) { 
+	
+	XYChart chart = new XYChartBuilder().width(800).height(600).title( xaxis + " by " + yaxis ).xAxisTitle(xaxis).yAxisTitle(yaxis).build();
+    chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+    
+    //it doesn't make sense to plot reading levels on a logarithmic scale, because they fall into a pretty small range, so we wont
+    if(!xaxis.contains("Reading Level")) {
+    chart.getStyler().setXAxisLogarithmic(true);
+    }
+    
+    for (String source : sources) {
+    	
+    ArrayList<Double[]> levelsList = chartData.get(source);
+    ArrayList<Double> xSeries = new ArrayList<>();
+    ArrayList<Double> ySeries = new ArrayList<>();
+    for (Double[] article : levelsList) {
+    	xSeries.add(article[x]);
+    	ySeries.add(article[y]);
+    	//System.out.println();
+    	
+    	
+    }
+      	
+    XYSeries series = chart.addSeries( source, xSeries, ySeries);
+    }
+    
+    
+    return chart;
+	
+}
+
+
+
+public static void main(String args[]) {
+	
+}
+	
+}
