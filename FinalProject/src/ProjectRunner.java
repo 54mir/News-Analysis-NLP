@@ -29,26 +29,26 @@ import org.knowm.xchart.internal.chartpart.Chart;
 public class ProjectRunner extends JFrame {
 
 	//Instance Variables
-	ReadingLevelAndDensityChart bm = new ReadingLevelAndDensityChart();
+	LevelAndDensityCategoryChart bm = new LevelAndDensityCategoryChart();
 		CategoryChart zChartReading = bm.makeZChart("Reading Level");
 		CategoryChart zChartDensity = bm.makeZChart("Density");
 		CategoryChart readingLevel = bm.makeAvgsChart("Reading Level");
 		CategoryChart densityChart = bm.makeAvgsChart("Density");
 	
-	SentimentPieCharts pcm = new SentimentPieCharts();
+	SentimentPieChart pcm = new SentimentPieChart();
 		PieChart pos = pcm.makeChart("pos");
 		PieChart neg = pcm.makeChart("neg");
 		PieChart neut = pcm.makeChart("neut");
 	
-	LengthDensityAndLevelCharts ldl = new LengthDensityAndLevelCharts();
+	LengthDensityAndLevelXYCharts ldl = new LengthDensityAndLevelXYCharts();
 		XYChart lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
 		XYChart lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
 		XYChart readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article", "Density of Article");
 		
-	FrequencyCharts fc = new FrequencyCharts();
+	FrequencyChart fc = new FrequencyChart();
 		XYChart personfreq = fc.makeFrequencyChart();
 		
-	SentimentChart sc = new SentimentChart();
+	SentimentXYChart sc = new SentimentXYChart();
 		CategoryChart sentsource = sc.makeSentimentBySourceChart();
 	
 	

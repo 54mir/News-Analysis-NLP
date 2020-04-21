@@ -6,7 +6,7 @@ import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FrequencyCharts extends GenericChart {
+public class FrequencyChart extends GenericChart {
 
     public XYChart makeFrequencyChart(){
         ArrayList<Date> dateSeries = new ArrayList<Date>();
@@ -68,7 +68,7 @@ public class FrequencyCharts extends GenericChart {
 
 
     public static void main(String[] args){
-        FrequencyCharts fchart = new FrequencyCharts();
+        FrequencyChart fchart = new FrequencyChart();
         new SwingWrapper(fchart.makeFrequencyChart()).displayChart();
     }
 }

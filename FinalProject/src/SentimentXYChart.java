@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Makes charts that based on sentiment data
  */
-public class SentimentChart extends GenericChart {
+public class SentimentXYChart extends GenericChart {
 
     /**
      * Creates a Scanner Plot of Sentiment over Time of a given news sources
@@ -97,7 +97,7 @@ public class SentimentChart extends GenericChart {
     }
 
     public static void main(String[] args) {
-        SentimentChart sbsChart = new SentimentChart();
+        SentimentXYChart sbsChart = new SentimentXYChart();
         new SwingWrapper(sbsChart.makeSentimentBySourceChart()).displayChart();
         new SwingWrapper(sbsChart.makeSentimentByTimeChart("Business Insider")).displayChart();
 

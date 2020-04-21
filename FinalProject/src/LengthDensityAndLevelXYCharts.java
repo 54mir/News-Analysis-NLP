@@ -6,7 +6,7 @@ import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries;
 
-public class LengthDensityAndLevelCharts extends GenericChart{
+public class LengthDensityAndLevelXYCharts extends GenericChart{
 	
 ArrayList<Double> readingLevels = new ArrayList<>();
 ArrayList<Double> lengths = new ArrayList<>();
@@ -16,7 +16,7 @@ ArrayList<String> sources = new ArrayList<>();
 HashMap<String, ArrayList<Double[]>> data = new HashMap<>();
 
 
-public LengthDensityAndLevelCharts() {
+public LengthDensityAndLevelXYCharts() {
 	for (Article article : GenericChart.getArticles()) {
 		Double length = (double) article.getCharacterCount();
 		Double readingLevel = (double) article.getReadingLevel();

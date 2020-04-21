@@ -21,7 +21,7 @@ import org.knowm.xchart.VectorGraphicsEncoder.VectorGraphicsFormat;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
-public class ReadingLevelAndDensityChart  extends GenericChart  {
+public class LevelAndDensityCategoryChart  extends GenericChart  {
 
 	// Instance Variables
 	HashMap<String, Double[]> LevelsBySource;
@@ -29,7 +29,7 @@ public class ReadingLevelAndDensityChart  extends GenericChart  {
 	HashMap<String, Double[]> Zdata;
 
 	// Constructor
-	public ReadingLevelAndDensityChart() {
+	public LevelAndDensityCategoryChart() {
 		LevelsBySource = extractSourceLevelData();
 		LevelsBySourceCOPY = extractSourceLevelData();
 		Zdata = makeZs(LevelsBySourceCOPY);

@@ -14,7 +14,7 @@ import org.knowm.xchart.VectorGraphicsEncoder;
  * allow us to specify if we want to make a chart for positive, 
  * negative, or neutral sentiment) 
  */
-public class SentimentPieCharts extends GenericChart {
+public class SentimentPieChart extends GenericChart {
 
 	/**
 	 * hashmap where each source is mapps to an array with counts
@@ -27,7 +27,7 @@ public class SentimentPieCharts extends GenericChart {
 	/*
 	 * Constructs a PieChartMaker object
 	 */
-	public SentimentPieCharts() {
+	public SentimentPieChart() {
 		this.sentChartData = extractSentSourceData();
 		
 		
@@ -130,7 +130,7 @@ public class SentimentPieCharts extends GenericChart {
 
 	
 	public static void main(String[] args) {
-		SentimentPieCharts gm = new SentimentPieCharts();
+		SentimentPieChart gm = new SentimentPieChart();
 		HashMap<String, Integer[]> series = gm.extractSentSourceData();
 		gm.makeChart("pos");
 

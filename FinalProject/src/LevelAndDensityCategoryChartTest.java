@@ -6,8 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ReadingLevelAndDensityChartTest {
-	ReadingLevelAndDensityChart tester = new ReadingLevelAndDensityChart();
+class LevelAndDensityCategoryChartTest {
+	LevelAndDensityCategoryChart tester = new LevelAndDensityCategoryChart();
 	HashMap<String, Double[]> ZdataTest = new HashMap<>();
 	
 	
