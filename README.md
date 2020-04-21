@@ -7,7 +7,7 @@
 <p>Our analysis is set up as a maven project, and therefore it is not necessary to download any .jar files. In order to run the analysis, you will just need to either clone this repository or download all of the files in the FinalProject folder, and set up the project as a maven project in your IDE of choice. (The pom.xml file is included.) More info on setting up Maven projects can be found here:&nbsp;<a href="https://knowm.org/open-source/xchart/">http://maven.apache.org/guides/getting-started/</a>&nbsp;</p>
 <p>A note if you choose not to clone the repo: The src folder (within the FinalProject folder) contains all of our code. The other essential non-java files are articleMetricsArray_hold.ser and newSourcesSAMPLE1.csv.</p>
 <p><strong>THE NITTY-GRITTY - HOW THE ANALYSIS IS DESIGNED:</strong></p>
-<p><em>Part 1 &ndash; creating a usable dataset</em></p>
+<p><em>Part 1 &ndash; Creating a usable dataset, and Building Charts</em></p>
 <p>We begin with a .csv file that contains 1400 articles from 14 sources, as well as metadata for the author, source, date of publication, etc. The<strong> RawDocumentReader</strong> class reads in this .csv file, makes the necessary CoreNLP annotations, and creates an <strong>Article</strong> object for each article. (The <strong>Article </strong>class computes and stores various metrics, which we use later on in our data analysis.) The articles are read into a .ser file, where they can be stored and shared to others who might be interested in running a similar analysis. The abstract <strong>GenericChart </strong>class reads in the .ser file and stores it into memory. The <strong>GenericChart </strong>superclass is extended by the following child classes:</p>
 <ul>
 <li><strong>LevelAndDensityCategoryChart</strong> (creates charts 1-4)</li>
@@ -17,7 +17,7 @@
 <li><strong>FrequencyChart</strong> (creates chart 12)</li>
 </ul>
 <p>The <strong>ProjectRunner </strong>class servs to create these chart objects and display them in a simple swing window. It also gives users the option to see a demo implementation of the <strong>RawDocumentReader</strong> class. This demo creates a mini .ser file with a small sample of the full dataset. &nbsp;<br /> </p>
-<p><em>Part 2 - Running the Analysis and Building the Charts</em></p>
+<p><em>Part 2 - Running the Analysis and Displaying the Charts</em></p>
 <p><strong>AN OVERVIEW:</strong></p>
 <p>In order to run the analysis, you'll need to run the&nbsp;ProjectRunnerClass. In the console, you will be asked whether or not you would like to create an .ser file from a sample of the full dataset. We have included this option so that you (the user, the TA, etc) can see our&nbsp;RawDocumentReader&nbsp;class in action. When this class is run on the full data set, it takes around four hours.&nbsp; This is due to the computationally-intensive tasks of sentiment analysis and named-entity recognition.&nbsp;</p>
 <p>After the (optional) creation of the test .ser file, the full analysis will being to run. When it is complete, a bare-bones swing window will display the following graphs:</p>
