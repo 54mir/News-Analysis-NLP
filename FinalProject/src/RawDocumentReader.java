@@ -51,7 +51,8 @@ public class RawDocumentReader {
                 fileArray.add(rawText);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("document not found");
+            System.out.println("Document not found. Please ensure that your CSV file is located in the correct directors\n "
+            		+ "and that you are inputting the correct file and path into the constructor. ");
         }
 
     }
@@ -70,7 +71,7 @@ public class RawDocumentReader {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("Could not find stop words file.");
+            System.out.println("Could not find stop words file. Please make sure that the file exists. ");
         }
 
         return stopWords;

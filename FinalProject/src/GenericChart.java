@@ -14,7 +14,7 @@ public abstract class GenericChart {
     private LocalDate firstDate;
     private LocalDate lastDate;
     private ArrayList<String> sources;
-    private ArrayList<Article> articles;
+    private static ArrayList<Article> articles;
 
 
     /**
@@ -105,7 +105,7 @@ public abstract class GenericChart {
         return sources;
     }
 
-    public ArrayList<Article> getArticles() {
+    public static ArrayList<Article> getArticles() {
         return articles;
     }
 }
