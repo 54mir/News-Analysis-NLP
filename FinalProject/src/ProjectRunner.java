@@ -24,7 +24,7 @@ import org.knowm.xchart.internal.chartpart.Chart;
 
 
 /*
- * In this class, we will run the project. 
+ * In this class, we will run the project file.
  */
 public class ProjectRunner extends JFrame {
 
