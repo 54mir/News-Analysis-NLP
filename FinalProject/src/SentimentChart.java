@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Makes charts that based on sentiment data
  */
-public class SentimentChart extends Chart {
+public class SentimentChart extends GenericChart {
 
     /**
      * Creates a Scanner Plot of Sentiment over Time of a given news sources
@@ -28,7 +28,7 @@ public class SentimentChart extends Chart {
             return chart;
         }
 
-        for (Article article: Charts.articles) {
+        for (Article article: OLDChartInterface.articles) {
             if (article.getSource().trim().equals(source)){
                 date = Date.from(article.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 dateSeries.add(date);
@@ -63,7 +63,7 @@ public class SentimentChart extends Chart {
         ArrayList<Double> negativeSeries = new ArrayList<>();
         HashMap<String, double[]>  allData = new HashMap<>();
 
-        for (Article article: Charts.articles) {
+        for (Article article: OLDChartInterface.articles) {
             if (allData.containsKey(article.getSource())){
                 double[] articleVals = getSentValues(article);
                 allData.get(article.getSource())[0] += articleVals[0];  //positive

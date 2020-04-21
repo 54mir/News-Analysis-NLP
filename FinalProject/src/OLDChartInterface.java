@@ -11,7 +11,7 @@ import org.knowm.xchart.internal.chartpart.Chart;
 import org.knowm.xchart.style.Styler;
 import org.knowm.xchart.style.Theme;
 
-public interface Charts {
+public interface OLDChartInterface {
 	DataReader reader = new DataReader();
     ArrayList<Article> articles = reader.readArray("articleMetricsArray_hold.ser");
     LocalDate firstDate = articles.get(0).getDate();                         // First date in sorted array

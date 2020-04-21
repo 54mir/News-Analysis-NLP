@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * Provides common fields and functionality to classes that create charts.
  */
-public abstract class Chart {
+public abstract class GenericChart {
     private LocalDate firstDate;
     private LocalDate lastDate;
     private ArrayList<String> sources;
@@ -20,7 +20,7 @@ public abstract class Chart {
     /**
      * Constructor: Initializes common fields
      */
-    public Chart() {
+    public GenericChart() {
         articles = readArray("articleMetricsArray_hold.ser");
         firstDate = articles.get(0).getDate();                        // First date in sorted array
         lastDate = articles.get(articles.size() - 1).getDate();       // Last date in sorted array

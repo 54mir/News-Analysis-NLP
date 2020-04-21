@@ -6,7 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ArticleTest extends Chart {
+class ArticleTest extends GenericChart {
 
 	ArrayList<Article> articles = super.getArticles();
 	Article testArticle = articles.get(0);

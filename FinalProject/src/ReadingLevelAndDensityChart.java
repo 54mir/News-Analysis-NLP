@@ -21,7 +21,7 @@ import org.knowm.xchart.VectorGraphicsEncoder.VectorGraphicsFormat;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
 
-public class ReadingLevelAndDensityChart implements Charts {
+public class ReadingLevelAndDensityChart implements OLDChartInterface {
 
 	// Instance Variables
 	HashMap<String, Double[]> LevelsBySource;
@@ -46,7 +46,7 @@ public class ReadingLevelAndDensityChart implements Charts {
 		HashMap<String, Double[]> readingAndZBySource = new HashMap<>();
 
 		// populating the hashmap
-		for (Article article : Charts.articles) {
+		for (Article article : OLDChartInterface.articles) {
 			String source = article.getSource().trim();
 			double readingLevel = article.getReadingLevel();
 			double density = article.getLexicalDensity();

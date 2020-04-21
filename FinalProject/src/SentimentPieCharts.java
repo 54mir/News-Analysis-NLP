@@ -14,7 +14,7 @@ import org.knowm.xchart.VectorGraphicsEncoder;
  * allow us to specify if we want to make a chart for positive, 
  * negative, or neutral sentiment) 
  */
-public class SentimentPieCharts implements Charts {
+public class SentimentPieCharts implements OLDChartInterface {
 
 	/**
 	 * hashmap where each source is mapps to an array with counts
@@ -41,7 +41,7 @@ public class SentimentPieCharts implements Charts {
 	 */
 	public HashMap<String, Integer[]> extractSentSourceData() {
 		
-	 for (Article article: Charts.articles) {
+	 for (Article article: OLDChartInterface.articles) {
 		
 		String source = article.getSource().trim();
 		int posSent = article.getPositiveCount();
