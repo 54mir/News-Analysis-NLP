@@ -1,23 +1,10 @@
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-
 import org.knowm.xchart.*;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.internal.chartpart.Chart;
@@ -130,19 +117,12 @@ public class ProjectRunner extends JFrame {
 		String input = myScanner.nextLine().toString();
 
 		if (input.contains("Y") || input.contains("y")) {
-<<<<<<< HEAD
 			System.out.println(
 					"Okay! Creating an .ser with 14 fully annotated article objects using the default NOP logger.");
 			System.out.println("This will just take a few minutes.");
 			RawDocumentReader rdr = new RawDocumentReader("newsSourcesSAMPLED1.csv");
 			System.out.println("A test .ser has been created and saved! It is called 'atricleMetricsAray.ser'.");
 			System.out.println();
-=======
-			System.out.println("Okay! Creating an .ser with 14 fully annotated article objects using the default NLP logger.");
-			System.out.println("This will just take a few minutes.");
-			RawDocumentReader rdr = new RawDocumentReader("newsSourcesSAMPLED1.csv");
-			System.out.println("articleMetricsArray.ser has been created!");
->>>>>>> 30620fb6b8e6577b9140d6b63bdbd77cfb7ee0f6
 		}
 		
 		

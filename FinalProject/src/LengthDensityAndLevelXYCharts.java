@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries;
 
-<<<<<<< HEAD
 /**
  * This class creates XY axis charts that explore the relationship between
  * article length, reading level, and lexical density.
@@ -21,33 +19,6 @@ public class LengthDensityAndLevelXYCharts extends GenericChart {
 	 * different charts
 	 */
 	public LengthDensityAndLevelXYCharts() {
-=======
-public class LengthDensityAndLevelXYCharts extends GenericChart{
-	
-ArrayList<Double> readingLevels = new ArrayList<>();
-ArrayList<Double> lengths = new ArrayList<>();
-ArrayList<Double> densities = new ArrayList<>();
-ArrayList<String> sources = new ArrayList<>();
-
-HashMap<String, ArrayList<Double[]>> data = new HashMap<>();
-
-
-public LengthDensityAndLevelXYCharts() {
-	for (Article article : super.getArticles()) {
-		Double length = (double) article.getCharacterCount();
-		Double readingLevel = (double) article.getReadingLevel();
-		Double density = (double) article.getLexicalDensity();
-		lengths.add(length);
-		readingLevels.add(readingLevel);
-		densities.add(density);
-		
-		String source = article.getSource().trim();
-		if (!sources.contains(source)) {
-			sources.add(source);
-			
-		}
-		
->>>>>>> 30620fb6b8e6577b9140d6b63bdbd77cfb7ee0f6
 		this.data = populateData();
 	}
 
@@ -62,7 +33,6 @@ public LengthDensityAndLevelXYCharts() {
 	 */
 	public HashMap<String, ArrayList<Double[]>> populateData() {
 
-<<<<<<< HEAD
 		// loop through every article object in the corpus
 		for (Article article : super.getArticles()) {
 
@@ -90,30 +60,6 @@ public LengthDensityAndLevelXYCharts() {
 				data.put(source.trim(), levelsList);
 
 			}
-=======
-public HashMap<String, ArrayList<Double[]>> populateData(){
-	
-	for (Article article : super.getArticles()) {
-		Double length = (double) article.getCharacterCount();
-		Double readingLevel = (double) article.getReadingLevel();
-		Double density = (double) article.getLexicalDensity();
-		String source = article.getSource().trim();
-		
-		if (data.containsKey(source)) {
-			
-			ArrayList<Double[]> levelsList = data.get(source);
-			Double[] levels = {length, readingLevel, density};
-			levelsList.add(levels);
-			data.put(source, levelsList);
-			
-		}
-		
-		else {
-			ArrayList<Double[]> levelsList = new ArrayList<>();
-			Double levels[] = {length, readingLevel, density};
-			data.put(source, levelsList);
-			
->>>>>>> 30620fb6b8e6577b9140d6b63bdbd77cfb7ee0f6
 		}
 
 		return data;
