@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.XYSeries;
@@ -17,7 +16,7 @@ HashMap<String, ArrayList<Double[]>> data = new HashMap<>();
 
 
 public LengthDensityAndLevelXYCharts() {
-	for (Article article : GenericChart.getArticles()) {
+	for (Article article : super.getArticles()) {
 		Double length = (double) article.getCharacterCount();
 		Double readingLevel = (double) article.getReadingLevel();
 		Double density = (double) article.getLexicalDensity();

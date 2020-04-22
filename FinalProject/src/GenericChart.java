@@ -29,6 +29,8 @@ public abstract class GenericChart {
                 "National Review", "Breitbart", "Vox"));
     }
 
+
+
     public HashMap createShortList(int atLeastXTimes, HashMap<String, Integer> mostMentioned) {
         HashMap<String, Integer> shortList = new HashMap<>();
         for (String key : mostMentioned.keySet()) {
@@ -105,7 +107,8 @@ public abstract class GenericChart {
         return sources;
     }
 
-    public static ArrayList<Article> getArticles() {
+    public ArrayList<Article> getArticles() {
         return articles;
     }
+
 }

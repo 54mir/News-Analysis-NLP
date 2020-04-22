@@ -28,7 +28,7 @@ public class SentimentXYChart extends GenericChart {
             return chart;
         }
 
-        for (Article article: OLDChartInterface.articles) {
+        for (Article article: super.getArticles()) {
             if (article.getSource().trim().equals(source)){
                 date = Date.from(article.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 dateSeries.add(date);
