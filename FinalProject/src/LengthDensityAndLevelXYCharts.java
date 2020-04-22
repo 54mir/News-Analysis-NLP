@@ -39,7 +39,7 @@ public LengthDensityAndLevelXYCharts() {
 
 public HashMap<String, ArrayList<Double[]>> populateData(){
 	
-	for (Article article : OLDChartInterface.articles) {
+	for (Article article : super.getArticles()) {
 		Double length = (double) article.getCharacterCount();
 		Double readingLevel = (double) article.getReadingLevel();
 		Double density = (double) article.getLexicalDensity();
