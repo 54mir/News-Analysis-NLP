@@ -129,10 +129,10 @@ public class ProjectRunner extends JFrame {
 		String input = myScanner.nextLine().toString();
 		
 		if (input.contains("Y") || input.contains("y")) {
-			System.out.println("Okay! Creating an .ser with 14 fully annotated article objects using the default NOP logger.");
+			System.out.println("Okay! Creating an .ser with 14 fully annotated article objects using the default NLP logger.");
 			System.out.println("This will just take a few minutes.");
 			RawDocumentReader rdr = new RawDocumentReader("newsSourcesSAMPLED1.csv");
-			System.out.println("a test .ser has been created!");
+			System.out.println("articleMetricsArray.ser has been created!");
 		}
 		
 		
