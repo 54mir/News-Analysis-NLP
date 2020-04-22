@@ -1,12 +1,8 @@
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.HashMap;
 import org.knowm.xchart.*;
-import org.knowm.xchart.internal.chartpart.Chart;
-import org.knowm.xchart.style.Styler;
-import org.knowm.xchart.style.Theme;
 import org.knowm.xchart.style.Styler.ChartTheme;
-import org.knowm.xchart.VectorGraphicsEncoder;
+
 /*
  * This is a class that creates a pie chart. 
  * We will have several graphic classes with similar functions. 
@@ -41,7 +37,7 @@ public class SentimentPieChart extends GenericChart {
 	 */
 	public HashMap<String, Integer[]> extractSentSourceData() {
 		
-	 for (Article article: GenericChart.getArticles()) {
+	 for (Article article: super.getArticles()) {
 		
 		String source = article.getSource().trim();
 		int posSent = article.getPositiveCount();

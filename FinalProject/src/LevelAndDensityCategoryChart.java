@@ -5,21 +5,13 @@
  * - creates a chart displaying reading levels by source
  * - creates a chart displaying lexical density by source
  */
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import org.knowm.xchart.BitmapEncoder;
-import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 import org.knowm.xchart.CategoryChart;
 import org.knowm.xchart.CategoryChartBuilder;
-import org.knowm.xchart.PieChart;
-import org.knowm.xchart.SwingWrapper;
-import org.knowm.xchart.VectorGraphicsEncoder;
-import org.knowm.xchart.VectorGraphicsEncoder.VectorGraphicsFormat;
 import org.knowm.xchart.style.Styler.ChartTheme;
-import org.knowm.xchart.style.Styler.LegendPosition;
 
 public class LevelAndDensityCategoryChart  extends GenericChart  {
 

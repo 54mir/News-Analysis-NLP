@@ -28,7 +28,7 @@ public class SentimentXYChart extends GenericChart {
             return chart;
         }
 
-        for (Article article: OLDChartInterface.articles) {
+        for (Article article: super.getArticles()) {
             if (article.getSource().trim().equals(source)){
                 date = Date.from(article.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 dateSeries.add(date);
@@ -63,7 +63,7 @@ public class SentimentXYChart extends GenericChart {
         ArrayList<Double> negativeSeries = new ArrayList<>();
         HashMap<String, double[]>  allData = new HashMap<>();
 
-        for (Article article: OLDChartInterface.articles) {
+        for (Article article: super.getArticles()) {
             if (allData.containsKey(article.getSource())){
                 double[] articleVals = getSentValues(article);
                 allData.get(article.getSource())[0] += articleVals[0];  //positive
