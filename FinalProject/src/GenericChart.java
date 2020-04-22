@@ -13,7 +13,7 @@ import java.util.HashMap;
 public abstract class GenericChart {
     private LocalDate firstDate;
     private LocalDate lastDate;
-    private ArrayList<String> sources;
+    private static ArrayList<String> sources;
     private static ArrayList<Article> articles;
 
 
@@ -101,7 +101,7 @@ public abstract class GenericChart {
         return lastDate;
     }
 
-    public ArrayList<String> getSources() {
+    public static ArrayList<String> getSources() {
         return sources;
     }
 

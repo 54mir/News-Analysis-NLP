@@ -25,20 +25,22 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 
 	// Instance Variables
 	HashMap<String, Double[]> LevelsBySource;
-	HashMap<String, Double[]> LevelsBySourceCOPY;
+	HashMap<String, Double[]> ZDataSource;
 	HashMap<String, Double[]> Zdata;
 
-	// Constructor
+	/**
+	 * The constructor, which extracts the source data for averages and z-score charts. 
+	 */
 	public LevelAndDensityCategoryChart() {
 		LevelsBySource = extractSourceLevelData();
-		LevelsBySourceCOPY = extractSourceLevelData();
-		Zdata = makeZs(LevelsBySourceCOPY);
+		ZDataSource = extractSourceLevelData();
+		Zdata = makeZs(ZDataSource);
 
 	}
 
 	/**
-	 * Creates a HashMap with - the average reading level for each source - the
-	 * average lexical densities for each source
+	 * Creates a HashMap with the source mapped to a Double[] containing the average 
+	 * reading level and average lexical density for that source.
 	 * @return readingLevelBySource
 	 */
 	public HashMap<String, Double[]> extractSourceLevelData() {
@@ -46,7 +48,7 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 		HashMap<String, Double[]> readingAndZBySource = new HashMap<>();
 
 		// populating the hashmap
-		for (Article article : GenericChart.getArticles()) {
+		for (Article article : super.getArticles()) {
 			String source = article.getSource().trim();
 			double readingLevel = article.getReadingLevel();
 			double density = article.getLexicalDensity();
@@ -80,7 +82,7 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 	}
 
 	/**
-	 * takes in a hashmap containing {average reading level, average density} by source
+	 * takes in the hashmap containing {average reading level, average density} by source
 	 * converts averages (on a source level) into z-scores (on a corpus level) for
 	 * reading level and lexical density for each source.
 	 * 
@@ -93,8 +95,7 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 		double corpusReadingStDev = 0;
 		double corpusDensityAvg = 0;
 		double corpusDensityStDev = 0;
-		//ArrayList<Double> reading = new ArrayList<>();
-		//ArrayList<Double> density = new ArrayList<>();
+		
 
 		//  sum the reading levels and densities for each source
 		for (String source : averagesMap.keySet()) {
@@ -146,9 +147,9 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 	}
 
 	/**
-	 * creates the Z-scores graphxz
-	 * 
-	 * @return
+	 * This method creates the chart object, either for density z-scires or reading level z-scores, depending on the argument.
+	 * @param avgType - reading level or density
+	 * @return the chart object 
 	 */
 	public CategoryChart makeZChart(String zType) {
 
@@ -185,6 +186,12 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 		return chart;
 	}
 
+	
+	/**
+	 * This method creates the chart object, either for average density or average reading level, depending on the argument.
+	 * @param avgType - reading level or density
+	 * @return the chart object 
+	 */
 	public CategoryChart makeAvgsChart(String avgType) {
 		// Create Chart
 		CategoryChart chart = new CategoryChartBuilder().width(1000).height(600).title(avgType + " by Source")
