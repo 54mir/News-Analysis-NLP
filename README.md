@@ -4,7 +4,7 @@
 <li>StanfordCore NLP (more info here:&nbsp;<a href="https://stanfordnlp.github.io/CoreNLP/">https://stanfordnlp.github.io/CoreNLP/</a>)</li>
 <li>XChart (<a href="https://knowm.org/open-source/xchart/">https://knowm.org/open-source/xchart/</a>)</li>
 </ul>
-<p>Our analysis is set up as a maven project, and therefore it is not necessary to download any .jar files. In order to run the analysis, you will just need to either clone this repository or download all of the files in the FinalProject folder, and set up the project as a maven project in your IDE of choice. (The pom.xml file is included.) More info on setting up Maven projects can be found here:&nbsp;<a href="https://knowm.org/open-source/xchart/">http://maven.apache.org/guides/getting-started/</a>&nbsp;</p>
+<p>Our analysis is set up as a maven project, and therefore it is not necessary to download any .jar files. In order to run the analysis, you will just need to either clone this repository or download all of the files in the FinalProject folder, and set up the project as a maven project in your IDE of choice. (The pom.xml file is included.) More info on setting up Maven projects can be found here:&nbsp;<a href="http://maven.apache.org/guides/getting-started/ ">http://maven.apache.org/guides/getting-started/</a>&nbsp;</p>
 <p>A note if you choose not to clone the repo: The src folder (within the FinalProject folder) contains all of our code. The other essential non-java files are articleMetricsArray_hold.ser and newSourcesSAMPLE1.csv.</p>
 <p><strong>RUNNING THE ANALYSIS:</strong></p>
 <p>Once the project is set up, open ProjectRunner.java and run the main method. Console prompts will guide you through the rest.</p>
