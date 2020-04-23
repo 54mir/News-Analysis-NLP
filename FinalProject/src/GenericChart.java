@@ -16,7 +16,6 @@ public abstract class GenericChart {
     private static ArrayList<String> sources;
     private static ArrayList<Article> articles;
 
-
     /**
      * Constructor: Initializes common fields
      */
@@ -28,7 +27,6 @@ public abstract class GenericChart {
                 "Business Insider", "NPR", "Reuters", "New York Post", "New York Times", "Atlantic", "CNN", "Fox News",
                 "National Review", "Breitbart", "Vox"));
     }
-
 
 
     public HashMap createShortList(int atLeastXTimes, HashMap<String, Integer> mostMentioned) {
@@ -83,7 +81,6 @@ public abstract class GenericChart {
             data = (ArrayList<Article>) readStream.readObject();
             readStream.close();
 
-
         }catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error reading ArrayList into memory");
@@ -94,7 +91,9 @@ public abstract class GenericChart {
     }
 
     /*
-     * populates sentchartdata
+     * Generates a HashMap where the key is the NewsSource and the value is an Integer Array
+     * of the cumulative number of sentences labeled positive, negative, and neutral - as well as
+     * the total sentence count.
      */
     public HashMap<String, Integer[]> extractSentSourceData() {
         HashMap<String, Integer[]> sentChartData = new HashMap<>();
@@ -111,7 +110,7 @@ public abstract class GenericChart {
                 counts[0] += negSent;
                 counts[1] += neutSent;
                 counts[2] += posSent ;
-                totalSent += totalSent;
+                counts[3] += totalSent;
 
                 sentChartData.replace(source, counts);
             }

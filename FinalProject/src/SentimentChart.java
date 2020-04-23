@@ -71,9 +71,9 @@ public class SentimentChart extends GenericChart {
         for (String source : allData.keySet()) {
             if (allData.get(source)[3] > 1) {
                 sourcesSeries.add(source);
-                positiveSeries.add((double) allData.get(source)[0] / allData.get(source)[3]);  //positive
+                positiveSeries.add((double) allData.get(source)[2] / allData.get(source)[3]);  //positive
                 neutralSeries.add((double) allData.get(source)[1] / allData.get(source)[3]);  //neutral
-                negativeSeries.add((double) allData.get(source)[2] / allData.get(source)[3]);  //negative
+                negativeSeries.add((double) allData.get(source)[0] / allData.get(source)[3]);  //negative
             }
         }
 
