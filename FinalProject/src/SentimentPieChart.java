@@ -114,9 +114,9 @@ public class SentimentPieChart extends GenericChart {
 		
 		
 		
-		chart.getStyler().setChartPadding(3);
+		chart.getStyler().setChartPadding(4);
 		chart.getStyler().setHasAnnotations(true);
-		chart.getStyler().setAnnotationDistance(1.08);
+		chart.getStyler().setAnnotationDistance(1.05);
 		chart.getStyler().setAnnotationsRotation(45);
 		
 		return chart;

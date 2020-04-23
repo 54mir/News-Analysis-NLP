@@ -93,7 +93,7 @@ public class RawDocumentReader {
                 row[idxArticle] = row[idxArticle].toLowerCase();
                 document = new CoreDocument(row[idxArticle]);
             } catch (Exception e) {
-                System.out.println("error loading article " + loopCounter + " into CoreDocument object.");
+                System.out.println("There is not a " + loopCounter + "th row to process. The .csv has been fully read.");
                 continue;
             }
             pipeline.annotate(document);
