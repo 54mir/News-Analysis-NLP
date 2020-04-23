@@ -22,11 +22,6 @@ public class ProjectRunner extends JFrame {
 	CategoryChart readingLevel;
 	CategoryChart densityChart;
 
-	SentimentPieChart pcm = new SentimentPieChart();
-	PieChart pos;
-	PieChart neg;
-	PieChart neut;
-
 	LengthDensityAndLevelXYCharts ldl = new LengthDensityAndLevelXYCharts();
 	XYChart lengthDensity;
 	XYChart lengthReadingLevel;
@@ -35,8 +30,11 @@ public class ProjectRunner extends JFrame {
 	FrequencyChart fc = new FrequencyChart();
 	XYChart personfreq;
 
-	SentimentXYChart sc = new SentimentXYChart();
+	SentimentChart sc = new SentimentChart();
 	CategoryChart sentsource;
+	PieChart pos;
+	PieChart neg;
+	PieChart neut;
 
 	ArrayList<Chart> charts = new ArrayList<>();
 
@@ -48,9 +46,9 @@ public class ProjectRunner extends JFrame {
 		this.zChartDensity = bm.makeZChart("Density");
 		this.readingLevel = bm.makeAvgsChart("Reading Level");
 		this.densityChart = bm.makeAvgsChart("Density");
-		this.pos = pcm.makeChart("pos");
-		this.neg = pcm.makeChart("neg");
-		this.neut = pcm.makeChart("neut");
+		this.pos = sc.makeSentimentPieChart("pos");
+		this.neg = sc.makeSentimentPieChart("neg");
+		this.neut = sc.makeSentimentPieChart("neut");
 		this.lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
 		this.lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
 		this.readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article",
@@ -61,7 +59,7 @@ public class ProjectRunner extends JFrame {
 	}
 
 	/**
-	 * THis method saves a matrix of the charts to a jpeg file, which can then be
+	 * This method saves a matrix of the charts to a jpeg file, which can then be
 	 * displayed.
 	 */
 	public void makeChartsMatrix() {

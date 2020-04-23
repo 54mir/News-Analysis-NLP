@@ -93,6 +93,42 @@ public abstract class GenericChart {
 
     }
 
+    /*
+     * populates sentchartdata
+     */
+    public HashMap<String, Integer[]> extractSentSourceData() {
+        HashMap<String, Integer[]> sentChartData = new HashMap<>();
+        for (Article article: getArticles()) {
+
+            String source = article.getSource().trim();
+            int posSent = article.getPositiveCount();
+            int negSent = article.getNegativeCount();
+            int neutSent = article.getNeutralCount();
+            int totalSent = posSent + negSent + neutSent;
+
+            if (sentChartData.containsKey(source)) {
+                Integer[] counts = sentChartData.get(source);
+                counts[0] += negSent;
+                counts[1] += neutSent;
+                counts[2] += posSent ;
+                totalSent += totalSent;
+
+                sentChartData.replace(source, counts);
+            }
+
+            else {
+                Integer[] counts = {negSent, neutSent, posSent, totalSent};
+                sentChartData.put(source, counts);
+
+            }
+
+
+        }
+
+
+        return sentChartData;
+    }
+
 
     //Getters
     public LocalDate getFirstDate() {
