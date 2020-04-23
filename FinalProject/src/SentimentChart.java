@@ -71,15 +71,16 @@ public class SentimentChart extends GenericChart {
         for (String source : allData.keySet()) {
             if (allData.get(source)[3] > 1) {
                 sourcesSeries.add(source);
-                positiveSeries.add((double) allData.get(source)[2] / allData.get(source)[3]);  //positive
-                neutralSeries.add((double) allData.get(source)[1] / allData.get(source)[3]);  //neutral
-                negativeSeries.add((double) allData.get(source)[0] / allData.get(source)[3]);  //negative
+                positiveSeries.add((double) allData.get(source)[2] / allData.get(source)[3] * 100);  //positive
+                neutralSeries.add((double) allData.get(source)[1] / allData.get(source)[3] * 100);  //neutral
+                negativeSeries.add((double) allData.get(source)[0] / allData.get(source)[3] * 100);  //negative
             }
         }
 
         // Create Chart
-        CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Sentiment by Source").
-                xAxisTitle("Sources").yAxisTitle("Y").build();
+        CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("The Percentage Each Sentiment " +
+                "Contributes to the Entire Output of a Source").
+                xAxisTitle("Sources").yAxisTitle("Percent").build();
         chart.getStyler().setXAxisLabelRotation(45);
 
         chart.addSeries("Positive Sentiment Ratio", sourcesSeries, positiveSeries);
