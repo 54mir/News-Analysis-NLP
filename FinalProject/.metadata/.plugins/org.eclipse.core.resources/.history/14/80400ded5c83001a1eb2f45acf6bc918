@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChartTest extends Chart {
+class GenericChartTest extends Chart {
 
 
     @Test

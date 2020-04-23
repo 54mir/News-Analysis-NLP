@@ -1,15 +1,9 @@
+package Archive;
+
 import java.util.ArrayList;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import java.util.Arrays;
-import java.util.HashMap;
-
-import org.knowm.xchart.internal.chartpart.Chart;
-import org.knowm.xchart.style.Styler;
-import org.knowm.xchart.style.Theme;
 
 public interface OLDChartInterface {
 	DataReader reader = new DataReader();

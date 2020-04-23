@@ -94,23 +94,25 @@ class ArticleTest extends GenericChart {
 		assertEquals(-1, testArticle.compareTo(testArticle2));
 	}
 
-	//Top Country tests CoreNLP's ability to detect the country most mentioned in an article. It does not
-	//do a great job. We did not use it in any of our charts.
-	@Test
-	void testTopCountry() {
-		assertEquals("france", testArticle2.getTopCountry());
-	}
-
-	@Test
-	void testTopCountry2() {
-		assertEquals("britain", testArticle3.getTopCountry());
-	}
-
+/*	Top Country tests CoreNLP's ability to detect the country most mentioned in an article. Although the method
+	 functions as intended, the NLP function is not accurate. We did not use it in any of our charts.
+	*/
 	@Test
 	void testTopCountry3() {
 		assertEquals("brazil", testArticle4.getTopCountry());
 	}
-	
+
+//	@Test
+//	void testTopCountry() {
+//		assertEquals("france", testArticle2.getTopCountry());
+//	}
+//
+//	@Test
+//	void testTopCountry2() {
+//		assertEquals("britain", testArticle3.getTopCountry());
+//	}
+
+
 	
 	
 	

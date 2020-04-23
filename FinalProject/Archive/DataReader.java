@@ -1,4 +1,4 @@
-/**
+package Archive; /**
  * This class creates an arrayList of article objects for all articles in the dataset
  */
 
@@ -28,7 +28,7 @@ class DataReader {
     }
 
 //    public static void main(String[] args) {
-//        DataReader reader = new DataReader();
+//        Archive.DataReader reader = new Archive.DataReader();
 //
 //        ArrayList<Article> articles = reader.readArray("articleMetricsArray.ser");
 //        int idx = 200;

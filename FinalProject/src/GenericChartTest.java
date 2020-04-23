@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChartTest extends GenericChart {
+class GenericChartTest extends GenericChart {
 
 
     @Test
@@ -59,6 +59,20 @@ class ChartTest extends GenericChart {
 
         assertEquals(5, createShortList(15, hm).size());
 
+    }
+
+    @Test
+    void testReadArrayFunction() {
+        int corpusSize = super.getArticles().size();
+        assertEquals(1400, corpusSize);
+    }
+
+    @Test
+    void articleSpotCheck() {
+        int idx = 1;
+        String source = (super.getArticles().get(idx).getSource().trim());
+        System.out.println(source);
+        assertEquals("CNN", source);
     }
 
 //    @Test

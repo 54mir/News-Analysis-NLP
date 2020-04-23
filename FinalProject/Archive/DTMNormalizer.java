@@ -1,15 +1,10 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+package Archive;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 
 /*
- * This class reads in the DocumentTermMatrix and and normalizes
+ * This class reads in the Archive.DocumentTermMatrix and and normalizes
  * wordcounts on an article by article basis. 
  */
 public class DTMNormalizer {
