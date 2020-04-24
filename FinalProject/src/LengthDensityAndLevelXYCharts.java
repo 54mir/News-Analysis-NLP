@@ -11,8 +11,8 @@ import org.knowm.xchart.XYSeries;
  */
 public class LengthDensityAndLevelXYCharts extends GenericChart {
 
-//instance variables 
-	HashMap<String, ArrayList<Double[]>> data = new HashMap<>();
+//instance variable 
+	private HashMap<String, ArrayList<Double[]>> data = new HashMap<>();
 
 	/**
 	 * Constructs a LengthDensityAndLevelXYCharts object, capable of create several

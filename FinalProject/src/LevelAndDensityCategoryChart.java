@@ -1,9 +1,11 @@
 
 /**
- * This class
- * - creates a chart that displays the z-scores for the average reading level and lexical density by source
- * - creates a chart displaying reading levels by source
- * - creates a chart displaying lexical density by source
+ * This class makes charts that display levels and statistics, specifically for reading level and density.
+ * More specifically, it can:
+ * - create a chart that displays the z-scores for the average reading level by source
+ * - create a chart that displays the z-score so lexical density by source
+ * - create a chart displaying reading levels by source
+ * - create a chart displaying lexical density by source
  */
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +18,9 @@ import org.knowm.xchart.style.Styler.ChartTheme;
 public class LevelAndDensityCategoryChart  extends GenericChart  {
 
 	// Instance Variables
-	HashMap<String, Double[]> LevelsBySource;
-	HashMap<String, Double[]> ZDataSource;
-	HashMap<String, Double[]> Zdata;
+	private HashMap<String, Double[]> LevelsBySource;
+	private HashMap<String, Double[]> ZDataSource;
+	private HashMap<String, Double[]> Zdata;
 
 	/**
 	 * The constructor, which extracts the source data for averages and z-score charts. 
@@ -219,9 +221,6 @@ public class LevelAndDensityCategoryChart  extends GenericChart  {
 
 	}
 
-	public static void main(String[] args) {
 
-
-	}
 
 }

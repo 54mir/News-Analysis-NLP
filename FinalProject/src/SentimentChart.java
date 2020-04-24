@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Makes charts that based on sentiment data
+ * Makes charts that are based on sentiment data
  */
 public class SentimentChart extends GenericChart {
 

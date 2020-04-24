@@ -30,7 +30,6 @@ public class Article implements Serializable, Comparable {
         this.source = source.trim();
         this.title = title.trim();
         this.author = author.trim();
-        //this.stopWords = stopWords;
         this.date = makeDate(date);
         sentenceCount = document.sentences().size();
         wordCount = document.tokens().size();
@@ -202,12 +201,10 @@ public class Article implements Serializable, Comparable {
      */
     private HashMap<String, String> makeNERMetrics(HashMap<String, ArrayList<String>> NERMap){
     	for (String entityType: NERMap.keySet()) {
-    		//System.out.println("this entiy type is: " +  entityType);
     		ArrayList<String> wordsOfThisType = NERMap.get(entityType);
     		int count = 0;
     		HashMap<String, Integer> countsMap = new HashMap<>();
     		for (String word: wordsOfThisType) {
-    			//System.out.println(word);
     			if (countsMap.containsKey(word)) {
     				count = countsMap.get(word);
     				count++;

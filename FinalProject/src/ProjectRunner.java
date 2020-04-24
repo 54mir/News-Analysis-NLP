@@ -16,13 +16,13 @@ import org.knowm.xchart.internal.chartpart.Chart;
 public class ProjectRunner extends JFrame {
 
 	// Instance Variables
-	LevelAndDensityCategoryChart bm = new LevelAndDensityCategoryChart();
+	LevelAndDensityCategoryChart ldCat = new LevelAndDensityCategoryChart();
 	CategoryChart zChartReading;
 	CategoryChart zChartDensity;
 	CategoryChart readingLevel;
 	CategoryChart densityChart;
 
-	LengthDensityAndLevelXYCharts ldl = new LengthDensityAndLevelXYCharts();
+	LengthDensityAndLevelXYCharts ldlXY = new LengthDensityAndLevelXYCharts();
 	XYChart lengthDensity;
 	XYChart lengthReadingLevel;
 	XYChart readingLevelDensity;
@@ -42,16 +42,16 @@ public class ProjectRunner extends JFrame {
 	 * Constructor, which makes all the chart objects we need to display
 	 */
 	public ProjectRunner() {
-		this.zChartReading = bm.makeZChart("Reading Level");
-		this.zChartDensity = bm.makeZChart("Density");
-		this.readingLevel = bm.makeAvgsChart("Reading Level");
-		this.densityChart = bm.makeAvgsChart("Density");
+		this.zChartReading = ldCat.makeZChart("Reading Level");
+		this.zChartDensity = ldCat.makeZChart("Density");
+		this.readingLevel = ldCat.makeAvgsChart("Reading Level");
+		this.densityChart = ldCat.makeAvgsChart("Density");
 		this.pos = sc.makeSentimentPieChart("pos");
 		this.neg = sc.makeSentimentPieChart("neg");
 		this.neut = sc.makeSentimentPieChart("neut");
-		this.lengthDensity = ldl.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
-		this.lengthReadingLevel = ldl.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
-		this.readingLevelDensity = ldl.makeReadingandLengthChart(1, 2, "Reading Level of Article",
+		this.lengthDensity = ldlXY.makeReadingandLengthChart(0, 2, "Article Length", "Density of Article");
+		this.lengthReadingLevel = ldlXY.makeReadingandLengthChart(0, 1, "Article Length", "Reading Level of Article");
+		this.readingLevelDensity = ldlXY.makeReadingandLengthChart(1, 2, "Reading Level of Article",
 				"Density of Article");
 		this.personfreq = fc.makeFrequencyChart();
 		this.sentsource = sc.makeSentimentBySourceChart();

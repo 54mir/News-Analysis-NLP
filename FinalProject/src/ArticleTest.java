@@ -95,7 +95,7 @@ class ArticleTest extends GenericChart {
 	}
 
 /*	Top Country tests CoreNLP's ability to detect the country most mentioned in an article. Although the method
-	 functions as intended, the NLP function is not accurate. We did not use it in any of our charts.
+	 functions as intended, the NLP function is not 100% accurate. We did not use it in any of our charts.
 	*/
 	@Test
 	void testTopCountry3() {
