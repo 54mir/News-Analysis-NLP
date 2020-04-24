@@ -8,7 +8,7 @@ News Source Analysis
 
 Joint Work:
 o the Article class 
-o Charts interface
+o Charts abstract superclass 
 o Unit testing
 o Design
 o Research of packages, datasets, etc.
