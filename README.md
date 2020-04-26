@@ -14,8 +14,7 @@
 <p>We begin with a .csv file that contains 1400 articles from 14 sources, as well as metadata for the author, source, date of publication, etc. The<strong> RawDocumentReader</strong> class reads in this .csv file, makes the necessary CoreNLP annotations, and creates an <strong>Article</strong> object for each article. (The <strong>Article </strong>class computes and stores various metrics, which we use later on in our data analysis.) The articles are read into a .ser file, where they can be stored and shared to others who might be interested in running a similar analysis. The abstract <strong>GenericChart </strong>class reads in the .ser file and stores it into memory. The <strong>GenericChart </strong>superclass is extended by the following child classes:</p>
 <ul>
 <li><strong>LevelAndDensityCategoryChart</strong> (creates charts 1-4)</li>
-<li><strong>SentimentXYChart </strong>(creates chart 5)</li>
-<li><strong>SentimentPieChart </strong>(creates charts 6-8)</li>
+<li><strong>SentimentChart </strong>(creates charts 5-8)</li>
 <li><strong>LengthDensityAndLevelXYChart </strong>(creates charts 9-11)</li>
 <li><strong>FrequencyChart</strong> (creates chart 12)</li>
 </ul>
