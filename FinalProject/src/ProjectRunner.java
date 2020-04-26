@@ -16,27 +16,27 @@ import org.knowm.xchart.internal.chartpart.Chart;
 public class ProjectRunner extends JFrame {
 
 	// Instance Variables
-	LevelAndDensityCategoryChart ldCat = new LevelAndDensityCategoryChart();
-	CategoryChart zChartReading;
-	CategoryChart zChartDensity;
-	CategoryChart readingLevel;
-	CategoryChart densityChart;
+	private LevelAndDensityCategoryChart ldCat = new LevelAndDensityCategoryChart();
+	private CategoryChart zChartReading;
+	private CategoryChart zChartDensity;
+	private CategoryChart readingLevel;
+	private CategoryChart densityChart;
 
-	LengthDensityAndLevelXYCharts ldlXY = new LengthDensityAndLevelXYCharts();
-	XYChart lengthDensity;
-	XYChart lengthReadingLevel;
-	XYChart readingLevelDensity;
+	private LengthDensityAndLevelXYCharts ldlXY = new LengthDensityAndLevelXYCharts();
+	private XYChart lengthDensity;
+	private XYChart lengthReadingLevel;
+	private XYChart readingLevelDensity;
 
-	FrequencyChart fc = new FrequencyChart();
-	XYChart personfreq;
+	private FrequencyChart fc = new FrequencyChart();
+	private XYChart personfreq;
 
-	SentimentChart sc = new SentimentChart();
-	CategoryChart sentsource;
-	PieChart pos;
-	PieChart neg;
-	PieChart neut;
+	private SentimentChart sc = new SentimentChart();
+	private CategoryChart sentsource;
+	private PieChart pos;
+	private PieChart neg;
+	private PieChart neut;
 
-	ArrayList<Chart> charts = new ArrayList<>();
+	private ArrayList<Chart> charts = new ArrayList<>();
 
 	/**
 	 * Constructor, which makes all the chart objects we need to display

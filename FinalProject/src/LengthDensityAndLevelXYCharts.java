@@ -65,6 +65,15 @@ public class LengthDensityAndLevelXYCharts extends GenericChart {
 		return data;
 	}
 
+	
+	/**
+	 * This method can make charts showing the relationships between length, density, and reading level
+	 * @param x - 0 for length, 1 for reading level, 2 for density
+	 * @param y - 0 for length, 1 for reading level, 2 for density
+	 * @param xaxis title of x axis
+	 * @param yaxis title of y axis
+	 * @return returns an XY chart object
+	 */
 	public XYChart makeReadingandLengthChart(int x, int y, String xaxis, String yaxis) {
 
 		// creating a new XYChart object, which we will fill with our data
