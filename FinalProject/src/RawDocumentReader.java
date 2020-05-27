@@ -41,6 +41,7 @@ public class RawDocumentReader {
      * @param file
      */
     private void constructFileArray(File file) {
+        System.out.println("Processing " + file.toString() + "...") ;
         try {
             Scanner fileInput = new Scanner(file);
             fileInput.useDelimiter("(Z1Q\")|(Z1Q)");
