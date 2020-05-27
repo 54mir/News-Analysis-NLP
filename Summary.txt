@@ -5,19 +5,19 @@
 - Note that not all metrics are used in the charts – we’ve still included these for use in further development! 
 
 Samir's Code:
-Data Cleaning
-Article Class
-Frequency Chart class
-Generic Chart class
+o Data Cleaning
+o RawDocumentReader.java
+o Article.java
+o FrequencyChart.java
+o Sentiment Bar Charts
 
 Abigail’s code: 
-o	Sentiment Pie Charts class
+o	Sentiment Pie Charts
 o	Reading Level and Density Charts class
 Length/Density/Level Charts class
 o	The Project Runner Class 
 
-
-
 Joint Code:
 o the Article class 
-o the Charts interface
+o Abstract Charts class
+o Junit Tests
