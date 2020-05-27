@@ -5,12 +5,15 @@
 - Note that not all metrics are used in the charts – we’ve still included these for use in further development! 
 
 Samir's Code:
-//Samir, enter your code here
+Data Cleaning
+Article Class
+Frequency Chart class
+Generic Chart class
 
 Abigail’s code: 
 o	Sentiment Pie Charts class
 o	Reading Level and Density Charts class
-o	Length/Density/Level Charts class
+Length/Density/Level Charts class
 o	The Project Runner Class 
 
 
